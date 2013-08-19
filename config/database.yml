@@ -30,6 +30,7 @@ development:
   pool: 5
   username: ewyqtohndlrioj
   password: xISGyYcVV_P68LmD1Yd3jr_j3N
+  host: ec2-54-221-225-251.compute-1.amazonaws.com
 
 
   # Connect on a TCP socket. Omitted by default since the client uses a

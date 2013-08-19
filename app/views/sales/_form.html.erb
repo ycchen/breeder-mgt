@@ -1,0 +1,37 @@
+<%= form_for(@sale) do |f| %>
+  <% if @sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% @sale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dog %><br>
+    <%= f.select(:dog_id, Dog.all.map{|d|[d.name, d.id]}, :include_blank => 'Select a Dog') %>
+  </div>
+  <div class="field">
+    <%= f.label :customer %><br>
+    <%= f.select(:customer_id, Customer.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Customer') %>
+  </div>
+  <div class="field">
+    <%= f.label :sale_date %><br>
+    <%= f.date_select :sale_date %>
+  </div>
+  <div class="field">
+    <%= f.label :sale_price %><br>
+    <%= f.text_field :sale_price %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <strong>Name:</strong>
+		  <%= @show.name %>
+		</p>
+
+		<p>
+		  <strong>Kennel club:</strong>
+		  <%= @show.kennel_club %>
+		</p>
+
+		<p>
+		  <strong>Start date:</strong>
+		  <%= @show.start_date %>
+		</p>
+		
+		<p>
+		  <strong>End date:</strong>
+		  <%= @show.end_date %>
+		</p>
+		<p>
+		  <strong>Location:</strong>
+		  <%= @show.location %>
+		</p>
+
+		<%= link_to 'Edit', edit_show_path(@show) %> |
+		<%= link_to 'Back', shows_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="root">
+  <div class="row">
+      <div class="span12">
+          <div class="grey-box">
+          <h1>Listing charges</h1>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @charges.each do |charge| %>
+                <tr>
+                  <td><%= charge.name %></td>
+                  <td><%= charge.description %></td>
+                  <td><%= link_to 'Show', charge %></td>
+                  <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
+                  <td><%= link_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <br>
+
+          <%= link_to 'New Charge', new_charge_path %>
+        </div>      
+      </div>
+  </div>
+</div>

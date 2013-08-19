@@ -1,0 +1,64 @@
+<div class="root">
+  <div class="row">
+      <div class="span12">
+          <div class="grey-box">
+          <h1>Listing show_entries</h1>
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Dog</th>
+                <th>Show</th>
+                <th>Entry fee</th>
+                <th>Handling fee</th>
+                <th>Expense</th>
+                <th>Points</th>
+                <th>Title</th>
+                <th>Judge</th>
+                <th>Photos</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @show_entries.each do |show_entry| %>
+                <tr>
+                  <td><%= show_entry.dog.call_name %></td>
+                  <td><%= show_entry.show.name %><br/><%= show_entry.show_date %></td>
+                  <td><%= number_to_currency(show_entry.entry_fee) %></td>
+                  <td><%= number_to_currency(show_entry.handling_fee) %></td>
+                  <td><%= number_to_currency(show_entry.expense) %></td>
+                  <td><%= show_entry.points %></td>
+                  <td><%= show_entry.title %></td>
+                  <td><%= show_entry.judge %></td>
+                  <td><%= show_entry.pictures.size %></td>  
+                  <td><%= link_to 'Show', show_entry %></td>
+                  <td><%= link_to 'Edit', edit_show_entry_path(show_entry) %></td>
+                  <td><%= link_to 'Destroy', show_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td>&nbsp;</td><td>&nbsp;</td>
+                <td><%= number_to_currency(@show_entries.map(&:entry_fee).sum) %></td>
+                <td><%= number_to_currency(@show_entries.map(&:handling_fee).sum )%></td>
+                <td><%= number_to_currency(@show_entries.map(&:expense).sum) %></td>
+                <td><%= @show_entries.map(&:points).sum %></td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br>
+
+          <%= link_to 'New Show entry', new_show_entry_path %>
+          <pre>
+            <%#= @show_entries.to_yaml %>
+          </pre>
+        </div>      
+      </div>
+  </div>
+</div>

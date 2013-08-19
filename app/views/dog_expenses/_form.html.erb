@@ -1,0 +1,41 @@
+<%= form_for(@dog_expense) do |f| %>
+  <% if @dog_expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dog_expense.errors.count, "error") %> prohibited this dog_expense from being saved:</h2>
+
+      <ul>
+      <% @dog_expense.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dog %><br>
+    <%= f.select(:dog_id, Dog.all.map{|d| [d.name, d.id]}, :include_blank => 'Select a Dog') %>
+  </div>
+  <div class="field">
+    <%= f.label :charge %><br>
+    <%= f.select(:charge_id, Charge.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Charge') %>
+  </div>
+  <div class="field">
+    <%= f.label :charge_date %><br>
+    <%= f.date_select :charge_date %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+    <div class="field">
+    <%= f.label :show_entry %><br>
+    <%= f.select(:show_entry_id, ShowEntry.all.map{|s| [("#{s.show_date} - #{s.show.name} - #{s.dog.call_name} "), s.id]}, :include_blank => 'Select a Show Entry') %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+<% end %>

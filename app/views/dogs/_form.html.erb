@@ -1,0 +1,60 @@
+<%= nested_form_for(@dog, :html => {:multipart => true}) do |f| %>
+  <% if @dog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+
+      <ul>
+      <% @dog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :call_name %><br>
+    <%= f.text_field :call_name %>
+  </div>
+  <div class="field">
+    <%= f.label :color_id %><br>
+    <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :Sire %><br>
+    <%= f.select(:sire_id, Dog.dogs.all.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
+  </div>
+  <div class="field">
+    <%= f.label :Dams %><br>
+    <%= f.select(:dams_id, Dog.bitches.all.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
+  </div>  
+  <div class="field">
+    <%= f.label :birthday %><br>
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <%= f.text_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_no %><br>
+    <%= f.text_field :registration_no %>
+  </div>
+  <div class="field">
+    <%= f.fields_for :pictures do |p| %>
+      <%= image_tag(p.object.file.url, height: 200, width: 200) if p.object.file? %>
+      <%= p.label :file %>
+      <%= p.file_field :file %>
+      <%= p.link_to_remove t('.remove_image') %>
+    <% end %>
+    <%= f.link_to_add t('.add_image'), :pictures %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+<% end %>

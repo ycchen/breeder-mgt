@@ -1,0 +1,40 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Sale:</strong>
+        <%= @payment.sale.dog.name %>
+      </p>
+      <p>
+        <strong>Payment type:</strong>
+        <%= @payment.payment_type.name %>
+      </p>
+      <p>
+        <strong>Payment status:</strong>
+        <%= @payment.payment_status.name %>
+      </p>
+
+      <p>
+        <strong>Payment date:</strong>
+        <%= @payment.payment_date %>
+      </p>
+
+      <p>
+        <strong>Amount:</strong>
+        <%= number_to_currency(@payment.amount, :locale => 'zh-TW')%>
+      </p>
+
+      <p>
+        <strong>Note:</strong>
+        <%= @payment.note %>
+      </p>
+
+      <%= link_to 'Edit', edit_payment_path(@payment) %> |
+      <%= link_to 'Back', payments_path %>
+      </div>
+    </div>
+  </div>
+</div>

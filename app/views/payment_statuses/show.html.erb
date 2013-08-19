@@ -1,0 +1,22 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">
+			<p id="notice"><%= notice %></p>
+
+			<p>
+			  <strong>Name:</strong>
+			  <%= @payment_status.name %>
+			</p>
+
+			<p>
+			  <strong>Note:</strong>
+			  <%= @payment_status.note %>
+			</p>
+
+			<%= link_to 'Edit', edit_payment_status_path(@payment_status) %> |
+			<%= link_to 'Back', payment_statuses_path %>
+			</div>
+		</div>
+	</div>
+</div>

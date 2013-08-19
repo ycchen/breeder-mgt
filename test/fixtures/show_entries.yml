@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dog_id: 
+  show_id: 
+  entry_fee: 9.99
+  handling_fee: 9.99
+  points: 1
+  title: MyString
+
+two:
+  dog_id: 
+  show_id: 
+  entry_fee: 9.99
+  handling_fee: 9.99
+  points: 1
+  title: MyString

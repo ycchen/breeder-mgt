@@ -1,0 +1,115 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+      <p id="notice"><%= notice %></p>
+
+      
+
+
+<div class="tabbable">
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#pane1" data-toggle="tab"><%= @dog.call_name %> basic information</a></li>
+    <li><a href="#pane2" data-toggle="tab">Show Entered</a></li>
+    <li><a href="#pane3" data-toggle="tab">Expense for <%= @dog.call_name %></a></li>
+    <li><a href="<%= dogs_path() %>">Dog List</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane1" class="tab-pane active">
+      <h4>Dog basic information</h4>
+      <p>
+        <strong>Name:</strong>
+        <%= @dog.name %>
+      </p>
+      <p>
+        <strong>Call name:</strong>
+        <%= @dog.call_name %>
+      </p>
+      <p>
+        <strong>Color:</strong>
+        <%= @dog.color.name %>
+      </p>
+      <p>
+        <strong>Sire:</strong>
+        <%=  %>
+      </p>
+      <p>
+        <strong>Dams:</strong>
+        <%=  %>
+      </p>            
+      <p>
+        <strong>Birthday:</strong>
+        <%= @dog.birthday %>
+      </p>
+      <p>
+        <strong>Sex:</strong>
+        <%= @dog.sex %>
+      </p>
+      <p>
+        <strong>Registration no:</strong>
+        <%= @dog.registration_no %>
+      </p>
+
+      <p>
+        <% @dog.pictures.each do |p| %>
+          <%= image_tag(p.file.url, heigh: 200, width:200) if p.file? %>
+        <% end %>
+      </p>
+      <%= link_to 'Edit', edit_dog_path(@dog) %> |
+      <%= link_to 'Back', dogs_path %>
+    </div>
+
+    <div id="pane2" class="tab-pane">
+    <h4>Show entered information</h4>
+      <table class="table table-striped">
+        <tr><th>Show Date</th><th>Club</th><th>Points</th><th>Title</th></tr>
+        <% @dog.show_entries.each do |show| %>
+        <tr>
+            <td><%= show.show_date %></td>
+            <td><%= show.show.kennel_club %></td>
+            <td><%= show.points %></td>
+            <td><%= show.title %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td><%= @dog.show_entries.map(&:points).sum %></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="pane3" class="tab-pane">
+      <h4>Expense for <%= @dog.call_name %></h4>
+       <table class="table table-striped">
+        <tr><th>Charge Date</th><th>Charge</th><th>Amount</th><th>note</th></tr>
+        <% @dog.dog_expenses.each do |expense| %>
+        <tr>
+            <td><%= expense.charge_date %></td>
+            <td><%= expense.charge.name %></td>
+            <td><%= number_to_currency(expense.amount) %></td>
+            <td><%= expense.note %></td>
+        </tr>
+        <% end %>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><%= number_to_currency(@dog.dog_expenses.map(&:amount).sum) %></td>
+            <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div id="pane4" class="tab-pane">
+      <h4>Pane 4 Content</h4>
+      <p>....</p>
+    </div> -->
+  </div><!-- /.tab-content -->
+</div><!-- /.tabbable -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

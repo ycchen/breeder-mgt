@@ -1,0 +1,45 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+        <div class="grey-box">
+        <h4>Listing sales</h4>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Dog</th>
+              <th>Customer</th>
+              <th>Sale date</th>
+              <th>Sale price</th>
+              <th>Note</th>
+              <th>Photo</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @sales.each do |sale| %>
+              <tr>
+                <td><%= link_to sale.dog.name, dog_path(sale.dog.id) %></td>
+                <td><%= link_to(sale.customer.name, customer_path(sale.customer.id) )%></td>
+                <td><%= sale.sale_date %></td>
+                <td><%= number_to_currency(sale.sale_price, :locale=>'zh-TW') %></td>
+                <td><%= sale.note %></td>
+                <td><%= sale.dog.pictures.size %></td>
+                <td><%= link_to 'Show', sale %></td>
+                <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+                <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure(this action will also delete assoicated payments ) ?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to 'New Sale', new_sale_path %>
+      </div>
+    </div>
+  </div>
+</div>

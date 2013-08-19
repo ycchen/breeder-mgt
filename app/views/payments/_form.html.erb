@@ -1,0 +1,35 @@
+<%= form_for([@sale, @sale.payments.build]) do |f| %>
+  <% if @sale.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved.</h2>
+      <ul>
+        <%= @sale.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :payment_type %><br>
+    <%= f.select(:payment_type_id, PaymentType.all.map{|a| [a.name, a.id]}, :include_blank => 'Select a Payment Type') %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_date %><br>
+    <%= f.date_select :payment_date %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_status %><br>
+    <%= f.select(:payment_status_id, PaymentStatus.all.map{|p| [p.name, p.id]}, :include_blank =>'Select a Payment Status') %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

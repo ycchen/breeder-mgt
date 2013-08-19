@@ -1,0 +1,103 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <p id="notice"><%= notice %></p>
+
+        <div class="tabbable">
+            <ul class="nav nav-pills">
+              <li class="active"><a href="#pane1" data-toggle="tab"><%= @customer.name %> Contact Information</a></li>
+              <li><a href="#pane2" data-toggle="tab">Purchase Histroy</a></li>
+              <li><a href="#pane3" data-toggle="tab">Other</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="pane1" class="tab-pane active">
+                  <h4>Contact Information</h4>
+                <p>
+                  <% @customer.pictures.each do |p| %>
+                  <%= image_tag(p.file.url, height: 100, width: 100) %>
+                  <% end %>
+                </p>
+                <p>
+                  <strong>Name:</strong>
+                  <%= @customer.name %>
+                </p>
+
+                <p>
+                  <strong>First name:</strong>
+                  <%= @customer.first_name %>
+                </p>
+
+                <p>
+                  <strong>Last name:</strong>
+                  <%= @customer.last_name %>
+                </p>
+
+                <p>
+                  <strong>Email:</strong>
+                  <%= @customer.email %>
+                </p>
+
+                <p>
+                  <strong>Phone:</strong>
+                  <%= @customer.phone %>
+                </p>
+
+                <p>
+                  <strong>Mobile:</strong>
+                  <%= @customer.mobile %>
+                </p>
+
+                <p>
+                  <strong>Address:</strong>
+                  <%= @customer.address %>
+                </p>
+
+                <p>
+                  <strong>City:</strong>
+                  <%= @customer.city %>
+                </p>
+
+                <p>
+                  <strong>Zipcode:</strong>
+                  <%= @customer.zipcode %>
+                </p>
+
+                <%= link_to 'Edit', edit_customer_path(@customer) %> |
+                <%= link_to 'Back', customers_path %>
+              </div>
+
+              <div id="pane2" class="tab-pane">
+                <h4>Purchase History</h4>
+                <table class="table table-striped">
+                <% @customer.sales.each do |s| %>
+                  <tr>
+                    <td><%= s.sale_date %></td>
+                    <td style="text-align:right"><%= number_to_currency(s.sale_price, :locale => 'zh-TW')%></td>
+                    <td><%= s.dog.name %></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <% s.payments.each do |pay| %>
+                  <tr>
+                    <td><%= pay.payment_date %></td>
+                    <td style="text-align:right"><%= number_to_currency(pay.amount, :locale => 'zh-TW') %></td>
+                    <td><%= pay.payment_type.name %></td>
+                    <td><%= pay.payment_status.name %></td>
+                  </tr>
+                  <% end %>
+                <% end %>
+                </table>
+              </div>
+
+              <div id="pane3" class="tab-pane">
+                <h4>Other Stuff...</h4>
+              </div>
+
+            </div> <!-- /. tab-content -->
+        </div><!-- /. tabbable -->
+      
+      </div>
+    </div>
+  </div>
+</div>

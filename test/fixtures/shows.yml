@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  kennel_club: MyString
+  show_date: 2013-07-26
+  location: MyString
+
+two:
+  name: MyString
+  kennel_club: MyString
+  show_date: 2013-07-26
+  location: MyString

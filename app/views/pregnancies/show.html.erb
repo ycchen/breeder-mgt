@@ -1,0 +1,78 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <p id="notice"><%= notice %></p>
+        <h4>Pregnancy Detail</h4>
+
+        <div class="tabbable">
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#pane1" data-toggle="tab">Pregnancy Information</a>
+            </li>
+            <li><a href="#pane2" data-toggle="tab">Matting Information</a></li>
+            <li><a href="#pane3" data-toggle="tab">Litter Information</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="pane1" class="tab-pane active">
+              <p>
+                <strong>Bitch:</strong>
+                <%= @pregnancy.dog.name %>
+              </p>
+              <p>
+                <strong>Heat start date:</strong>
+                <%= @pregnancy.heat_start_date %>
+              </p>
+              <p>
+                <strong>Estimate Due date:</strong>
+                <%= @pregnancy.due_date %>
+              </p>
+              <p>
+                <strong>Estimate Surgery date:</strong>
+                <%= @pregnancy.surgery_date %>
+              </p>
+              <p>
+                <strong>Total puppy:</strong>
+                <%= @pregnancy.total_puppy %>
+              </p>
+              <%= link_to 'Edit', edit_pregnancy_path(@pregnancy) %> |
+              <%= link_to 'Back', pregnancies_path %>
+            </div>
+
+            <div id="pane2" class="tab-pane">
+              <p><strong>Heat start date:</strong><%= @pregnancy.heat_start_date %></p>
+              <table class="table table-striped">
+                <tr>
+                  <td>Sire</td>
+                  <td>Progesterone</td>
+                  <td>Mating Date</td>
+                  <td>Days</td>
+                </tr>
+                <% @pregnancy.matings.each do |mating| %>
+                  <tr><td><%= mating.sire.name %></td><td><%= mating.progesterone %> ml</td><td><%= mating.mating_date %></td><td><%=  distance_of_time_in_words(mating.mating_date, @pregnancy.heat_start_date)%></td></tr>
+                <% end %>
+              </table>  
+            </div>
+            
+            <div id="pane3" class="tab-pane">
+              <h4>Litter Information</h4>
+              <table class="table table-striped">
+                <tr><td>Gender</td><td>Color</td><td>Survival</td></tr>
+                <% @pregnancy.litters.each do |litter| %>
+                  <tr>
+                    <td><%= litter.gender %></td>
+                    <td><%= litter.color.name %></td>
+                    <td><%= litter.survival %></td>  
+                  </tr>
+                <% end %>
+              </table>    
+            </div>
+            
+          </div><!-- ./tab-content -->
+        </div><!-- ./tabbable -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

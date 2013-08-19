@@ -1,0 +1,43 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <h4>Listing pregnancies</h4>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Pregnant Dog</th>
+              <th>Heat start date</th>
+              <th>Estimate Due date</th>
+              <th>Estimate Surgery date</th>
+              <th>Total puppy</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @pregnancies.each do |pregnancy| %>
+              <tr>
+                <td><%= pregnancy.dog.name %></td>
+                <td><%= pregnancy.heat_start_date %></td>
+                <td><%= pregnancy.due_date %></td>
+                <td><%= pregnancy.surgery_date %></td>
+                <td><%= pregnancy.total_puppy %></td>
+                <td><%= link_to 'Show', pregnancy %></td>
+                <td><%= link_to 'Edit', edit_pregnancy_path(pregnancy) %></td>
+                <td><%= link_to 'Destroy', pregnancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to 'New Pregnancy', new_pregnancy_path %>
+      </div>
+    </div>
+  </div>
+</div>

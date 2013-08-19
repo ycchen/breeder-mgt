@@ -1,0 +1,27 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <strong>Pregnancy:</strong>
+		  <%= @mating.pregnancy.dog.name %>
+		</p>
+
+		<p>
+		  <strong>Mating date:</strong>
+		  <%= @mating.mating_date %>
+		</p>
+
+		<p>
+		  <strong>Sire:</strong>
+		  <%= @mating.sire.name %>
+		</p>
+
+		<%= link_to 'Edit', edit_mating_path(@mating) %> |
+		<%= link_to 'Back', matings_path %>
+      </div>
+    </div>
+  </div>
+</div>

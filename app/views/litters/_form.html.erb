@@ -1,0 +1,33 @@
+<%= form_for(@litter) do |f| %>
+  <% if @litter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@litter.errors.count, "error") %> prohibited this litter from being saved:</h2>
+
+      <ul>
+      <% @litter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pregnancy %><br>
+    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|[p.dog.name, p.id]}, include_blank: 'Select a pregnant bitch') %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select(:gender, Dog::SEX_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, include_blank: 'Select a color') %>
+  </div>
+  <div class="field">
+    <%= f.label :survival %><br>
+    <%= f.collection_radio_buttons(:survival, [[true, 'Yes'], [false, 'No']],:first, :last, item_wrapper_class: "inline", default: true) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,48 @@
+
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Dog:</strong>
+          <%= @show_entry.dog.name %>
+        </p>
+
+        <p>
+          <strong>Show:</strong>
+          <%= "#{@show_entry.show.name + ' - ' + @show_entry.show.kennel_club}" %>
+        </p>
+
+        <p>
+          <strong>Entry fee:</strong>
+          <%= number_to_currency(@show_entry.entry_fee) %>
+        </p>
+
+        <p>
+          <strong>Handling fee:</strong>
+          <%= number_to_currency(@show_entry.handling_fee) %>
+        </p>
+
+        <p>
+          <strong>Points:</strong>
+          <%= @show_entry.points %>
+        </p>
+
+        <p>
+          <strong>Title:</strong>
+          <%= @show_entry.title %>
+        </p>
+        <p>
+          <% @show_entry.pictures.each do |p| %>
+            <%= image_tag(p.file.url, heigh: 200, width:200) if p.file? %>
+          <% end %>
+        </p>
+
+        <%= link_to 'Edit', edit_show_entry_path(@show_entry) %> |
+        <%= link_to 'Back', show_entries_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="root">
+  <div class="row">
+    <div class="span12">
+      <div class="grey-box">
+      <p id="notice"><%= notice %></p>
+        <h4>Sale Details</h4>
+
+      <% @sale.dog.pictures.each do |pic| %>
+        <%= image_tag(pic.file.url, heigh: 200, width: 200) %>
+      <% end %>
+      
+      <p>
+        <strong>Dog:</strong>
+        <%= @sale.dog.name %>
+      </p>
+
+      <p>
+        <strong>Customer:</strong>
+        <%= @sale.customer.name %>
+      </p>
+
+      <p>
+        <strong>Sale date:</strong>
+        <%= @sale.sale_date %>
+      </p>
+
+      <p>
+        <strong>Sale price:</strong>
+        <%= number_to_currency(@sale.sale_price, :locale=>'zh-TW') %>
+      </p>
+
+      <p>
+        <strong>Note:</strong>
+        <%= @sale.note %>
+      </p>
+
+      <p>
+        <strong>Payment(s):</strong>
+        <table class="table table-strped">
+        <% @sale.payments.each do |pay| %>
+          <tr>
+            <td><%= pay.payment_date %></td>
+            <td><%= pay.payment_type.name %></td>
+            <td><%= number_to_currency(pay.amount, :locale => 'zh-TW') %></td>
+            <td><%= pay.payment_status.name %></td>
+            <td><%= pay.note %></td>
+          </tr>
+        <% end %>
+        </table>
+      </p>
+
+      <a href="javascript:void(0)" onclick="javascript:$('.panel').slideToggle('slow')" class="btn btn-primary">Add Payment</a>
+
+      <div class="panel">
+        <h4>Add Payment</h4>
+        <%= render 'payments/form' %>
+      </div>
+
+      <%= link_to 'Edit', edit_sale_path(@sale), class: 'btn' %>
+      <%= link_to 'Back', sales_path,class: 'btn' %>
+      </div>
+    </div>
+  </div>
+</div>

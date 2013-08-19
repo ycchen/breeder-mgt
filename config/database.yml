@@ -57,15 +57,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: breeder-mgt_test
+  database: d7njgjiveofr0g
   pool: 5
-  username: breeder-mgt
-  password:
+  username: ewyqtohndlrioj
+  password: xISGyYcVV_P68LmD1Yd3jr_j3N
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: breeder-mgt_production
+  database: d7njgjiveofr0g
   pool: 5
-  username: breeder-mgt
-  password:
+  username: ewyqtohndlrioj
+  password: xISGyYcVV_P68LmD1Yd3jr_j3N

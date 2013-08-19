@@ -26,10 +26,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: breeder-mgt_development
+  database: d7njgjiveofr0g
   pool: 5
-  username: breeder-mgt
-  password:
+  username: ewyqtohndlrioj
+  password: xISGyYcVV_P68LmD1Yd3jr_j3N
+
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

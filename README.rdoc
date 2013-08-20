@@ -202,7 +202,7 @@ $ rails g nested_form:install
 //= require jquery_nested_form
 
 -- generate picture model
-$ rails g model picture attachable:reference file:string
+$ rails g model picture attachable:references file:string
 
 -- modified db\migrate\xxxx_create_pictures.rb
 modified line below to add :polymorphic => true

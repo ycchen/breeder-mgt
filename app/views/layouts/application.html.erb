@@ -5,7 +5,7 @@
   <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
   <title><%= content_for?(:title) ? yield(:title) : "Dog Shows Tracking System" %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -27,6 +27,6 @@
 </div>
 
 <%= yield :scripts %>
-
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

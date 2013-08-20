@@ -4,7 +4,8 @@ class DogExpensesController < ApplicationController
   # GET /dog_expenses
   # GET /dog_expenses.json
   def index
-    @dog_expenses = DogExpense.all
+    # @dog_expenses = DogExpense.all
+    @dog_expenses = DogExpense.order('charge_date desc')
   end
 
   # GET /dog_expenses/1

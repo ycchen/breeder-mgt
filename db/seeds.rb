@@ -80,3 +80,19 @@ DogExpense.create!(dog_id: 2, charge_id: 1, charge_date: '2013-07-31', amount: 2
 DogExpense.create!(dog_id: 3, charge_id: 1, charge_date: '2013-07-31', amount: 119, note: 'boarding fee from 7/1/2013 to 7/31/2013', show_entry_id: nil)
 DogExpense.create!(dog_id: 3, charge_id: 2, charge_date: '2013-07-24', amount: 28.25, note: "Olivia's rabies shot", show_entry_id: nil)
 DogExpense.create!(dog_id: 3, charge_id: 2, charge_date: '2013-07-24', amount: 39.63, note: "Olivia's DHPP puppy shot", show_entry_id: nil)
+
+Color.create!(name: 'Cream')
+Color.create!(name: 'Brindle & White')
+Color.create!(name: 'White')
+Color.create!(name: 'Fawn')
+Color.create!(name: 'Brindle')
+Color.create!(name: 'Fawn & White')
+
+PaymentType.create!(name: 'Cash', description: 'Cash')
+PaymentType.create!(name: 'Check', description: 'Check')
+
+PaymentStatus.create!(name: 'Received', description: 'Payment Received')
+PaymentStatus.create!(name: 'Pending', description: 'Payment Pending')
+
+Customer.create!(name: 'Lisa Smith', first_name: 'Lisa', last_name: 'Smith', email: 'lisa.smith@aol.com', phone: '703-789-4561', mobile: '789-456-1231', address: '4578 richme St', city: 'Arlington', zipcode: '22201')
+Customer.create!(name: 'John Doe', first_name: 'John', last_name: 'Doe', email: 'john.doe@luckme.com', phone: '704-789-5561', mobile: '729-446-1531', address: '168 poorme St', city: 'Arlington', zipcode: '22201')

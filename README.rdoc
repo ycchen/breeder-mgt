@@ -401,3 +401,18 @@ m:m = > collection_check_boxes(:item, :owner_id, Owner.all, :id, :name)
 f.date_field :reurn_date
 
 */
+
+http://stackoverflow.com/questions/4820549/how-to-empty-db-in-heroku
+== Heroku reset postgres db
+
+--To drop the database:
+$ heroku pg:reset SHARED_DATABASE --confirm NAME_OF_THE_APP
+
+--To recreate the database:
+$ heroku run rake db:migrate
+
+--To seed the database:
+$ heroku run rake db:seed
+
+-- Final step
+$ heroku restart

@@ -416,3 +416,12 @@ $ heroku run rake db:seed
 
 -- Final step
 $ heroku restart
+
+--To reset the database  -- it will ask you to confirm the name of database
+$ heroku pg:reset DATABASE
+
+$ heroku run rake db:migrate # recreate the tables sturcture
+
+$ heroku run rake db:seed # re-populate table data
+
+

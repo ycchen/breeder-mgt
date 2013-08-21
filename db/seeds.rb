@@ -91,8 +91,8 @@ Color.create!(name: 'Fawn & White')
 PaymentType.create!(name: 'Cash', description: 'Cash')
 PaymentType.create!(name: 'Check', description: 'Check')
 
-PaymentStatus.create!(name: 'Received', description: 'Payment Received')
-PaymentStatus.create!(name: 'Pending', description: 'Payment Pending')
+PaymentStatus.create!(name: 'Received', note: 'Payment Received')
+PaymentStatus.create!(name: 'Pending', note: 'Payment Pending')
 
 Customer.create!(name: 'Lisa Smith', first_name: 'Lisa', last_name: 'Smith', email: 'lisa.smith@aol.com', phone: '703-789-4561', mobile: '789-456-1231', address: '4578 richme St', city: 'Arlington', zipcode: '22201')
 Customer.create!(name: 'John Doe', first_name: 'John', last_name: 'Doe', email: 'john.doe@luckme.com', phone: '704-789-5561', mobile: '729-446-1531', address: '168 poorme St', city: 'Arlington', zipcode: '22201')

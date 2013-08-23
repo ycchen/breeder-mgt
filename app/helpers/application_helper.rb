@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	def flashes_helper
 		results =[]
-		flashes = [:alert, :error, :info, :notice, :success]
+		flashes = [:alert, :errors, :info, :notice, :success]
 
 		flashes.each do |name, msg|
 			hidden = "hide" if flash[name].blank?
@@ -10,5 +10,5 @@ module ApplicationHelper
 		end	
 		results.join("").html_safe
 	end
-	
+
 end

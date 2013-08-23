@@ -1,7 +1,7 @@
 <%= form_for(@mating) do |f| %>
   <% if @mating.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@mating.errors.count, "error") %> prohibited this mating from being saved:</h2>
+      <h4><%= pluralize(@mating.errors.count, "error") %> prohibited this mating from being saved:</h4>
 
       <ul>
       <% @mating.errors.full_messages.each do |msg| %>

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.select(:gender, Dog::SEX_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
+    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
   </div>
   <div class="field">
     <%= f.label :color %><br>

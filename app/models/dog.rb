@@ -1,5 +1,5 @@
 class Dog < ActiveRecord::Base
-	SEX_TYPE = %w[Female Male]
+	GENDER_TYPE = %w[Female Male]
 	has_many :show_entries
 	has_many :dog_expenses
 	has_many :sales
@@ -12,6 +12,8 @@ class Dog < ActiveRecord::Base
 	has_many :pictures, :as => :attachable, :dependent => :destroy
 	accepts_nested_attributes_for :pictures, :allow_destroy => true
 
-	scope :bitches, lambda{where(sex: 'Female')}
-	scope :dogs, lambda{where(sex: 'Male')}
+	validates :name, :call_name, :color_id, presence:true
+
+	scope :bitches, lambda{where(gender: 'Female')}
+	scope :dogs, lambda{where(gender: 'Male')}
 end

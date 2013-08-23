@@ -9,24 +9,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- navigation -->
-<%= render :partial => 'shared/navigation' %>
+	<!-- navigation -->
+	<%= render :partial => 'shared/navigation' %>
 
-<div class="container">
-	<div class="flashes">
-	
-	</div>
-	<div class="content">
-		<div class="row">
-			<div class="span12">
-				<div class="main-image"><%= image_tag '/assets/background.jpg' %></div>	
-				<%= yield %>
+	<!-- main container -->
+	<div class="container">
+		<div class="flashes">
+			<%= flashes_helper %>		
+		</div>
+		<div class="content">
+			<div class="row">
+				<div class="span12">
+					<div class="main-image"><%= image_tag '/assets/background.jpg' %></div>	
+					<%= yield %>
+				</div>	
 			</div>	
-		</div>	
+		</div>
 	</div>
-</div>
 
-<%= yield :scripts %>
+	<%= yield :scripts %>
 
 </body>
 </html>

@@ -19,13 +19,14 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1/edit
   def edit
+    @sale = @payment.sale
   end
 
   # POST /payments
   # POST /payments.json
   def create
     @sale = Sale.find(params[:sale_id])
-    @payment = @sale.payments.create!(payment_params)
+    @payment = @sale.payments.build(payment_params)
     # @payment = Payment.new(payment_params)
     # render params.inspect
     # render @payment.inspect
@@ -36,7 +37,7 @@ class PaymentsController < ApplicationController
         format.html { redirect_to @sale, notice: 'Payment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @sale }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to @sale, notice: 'Payment could not be saved. Please fill in all fields'  }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end
@@ -45,12 +46,13 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1
   # PATCH/PUT /payments/1.json
   def update
+    @sale = @payment.sale
     respond_to do |format|
       if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
+        format.html { redirect_to @sale, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to @sale, notice: 'Payment could not be saved. Please fill in all fields' }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end

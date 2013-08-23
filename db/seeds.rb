@@ -13,11 +13,25 @@
 # pre-populate admin
 u = User.create!(email: "admin@test.com", password: "foobar1234", password_confirmation: "foobar1234")
 
-# pre-populate dogs table
+Color.create!(name: 'Cream')
+Color.create!(name: 'Brindle & White')
+Color.create!(name: 'White')
+Color.create!(name: 'Fawn')
+Color.create!(name: 'Brindle')
+Color.create!(name: 'Fawn & White')
 
-Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", birthday: Date.new(2012,10,5), sex: Dog::SEX_TYPE.first, registration_no: 'NP34343401')
-Dog.create!(name: "HARDROCK DE PETIT DRAC", call_name: "Hardrock", birthday: Date.new(2013,2,9), sex: Dog::SEX_TYPE.last,registration_no: 'NP34635401')
-Dog.create!(name: "Olivia", call_name: "Olivia", birthday: Date.new(2013,3,20), sex: Dog::SEX_TYPE.first)
+PaymentType.create!(name: 'Cash', description: 'Cash')
+PaymentType.create!(name: 'Check', description: 'Check')
+
+PaymentStatus.create!(name: 'Received', note: 'Payment Received')
+PaymentStatus.create!(name: 'Pending', note: 'Payment Pending')
+
+brindle = Color.where(name: 'Brindle').frist
+
+# pre-populate dogs table
+Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", color_id: brindle.id, birthday: Date.new(2012,10,5), sex: Dog::GENDER_TYPE.first, registration_no: 'NP34343401')
+Dog.create!(name: "HARDROCK DE PETIT DRAC", call_name: "Hardrock", color_id: brindle.id, birthday: Date.new(2013,2,9), sex: Dog::GENDER_TYPE.last,registration_no: 'NP34635401')
+Dog.create!(name: "Olivia", call_name: "Olivia", color_id: brindle.id, birthday: Date.new(2013,3,20), sex: Dog::GENDER_TYPE.first)
 
 # pre-populate shows table
 
@@ -56,6 +70,7 @@ Charge.create!(name: "Vet Visit Fee", description: "fee to pay for Vet's bill")
 Charge.create!(name: "Show Entry Fee", description: "fee to pay for show entry")
 Charge.create!(name: "Handling Fee", description: "fee to pay for handle ing dog at a dog show")
 Charge.create!(name: "Travel Expense Fee", description: "fee to pay for handler travel to dog show expense. etc Gas, toll")
+Charge.create!(name: "Purchase Fee", description: "fee to pay to purchase a dog")
 Charge.create!(name: "Other Fee", description: "fee to pay for other stuff. etc postage and envlope")
 
 # pre-populate dog_expenses table
@@ -81,18 +96,6 @@ DogExpense.create!(dog_id: 3, charge_id: 1, charge_date: '2013-07-31', amount: 1
 DogExpense.create!(dog_id: 3, charge_id: 2, charge_date: '2013-07-24', amount: 28.25, note: "Olivia's rabies shot", show_entry_id: nil)
 DogExpense.create!(dog_id: 3, charge_id: 2, charge_date: '2013-07-24', amount: 39.63, note: "Olivia's DHPP puppy shot", show_entry_id: nil)
 
-Color.create!(name: 'Cream')
-Color.create!(name: 'Brindle & White')
-Color.create!(name: 'White')
-Color.create!(name: 'Fawn')
-Color.create!(name: 'Brindle')
-Color.create!(name: 'Fawn & White')
-
-PaymentType.create!(name: 'Cash', description: 'Cash')
-PaymentType.create!(name: 'Check', description: 'Check')
-
-PaymentStatus.create!(name: 'Received', note: 'Payment Received')
-PaymentStatus.create!(name: 'Pending', note: 'Payment Pending')
 
 Customer.create!(name: 'Lisa Smith', first_name: 'Lisa', last_name: 'Smith', email: 'lisa.smith@aol.com', phone: '703-789-4561', mobile: '789-456-1231', address: '4578 richme St', city: 'Arlington', zipcode: '22201')
 Customer.create!(name: 'John Doe', first_name: 'John', last_name: 'Doe', email: 'john.doe@luckme.com', phone: '704-789-5561', mobile: '729-446-1531', address: '168 poorme St', city: 'Arlington', zipcode: '22201')

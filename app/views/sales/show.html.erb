@@ -44,6 +44,7 @@
             <td><%= number_to_currency(pay.amount, :locale => 'zh-TW') %></td>
             <td><%= pay.payment_status.name %></td>
             <td><%= pay.note %></td>
+            <td><%= link_to "Edit", edit_sale_payment_path(@sale,pay) %> | Destroy</td>
           </tr>
         <% end %>
         </table>
@@ -53,7 +54,7 @@
 
       <div class="panel">
         <h4>Add Payment</h4>
-        <%= render 'payments/form' %>
+        <%= render 'payments/paymentForm' %>
       </div>
 
       <%= link_to 'Edit', edit_sale_path(@sale), class: 'btn' %>

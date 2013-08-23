@@ -37,8 +37,8 @@
     <%= f.date_select :birthday %>
   </div>
   <div class="field">
-    <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
+    <%= f.label :gender %><br>
+    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
   </div>
   <div class="field">
     <%= f.label :registration_no %><br>

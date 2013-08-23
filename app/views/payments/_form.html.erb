@@ -1,4 +1,5 @@
-<%= form_for([@sale, @sale.payments.build]) do |f| %>
+
+<%= form_for([@sale, @payment]) do |f| %>
   <% if @sale.errors.any? %>
     <div id="errorExplanation">
       <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved.</h2>

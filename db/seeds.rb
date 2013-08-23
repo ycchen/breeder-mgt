@@ -29,9 +29,9 @@ PaymentStatus.create!(name: 'Pending', note: 'Payment Pending')
 brindle = Color.where(name: 'Brindle').first
 
 # pre-populate dogs table
-Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", color_id: brindle.id, birthday: Date.new(2012,10,5), sex: Dog::GENDER_TYPE.first, registration_no: 'NP34343401')
-Dog.create!(name: "HARDROCK DE PETIT DRAC", call_name: "Hardrock", color_id: brindle.id, birthday: Date.new(2013,2,9), sex: Dog::GENDER_TYPE.last,registration_no: 'NP34635401')
-Dog.create!(name: "Olivia", call_name: "Olivia", color_id: brindle.id, birthday: Date.new(2013,3,20), sex: Dog::GENDER_TYPE.first)
+Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", color_id: brindle.id, birthday: Date.new(2012,10,5), gender: Dog::GENDER_TYPE.first, registration_no: 'NP34343401')
+Dog.create!(name: "HARDROCK DE PETIT DRAC", call_name: "Hardrock", color_id: brindle.id, birthday: Date.new(2013,2,9), gender: Dog::GENDER_TYPE.last,registration_no: 'NP34635401')
+Dog.create!(name: "Olivia", call_name: "Olivia", color_id: brindle.id, birthday: Date.new(2013,3,20), gender: Dog::GENDER_TYPE.first)
 
 # pre-populate shows table
 

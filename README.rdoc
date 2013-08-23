@@ -407,6 +407,7 @@ http://stackoverflow.com/questions/4820549/how-to-empty-db-in-heroku
 
 --To drop the database:
 $ heroku pg:reset SHARED_DATABASE --confirm NAME_OF_THE_APP
+$ heroku pg:reset DATABASE --confirm NAME_OF_THE_APP
 
 --To recreate the database:
 $ heroku run rake db:migrate

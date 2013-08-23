@@ -460,3 +460,29 @@ brindle.name # Brindle
 <div class="flashes">
 	<%= flashes_helper %>
 </div>
+
+-- Added gem 'rolify' to handle user roles
+gem 'rolify'
+
+-- Generated the Role class from rolify
+$ rails g rolify:role Role User
+
+# this will generated following files
+      create  app/models/role.rb
+      insert  app/models/user.rb
+      create  config/initializers/rolify.rb
+      create  db/migrate/20130823195945_rolify_create_roles.rb
+
+$ rake db:migrate
+
+-- added gem 'cancan' to Gemfile to handle authorization
+gem 'cancan'
+
+-- generated models\ability.rb file
+$ rails g cancan:ability
+
+
+-- generated home controller
+$ rails g controller home index
+
+-- updated routes.rb to set root => 'home#index'

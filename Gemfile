@@ -48,6 +48,14 @@ end
 gem 'pg'
 gem 'rails_12factor', group: :production
 
+# rolify gem to handle user roles
+gem 'rolify'
+
+# cancan to handle authroization
+gem 'cancan'
+
+# Gravatar gem 
+gem 'gravatar-ultimate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

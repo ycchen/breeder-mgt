@@ -12,6 +12,9 @@
 
 # pre-populate admin
 u = User.create!(email: "admin@test.com", password: "foobar1234", password_confirmation: "foobar1234")
+# added 'admin' to the role table and assigned to admin@test.com 
+u.add_role "admin"
+
 
 Color.create!(name: 'Cream')
 Color.create!(name: 'Brindle & White')

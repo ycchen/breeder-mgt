@@ -26,7 +26,7 @@ PaymentType.create!(name: 'Check', description: 'Check')
 PaymentStatus.create!(name: 'Received', note: 'Payment Received')
 PaymentStatus.create!(name: 'Pending', note: 'Payment Pending')
 
-brindle = Color.where(name: 'Brindle').frist
+brindle = Color.where(name: 'Brindle').first
 
 # pre-populate dogs table
 Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", color_id: brindle.id, birthday: Date.new(2012,10,5), sex: Dog::GENDER_TYPE.first, registration_no: 'NP34343401')

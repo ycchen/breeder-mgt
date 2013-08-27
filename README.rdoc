@@ -403,6 +403,7 @@ f.date_field :reurn_date
 */
 
 http://stackoverflow.com/questions/4820549/how-to-empty-db-in-heroku
+
 == Heroku reset postgres db
 
 --To drop the database:

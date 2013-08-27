@@ -24,6 +24,11 @@
     <%= f.date_select :charge_date %>
   </div>
   <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+  </div>
+
+  <div class="field">
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </div>

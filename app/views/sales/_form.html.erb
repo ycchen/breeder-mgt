@@ -24,6 +24,10 @@
     <%= f.date_select :sale_date %>
   </div>
   <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+  </div>
+  <div class="field">
     <%= f.label :sale_price %><br>
     <%= f.text_field :sale_price %>
   </div>

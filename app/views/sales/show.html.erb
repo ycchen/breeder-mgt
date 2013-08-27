@@ -26,7 +26,7 @@
 
       <p>
         <strong>Sale price:</strong>
-        <%= number_to_currency(@sale.sale_price, :locale=>'zh-TW') %>
+        <%= currency_to(@sale.sale_price, @sale.currency) %>
       </p>
 
       <p>
@@ -41,7 +41,7 @@
           <tr>
             <td><%= pay.payment_date %></td>
             <td><%= pay.payment_type.name %></td>
-            <td><%= number_to_currency(pay.amount, :locale => 'zh-TW') %></td>
+            <td><%= currency_to(pay.amount, pay.currency) %></td>
             <td><%= pay.payment_status.name %></td>
             <td><%= pay.note %></td>
             <td><%= link_to "Edit", edit_sale_payment_path(@sale,pay) %> | Destroy</td>

@@ -69,6 +69,6 @@ class PregnanciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pregnancy_params
-      params.require(:pregnancy).permit(:dog_id, :heat_start_date, :due_date, :surgery_date, :total_puppy)
+      params.require(:pregnancy).permit(:name, :dog_id, :heat_start_date, :due_date, :surgery_date, :total_puppy)
     end
 end

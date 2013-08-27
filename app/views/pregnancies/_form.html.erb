@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :dog %><br>
     <%= f.select(:dog_id, Dog.bitches.all.map{|b|[b.name, b.id]}, include_blank: 'Select a Bitch')%>
   </div>

@@ -21,7 +21,7 @@
               <tbody>
                 <% @litters.each do |litter| %>
                   <tr>
-                    <td><%= litter.pregnancy.dog.name %></td>
+                    <td><%= litter.pregnancy.name %> - <%= litter.pregnancy.dog.call_name %></td>
                     <td><%= litter.pregnancy.surgery_date %></td>
                     <td><%= litter.gender %></td>
                     <td><%= litter.color.name %></td>

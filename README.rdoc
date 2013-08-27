@@ -486,3 +486,43 @@ $ rails g cancan:ability
 $ rails g controller home index
 
 -- updated routes.rb to set root => 'home#index'
+
+-- Added routing erro handler in an application
+
+-- config\routes.rb (AT THE BOTTOM OF PAGE)
+match '*path(.:format)', :to => 'application#rounting_error', via: :all
+
+-- controllers\application_controller.rb
+	def routing_error
+		render_not_found('The object you tried to access does not exist!')
+	end
+
+	protected
+
+	def render_not_found(msg='The object you tried to access does not exits!')
+		flash[:notice] = msg
+		redirect_to root_path
+	end
+
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+  
+  def not_found
+    show_error('Object is not found!')
+  end
+
+  def show_error(msg='Object does not exist!')
+    flash[:notice] = msg
+    redirect_to root_path
+  end
+
+-- Added migration script to add name to pregnancies table
+$  rails g migration add_name_to_pregnancy name:string
+
+-- Added migration script to add currency column to Expenses and Sales tables
+$ rails g migration add_currency_to_dog_expense currency:string
+$ rails g migration add_currency_to_sale currency:string
+$ rails g migration add_currency_to_payment currency:string
+$ rake db:migrate
+
+-- Updated expense,sale, and payment views to add currency field

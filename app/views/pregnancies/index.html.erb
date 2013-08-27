@@ -7,6 +7,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>Name</th>
               <th>Pregnant Dog</th>
               <th>Heat start date</th>
               <th>Estimate Due date</th>
@@ -21,6 +22,7 @@
           <tbody>
             <% @pregnancies.each do |pregnancy| %>
               <tr>
+                <td><%= pregnancy.name %></td>
                 <td><%= pregnancy.dog.name %></td>
                 <td><%= pregnancy.heat_start_date %></td>
                 <td><%= pregnancy.due_date %></td>

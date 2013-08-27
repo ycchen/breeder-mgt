@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823195945) do
+ActiveRecord::Schema.define(version: 20130827202716) do
 
   create_table "charges", force: true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20130823195945) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "show_entry_id"
+    t.string   "currency"
   end
 
   add_index "dog_expenses", ["charge_id"], name: "index_dog_expenses_on_charge_id"
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 20130823195945) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency"
   end
 
   create_table "pictures", force: true do |t|
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 20130823195945) do
     t.integer  "total_puppy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "pregnancies", ["dog_id"], name: "index_pregnancies_on_dog_id"
@@ -161,6 +164,7 @@ ActiveRecord::Schema.define(version: 20130823195945) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "currency"
   end
 
   add_index "sales", ["customer_id"], name: "index_sales_on_customer_id"

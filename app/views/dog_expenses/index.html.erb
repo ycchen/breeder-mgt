@@ -3,7 +3,7 @@
       <div class="span12">
           <div class="grey-box">
       <h4>Listing dog_expenses</h4>
-
+      
       <table class="table table-striped">
         <thead>
           <tr>
@@ -25,7 +25,11 @@
               <td><%= dog_expense.dog.call_name %></td>
               <td><%= dog_expense.charge.name %></td>
               <td><%= dog_expense.charge_date %></td>
-              <td><%= number_to_currency(dog_expense.amount) %></td>
+              <td>
+                <%= currency_to(dog_expense.amount, dog_expense.currency) %>
+                <%#  number_to_currency(dog_expense.amount, (dog_expense.currency == 'TW') ? {:locale=>'zh-TW' : {}} ) %>
+                  
+              </td>
               <td><%= dog_expense.note %></td>
               <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
               <td><%= link_to 'Show', dog_expense %></td>

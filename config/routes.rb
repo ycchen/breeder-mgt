@@ -87,4 +87,6 @@ Showtrac::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  match '*path(.:format)', :to => 'application#not_found', via: :all
 end

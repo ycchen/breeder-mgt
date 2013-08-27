@@ -70,6 +70,6 @@ class DogExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dog_expense_params
-      params.require(:dog_expense).permit(:dog_id, :charge_id, :show_entry_id, :charge_date, :amount, :note)
+      params.require(:dog_expense).permit(:dog_id, :charge_id, :show_entry_id, :charge_date, :amount, :note, :currency)
     end
 end

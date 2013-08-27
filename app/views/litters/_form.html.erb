@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :pregnancy %><br>
-    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|[p.dog.name, p.id]}, include_blank: 'Select a pregnant bitch') %>
+    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, include_blank: 'Select a pregnant bitch') %>
   </div>
   <div class="field">
     <%= f.label :gender %><br>

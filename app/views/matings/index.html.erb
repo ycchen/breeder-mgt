@@ -20,10 +20,10 @@
               <tbody>
                 <% @matings.each do |mating| %>
                   <tr>
-                    <td><%= mating.pregnancy.dog.name %></td>
+                    <td><%= mating.pregnancy.name %></td>
                     <td><%= mating.pregnancy.heat_start_date %></td>
                     <td><%= mating.mating_date %></td>
-                    <td><%= mating.sire.name %></td>
+                    <td><%= mating.sire.call_name %></td>
                     <td><%= link_to 'Show', mating %></td>
                     <td><%= link_to 'Edit', edit_mating_path(mating) %></td>
                     <td><%= link_to 'Destroy', mating, method: :delete, data: { confirm: 'Are you sure?' } %></td>

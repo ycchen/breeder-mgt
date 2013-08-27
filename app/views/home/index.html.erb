@@ -4,6 +4,11 @@
           <div class="grey-box">
           <h4>Welcome</h4>
 			<p>Find me in app/views/home/index.html.erb</p>
+			<% if current_user %>
+				logged in
+			<% else %>
+				no login
+			<% end %>
        	</div>      
       </div>
   </div>

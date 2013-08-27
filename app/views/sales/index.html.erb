@@ -22,10 +22,10 @@
           <tbody>
             <% @sales.each do |sale| %>
               <tr>
-                <td><%= link_to sale.dog.name, dog_path(sale.dog.id) %></td>
+                <td><%= link_to sale.dog.call_name, dog_path(sale.dog.id) %></td>
                 <td><%= link_to(sale.customer.name, customer_path(sale.customer.id) )%></td>
                 <td><%= sale.sale_date %></td>
-                <td><%= number_to_currency(sale.sale_price, :locale=>'zh-TW') %></td>
+                <td><%= currency_to(sale.sale_price,sale.currency) %></td>
                 <td><%= sale.note %></td>
                 <td><%= sale.dog.pictures.size %></td>
                 <td><%= link_to 'Show', sale %></td>

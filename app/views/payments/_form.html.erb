@@ -23,6 +23,10 @@
     <%= f.select(:payment_status_id, PaymentStatus.all.map{|p| [p.name, p.id]}, :include_blank =>'Select a Payment Status') %>
   </div>
   <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+  </div>  
+  <div class="field">
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </div>

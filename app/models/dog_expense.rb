@@ -6,4 +6,5 @@ class DogExpense < ActiveRecord::Base
 
   validates :dog_id, :charge_id, presence:true
   validates :amount, presence: true, numericality: true
+
 end

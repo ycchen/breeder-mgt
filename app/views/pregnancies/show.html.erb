@@ -38,6 +38,10 @@
                 <strong>Total puppy:</strong>
                 <%= @pregnancy.total_puppy %>
               </p>
+              <p>
+                <strong>Puppies Age:</strong>
+                <%= time_ago_in_words(@pregnancy.surgery_date) %>
+              </p>
               <%= link_to 'Edit', edit_pregnancy_path(@pregnancy) %> |
               <%= link_to 'Back', pregnancies_path %>
             </div>

@@ -18,6 +18,10 @@ u.add_role "admin"
 u2 = User.create!(email: "user@test.com", password: "test1234", password_confirmation: "test1234")
 u2.add_role "user"
 
+u3 = User.create!(email: "sank@yahoo.com", password: "foobar1234!", password_confirmation: "foobar1234!")
+u3.add_role "admin"
+
+
 Color.create!(name: 'Cream')
 Color.create!(name: 'Brindle & White')
 Color.create!(name: 'White')
@@ -152,7 +156,7 @@ Pregnancy.create!(dog_id: 24, heat_start_date: Date.new(2013,5,13), due_date: Da
 Pregnancy.create!(dog_id: 23, heat_start_date: Date.new(2013,05,13), due_date: Date.new(2013,8,1) , surgery_date: Date.new(2013,8,1), total_puppy: 4, name: "Nana-2013-05")
 Pregnancy.create!(dog_id: 17, heat_start_date: Date.new(2013,6,1), due_date: Date.new(2013,8,14) , surgery_date: Date.new(2013,8,14), total_puppy: 5, name: "Margo-2013-06")
 Pregnancy.create!(dog_id: 21, heat_start_date: Date.new(2013,6,11), due_date: Date.new(2013,8,24) , surgery_date: Date.new(2013,8,24), total_puppy: 1, name: "Cartier-2013-06")
-Pregnancy.create!(dog_id: 27, heat_start_date: Date.new(2013,6,13), due_date: Date.new(2013,8,26) , surgery_date: Date.new(2013,8,26), total_puppy: 7, name: "Esme-2013-06")
+Pregnancy.create!(dog_id: 27, heat_start_date: Date.new(2013,6,13), due_date: Date.new(2013,8,25) , surgery_date: Date.new(2013,8,25), total_puppy: 7, name: "Esme-2013-06")
 Pregnancy.create!(dog_id: 28, heat_start_date: Date.new(2013,6,29), due_date: Date.new(2013,9,9) , surgery_date: Date.new(2013,9,9), total_puppy: 0, name: "Apple-2013-06")
 Pregnancy.create!(dog_id: 14, heat_start_date: Date.new(2013,7,3), due_date: Date.new(2013,9,9) , surgery_date: Date.new(2013,9,9), total_puppy: 0, name: "Betty-2013-07")
 Pregnancy.create!(dog_id: 15, heat_start_date: Date.new(2013,7,14), due_date: Date.new(2013,9,23) , surgery_date: Date.new(2013,9,23), total_puppy: 0, name: "Sissy-2013-07")

@@ -11,16 +11,17 @@ module ApplicationHelper
 		results.join("").html_safe
 	end
 
-# 	def currency_to(amount, currency)
-# 		number_to_currency(amount, currency == 'TW' ? locale: 'zh-TW' : {})
-#     end
+	# def currency_to(amount, currency)
+	# 	if currency == 'TW'
+	# 		number_to_currency(amount, :locale=>'zh-TW')
+	# 	else
+	# 		number_to_currency(amount)
+	# 	end
+	# end
 
 	def currency_to(amount, currency)
-		if currency == 'TW'
-			number_to_currency(amount, :locale=>'zh-TW')
-		else
-			number_to_currency(amount)
-		end
+		# currency == 'TW' ? number_to_currency(amount, {locale: 'zh-TW'}) : number_to_currency(amount)
+		number_to_currency(amount, currency == 'TW' ? {locale: 'zh-TW'} : {})
 	end
 
 end

@@ -2,57 +2,61 @@
   <div class="row">
       <div class="span12">
           <div class="grey-box">
-      <h4>Listing dog_expenses</h4>
-      
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Dog</th>
-            <th>Charge</th>
-            <th>Charge date</th>
-            <th>Amount</th>
-            <th>Note</th>
-            <th>Show Entry</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+          <div class="page-header">
+            <h4>Dog Expenses</h4>
+            <%#= link_to '<i class="icon-plus"></i> Add New'.html_safe, new_dog_expense_path, class: 'btn btn-large' %>
+            <%= add_new_btn(new_dog_expense_path) %>
+          </div>
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Dog</th>
+                <th>Charge</th>
+                <th>Charge date</th>
+                <th>Amount</th>
+                <th>Note</th>
+                <th>Show Entry</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <% @dog_expenses.each do |dog_expense| %>
-            <tr>
-              <td><%= dog_expense.dog.call_name %></td>
-              <td><%= dog_expense.charge.name %></td>
-              <td><%= dog_expense.charge_date %></td>
-              <td>
-                <%= currency_to(dog_expense.amount, dog_expense.currency) %>
-                <%#= number_to_currency(dog_expense.amount, dog_expense.currency =='TW'? {:locale=>'zh-TW'} : {}) %>
-              </td>
-              <td><%= dog_expense.note %></td>
-              <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
-              <td><%= link_to 'Show', dog_expense %></td>
-              <td><%= link_to 'Edit', edit_dog_expense_path(dog_expense) %></td>
-              <td><%= link_to 'Destroy', dog_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><%= number_to_currency(@dog_expenses.map(&:amount).sum) %></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-        </tbody>
-      </table>
+            <tbody>
+              <% @dog_expenses.each do |dog_expense| %>
+                <tr>
+                  <td><%= dog_expense.dog.call_name %></td>
+                  <td><%= dog_expense.charge.name %></td>
+                  <td><%= dog_expense.charge_date %></td>
+                  <td>
+                    <%= currency_to(dog_expense.amount, dog_expense.currency) %>
+                    <%#= number_to_currency(dog_expense.amount, dog_expense.currency =='TW'? {:locale=>'zh-TW'} : {}) %>
+                  </td>
+                  <td><%= dog_expense.note %></td>
+                  <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
+                  <td><%= link_to 'Show', dog_expense %></td>
+                  <td><%= link_to 'Edit', edit_dog_expense_path(dog_expense) %></td>
+                  <td><%= link_to 'Destroy', dog_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><%= number_to_currency(@dog_expenses.map(&:amount).sum) %></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
 
-      <br>
+          <br>
 
-      <%= link_to 'New Dog expense', new_dog_expense_path %>
+          <%= link_to 'New Dog expense', new_dog_expense_path %>
         </div>      
       </div>
   </div>

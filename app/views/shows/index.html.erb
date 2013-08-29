@@ -2,42 +2,63 @@
   <div class="row">
       <div class="span12">
           <div class="grey-box">
-          <h4>Listing shows</h4>
-
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Kennel club</th>
-                <th>Start date</th>
-                <th>End date</th>
-                <th>Location</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @shows.each do |show| %>
+            <div class="page-header">
+              <h4>Shows</h4>
+              <%= add_new_btn(new_show_path) %>
+            </div>
+            <table class="table table-striped">
+              <thead>
                 <tr>
-                  <td><%= show.name %></td>
-                  <td><%= show.kennel_club %></td>
-                  <td><%= show.start_date %></td>
-                  <td><%= show.end_date %></td>
-                  <td><%= show.location %></td>
-                  <td><%= link_to 'Show', show %></td>
-                  <td><%= link_to 'Edit', edit_show_path(show) %></td>
-                  <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <th>Name</th>
+                  <th>Kennel club</th>
+                  <th>Start date</th>
+                  <th>End date</th>
+                  <th>Location</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
 
-          <br>
+              <tbody>
+                <% @shows.each do |show| %>
+                  <tr>
+                    <td><%= link_to(show.name, show) %></td>
+                    <td><%= show.kennel_club %></td>
+                    <td><%= show.start_date %></td>
+                    <td><%= show.end_date %></td>
+                    <td><%= show.location %></td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="icon-edit icon-white"></i>Actions
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_show_path(show) %>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                            <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, show, method: :delete, data: {confirm: 'Are you sure?'} %>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <!-- 
+                    <td><%= link_to 'Show', show %></td>
+                    <td><%= link_to 'Edit', edit_show_path(show) %></td>
+                    <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    -->
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-          <%= link_to 'New Show', new_show_path %>
-       </div>      
+            <br>
+
+            <%= link_to 'New Show', new_show_path %>
+        </div>      
       </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class DogExpensesController < ApplicationController
   before_action :set_dog_expense, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /dog_expenses
   # GET /dog_expenses.json
   def index

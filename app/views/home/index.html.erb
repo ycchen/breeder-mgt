@@ -6,10 +6,11 @@
       			<p>Find me in app/views/home/index.html.erb</p>
       			<% if current_user %>
       				logged in
-      			<% else %>
+      			   <%= current_user.admin? %>
+            <% else %>
       				no login
       			<% end %>
-            
+
        	</div>      
       </div>
   </div>

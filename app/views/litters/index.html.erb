@@ -2,8 +2,11 @@
   <div class="row">
       <div class="span12">
           <div class="grey-box">
-            <h4>Listing litters</h4>
-
+            <div class="page-header">
+              <h4>Litters</h4>
+              <%= add_new_btn(new_litter_path) %>
+            </div>
+            
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -26,9 +29,30 @@
                     <td><%= litter.gender %></td>
                     <td><%= litter.color.name %></td>
                     <td><%= litter.survival %></td>
-                    <td><%= link_to 'Show', litter %></td>
-                    <td><%= link_to 'Edit', edit_litter_path(litter) %></td>
-                    <td><%= link_to 'Destroy', litter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <!-- 
+                    <td>
+                      <div class="btn-group">
+                      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-edit icon-white"></i>Actions
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_litter_path(litter) %>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                          <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, litter, method: :delete, data: {confirm: 'Are you sure?'} %>
+                        </li>
+                      </ul>
+                    </div>
+                    </td>
+                     -->
+                    <td>
+                      <%= link_to 'Show', litter, class: 'btn btn-primary btn-small' %>
+                      <%= link_to 'Edit', edit_litter_path(litter), class: 'btn btn-primary btn-small' %>
+                      <%= link_to 'Destroy', litter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-small' %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>

@@ -1,5 +1,4 @@
 Showtrac::Application.routes.draw do
-  get "home/index"
   resources :litters
 
   resources :matings
@@ -26,7 +25,14 @@ Showtrac::Application.routes.draw do
 
   resources :charges
 
-  devise_for :users
+  
+  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_scope :user do
+    # get 'users/new_admin' => 'users/registrations#new_admin'
+    # post 'users/create_admin' => 'users/registration#create_admin'
+  end
+  resources :users, :only =>[:index, :update, :new,:edit,:destroy]
+
   resources :show_entries
 
   resources :dogs

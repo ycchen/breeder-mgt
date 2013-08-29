@@ -28,6 +28,6 @@
     <%= f.collection_radio_buttons(:survival, [[true, 'Yes'], [false, 'No']],:first, :last, item_wrapper_class: "inline", default: true) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary'  %>
   </div>
 <% end %>

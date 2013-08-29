@@ -1,0 +1,12 @@
+<%= simple_form_for(@user, html:{class: 'form-horizontal'}) do |f| %>
+	
+	<%= f.error_notification if f.error_notification %>
+
+	<%= f.input :email, placeholder:'user@domain.com', autofocus: true %>
+	<%= f.input :password %>
+	<%= f.input :password_confirmation %>
+	<%= f.input :roles, :as => :radio, :collection => %w[admin user] %>
+	<div class="form-actions">
+		<%= f.button :submit  %>
+	</div>
+<% end %>

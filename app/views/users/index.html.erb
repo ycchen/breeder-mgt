@@ -1,0 +1,55 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">
+				<div class="page-header">
+					<h1>Users</h1>
+					<%= add_new_btn(new_user_path) %>
+				</div>
+				
+				<% if @users.any? %>
+					<div><strong><%= @users.size %></strong> <%= 'user'.pluralize(@users.size) %></div>	
+				<% end %>
+				
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>&nbsp;</th>
+							<th>Email</th>
+							<th>Role</th>
+							<th>Joined at</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @users.each do |user| %>
+							<tr>
+								<td><%= image_tag user.avatar, class: 'avatar' %></td>
+								<td><%= user.email %></td>
+								<td><%= user.roles.first.name %></td>
+								<td><%= l user.created_at, format: :short %></td>
+								<td>
+									<div class="btn-group">
+										<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+											<i class="icon-edit icon-white"></i>Actions
+											<span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_user_path(user) %>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<%= link_to '<i class="icon-trash"></i> Delete'.html_safe, user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
+											</li>
+										</ul>
+									</div>		
+								</td>
+							</tr>
+						<% end %>
+					</tbody>	
+				</table>
+			</div>
+	 	</div>
+	</div>
+</div>				

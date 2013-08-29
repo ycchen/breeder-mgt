@@ -33,7 +33,7 @@ end
 
 gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
-gem 'bootstrap-sass-rails'  	# bootstrap framework
+gem 'bootstrap-sass'		  	# bootstrap framework
 gem 'carrierwave'				# upload file gem
 gem 'nested_form'				# Use neted_form gem
 group :development, :test do
@@ -45,8 +45,12 @@ group :development, :test do
 	gem 'faker'					# generate fake data
 end
 
-gem 'pg'
-gem 'rails_12factor', group: :production
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
+gem 'simple_form'
 
 # rolify gem to handle user roles
 gem 'rolify'

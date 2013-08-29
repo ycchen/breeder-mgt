@@ -42,8 +42,8 @@
                 <strong>Puppies Age:</strong>
                 <%= time_ago_in_words(@pregnancy.surgery_date) %>
               </p>
-              <%= link_to 'Edit', edit_pregnancy_path(@pregnancy) %> |
-              <%= link_to 'Back', pregnancies_path %>
+              <%= link_to 'Edit', edit_pregnancy_path(@pregnancy),class: 'btn btn-primary'  %> |
+              <%= link_to 'Back', pregnancies_path,class: 'btn btn-primary'  %>
             </div>
 
             <div id="pane2" class="tab-pane">

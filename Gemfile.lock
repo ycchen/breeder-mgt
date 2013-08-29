@@ -33,9 +33,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.10)
-    bootstrap-sass-rails (2.3.2.1)
-      railties (>= 3.1.0)
-      sass-rails (>= 3.1.0)
+    bootstrap-sass (2.3.2.1)
+      sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -131,6 +130,7 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    simple_form (1.4.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -162,7 +162,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby!
-  bootstrap-sass-rails
+  bootstrap-sass
   cancan
   capistrano
   carrierwave
@@ -180,6 +180,7 @@ DEPENDENCIES
   rolify
   sass-rails (~> 4.0.0)
   sdoc
+  simple_form
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

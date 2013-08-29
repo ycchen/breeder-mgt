@@ -5,10 +5,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   $CURRENCIES = %w[USD TW] 
-  # helper_method :currency_to
+  
+  helper_method :is_admin?
   # rescue_from Error404, :with => :render_not_found
 
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+  rescue_from AbstractController::ActionNotFound, :with => :not_found
+  rescue_from ActionController::RoutingError, :with => :not_found
   def not_found
     show_error('Object is not found!')
   end
@@ -17,6 +20,12 @@ class ApplicationController < ActionController::Base
     flash[:notice] = msg
     redirect_to root_path
   end
-
+  
+  def is_admin?
+    unless current_user && current_user.admin?
+      flash[:notice] = "You are not authorize to access this page!"
+      redirect_to root_path
+    end   
+  end
 
 end

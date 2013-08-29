@@ -55,8 +55,8 @@
           <%= image_tag(p.file.url, heigh: 200, width:200) if p.file? %>
         <% end %>
       </p>
-      <%= link_to 'Edit', edit_dog_path(@dog) %> |
-      <%= link_to 'Back', dogs_path %>
+      <%= link_to 'Edit', edit_dog_path(@dog) ,class: 'btn btn-primary' %> |
+      <%= link_to 'Back', dogs_path,class: 'btn btn-primary'  %>
     </div>
 
     <div id="pane2" class="tab-pane">

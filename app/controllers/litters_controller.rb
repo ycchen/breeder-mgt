@@ -1,6 +1,6 @@
 class LittersController < ApplicationController
   before_action :set_litter, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /litters
   # GET /litters.json
   def index

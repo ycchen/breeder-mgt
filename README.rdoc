@@ -527,3 +527,12 @@ $ rails g migration add_currency_to_payment currency:string
 $ rake db:migrate
 
 -- Updated expense,sale, and payment views to add currency field
+
+-- Added simple_form gem
+gem 'simple_form'
+
+-- Added Users controller
+$ rails g controller Users index new create edit update destroy
+-- Updated routes.rb
+resources :users
+

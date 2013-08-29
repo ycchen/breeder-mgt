@@ -1,6 +1,6 @@
 class MatingsController < ApplicationController
   before_action :set_mating, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /matings
   # GET /matings.json
   def index

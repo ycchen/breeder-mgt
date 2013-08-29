@@ -1,6 +1,6 @@
 class PregnanciesController < ApplicationController
   before_action :set_pregnancy, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /pregnancies
   # GET /pregnancies.json
   def index

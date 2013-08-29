@@ -2,8 +2,10 @@
   <div class="row">
     <div class="span12">
         <div class="grey-box">
-        <h4>Listing sales</h4>
-
+        <div class="page-header">
+          <h4>Sales</h4>
+          <%= add_new_btn(new_sale_path) %>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -28,9 +30,28 @@
                 <td><%= currency_to(sale.sale_price,sale.currency) %></td>
                 <td><%= sale.note %></td>
                 <td><%= sale.dog.pictures.size %></td>
+                <td>
+                  <div class="btn-group">
+                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                      <i class="icon-edit icon-white"></i>Actions
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_sale_path(sale) %>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, sale, method: :delete, data: {confirm: 'Are you sure(this action will also delete assoicated payments ) ?'} %>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+                <!-- 
                 <td><%= link_to 'Show', sale %></td>
                 <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
                 <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure(this action will also delete assoicated payments ) ?' } %></td>
+                 -->
               </tr>
             <% end %>
           </tbody>
@@ -38,7 +59,7 @@
 
         <br>
 
-        <%= link_to 'New Sale', new_sale_path %>
+        <%= link_to 'New Sale', new_sale_path, class: 'btn btn-primary' %>
       </div>
     </div>
   </div>

@@ -28,7 +28,7 @@
 								<li><a href="<%= "#{payment_statuses_path}" %>">Payment Status</a></li>
 								<li><a href="<%= "#{colors_path}" %>">Colors</a></li>
 								
-								<li><a href="<%= "#{}" %>">Users</a></li>
+								<li><a href="<%= "#{users_path}" %>">Users</a></li>
 							</ul>
 				          </li>
 		        	<% end %>
@@ -41,11 +41,11 @@
 		                <ul class="dropdown-menu">
 		                  <li><%= link_to 'My Dashboard', "" %></li>
 		                  <li><%= link_to 'Sign out', destroy_user_session_url(), :method => :delete %></li>  
-		                  <li><%= link_to "Profile", edit_user_registration_path(current_user) %></li>
+		                  <li><%#= link_to "Profile", edit_user_registration_path(current_user) %></li>
 		                </ul>
 		              </li>
 		          <% else %>
-		              <li><%= link_to 'Sign up', new_user_registration_url() %></li>
+		              <li><%#= link_to 'Sign up', new_user_registration_url() %></li>
 		              <li><%= link_to 'Sign in', new_user_session_url() %></li>
 		          <% end %>
 		        </ul>

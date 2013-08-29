@@ -31,7 +31,7 @@ Showtrac::Application.routes.draw do
     # get 'users/new_admin' => 'users/registrations#new_admin'
     # post 'users/create_admin' => 'users/registration#create_admin'
   end
-  resources :users, :only =>[:index, :update, :new,:edit,:destroy]
+  resources :users, :only =>[:index, :update, :new, :create, :edit, :destroy]
 
   resources :show_entries
 

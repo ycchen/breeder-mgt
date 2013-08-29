@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    # render user_params.inspect
+    # render params.inspect
+
     respond_to do |format|
       if @user.save
           if params[:roles] == 'admin'
@@ -37,6 +38,11 @@ class UsersController < ApplicationController
     # render params.inspect
     respond_to do |format|
       if @user.update(user_params)
+         if params[:roles] == 'admin'
+            @user.add_role(:admin)
+          else
+            @user.add_role(:user)
+          end
         format.html { redirect_to users_path, notice: 'User was successfully updated'}
         format.json { head :no_content}
       else

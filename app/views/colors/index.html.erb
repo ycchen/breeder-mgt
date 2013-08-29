@@ -21,9 +21,10 @@
             <% @colors.each do |color| %>
               <tr>
                 <td><%= color.name %></td>
-                <td><%= link_to 'Show', color %></td>
-                <td><%= link_to 'Edit', edit_color_path(color) %></td>
-                <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td>
+                  <%= link_to 'Show', color, class: 'btn btn-primary'%>
+                  <%= link_to 'Edit', edit_color_path(color), class: 'btn btn-primary' %>
+                  <%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
               </tr>
             <% end %>
           </tbody>

@@ -8,6 +8,10 @@
             <%= add_new_btn(new_dog_expense_path) %>
           </div>
           
+          <% if @dog_expenses.any? %>
+            <div><span class="badge"><%= @dog_expenses.size %></span> expenses</div>
+          <% end %>
+          
           <table class="table table-striped">
             <thead>
               <tr>

@@ -7,6 +7,13 @@
           <h4>Pregnancies</h4>
           <%= add_new_btn(new_pregnancy_path) %>
         </div>
+        
+        <% if @pregnancies.any? %>
+          <div><span class="badge"><%= @pregnancies.size %></span> <%= 'pregnancy'.pluralize(@pregnancies.size) %> so far in year of <%= Date.today.year.to_s %>
+          <span class="badge"><%= Pregnancy.expected.size %></span> expected soon</div>
+        <% end %>
+        
+
         <table class="table table-striped">
           <thead>
             <tr>

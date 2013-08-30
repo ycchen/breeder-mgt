@@ -22,6 +22,7 @@
               <th>Heat start date</th>
               <th>Estimate Due date</th>
               <th>Estimate Surgery date</th>
+              <th>Due in</th>
               <th>Puppy</th>
               <th></th>
               <th></th>
@@ -37,6 +38,7 @@
                 <td><%= pregnancy.heat_start_date %></td>
                 <td><%= pregnancy.due_date %></td>
                 <td><%= pregnancy.surgery_date %></td>
+                <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
                 <td><%= pregnancy.total_puppy %></td>
                 <td>
                   <div class="btn-group">

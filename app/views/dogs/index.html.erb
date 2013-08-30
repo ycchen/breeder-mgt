@@ -19,7 +19,7 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Full name</th>
+                  <!-- <th>Full name</th> -->
                   <th>Call name</th>
                   <!-- <th>Sire</th>
                   <th>Dams</th> -->
@@ -37,8 +37,8 @@
               <tbody>
                 <% @dogs.each do |dog| %>
                   <tr>
-                    <td><%= link_to(dog.name, dog) %></td>
-                    <td><%= dog.call_name %></td>
+                    <!-- <td><%= link_to(dog.name, dog) %></td> -->
+                    <td><%= link_to(dog.call_name, dog) %></td>
                     <!-- <td><%=  %></td>
                     <td><%=  %></td> -->
                     <td><%= dog.birthday %></td>

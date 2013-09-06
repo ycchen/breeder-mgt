@@ -8,22 +8,23 @@
             </div>
 
               <div class="tabbable">
-                <ul class="nav nav-pills" id="doglist">
+                <ul class="nav nav-pills">
                   <li class="active">
-                    <a href="#" data-toggle="tab" data-id="male">
-                      <span class="badge"><%= Dog.dogs.size %></span>&nbsp;Male</a>
-                  </li>
-                  <li>
-                    <a href="#" data-toggle="tab" data-id="female">
-                    <span class="badge"><%= Dog.bitches.size %></span>&nbsp;Female</a>
-                  </li>
-                  <li>
-                    <a href="#" data-toggle="tab" data-id="all">
+                    <a href="#pane1" data-toggle="tab">
                     <span class="badge"><%= @dogs.size %></span>&nbsp;All dogs</a>
+                  </li>
+                  <li>
+                    <a href="#pane2" data-toggle="tab">
+                    <span class="badge"><%= Dog.dogs.size %></span>&nbsp;Male</a>
+                  </li>
+                  <li>
+                    <a href="#pane3" data-toggle="tab">
+                    <span class="badge"><%= Dog.bitches.size %></span>&nbsp;Female</a
                   </li>
                 </ul>
                 
                 <div class="tab-content">
+                  <div id="pane1" class="tab-pane active">
                     <% if @dogs.any? %>
                     <div>
                       <span class="badge"><%= @dogs.size %></span> <%= 'dog'.pluralize(@dogs.size) %> in the database 
@@ -53,37 +54,65 @@
 
                     <tbody>
                       <% @dogs.each do |dog| %>
-                        <tr class="<%= dog.gender %>">
-                          <td><%= link_to(dog.call_name, dog) %></td>
-                          <td><%= dog.birthday %></td>
-                          <td><%= dog.gender %></td>
-                          <td><%= dog.color.name %></td>
-                          <td><%= dog.registration_no %></td>
-                          <td>
-                            <div class="btn-group">
-                              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="icon-edit icon-white"></i>Actions
-                                <span class="caret"></span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, dog %></li>
-                                <li><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_dog_path(dog) %></li>
-                                <li class="divider"></li>
-                                <li><%= link_to '<i class="icon-trash"></i> Delete'.html_safe, dog, method: :delete, data: {confirm: 'Are you sure?'} %></li>
-                              </ul>
-                            </div>  
-                          </td>
-                        </tr>
+                        <%= render :partial => 'data', locals: {dog: dog} %>
                       <% end %>
                     </tbody>
                   </table>
-
-                  <br>
-
+                  
                   <%= link_to 'New Dog', new_dog_path %>
+                 </div>
+                 
+                  <div id="pane2" class="tab-pane">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Call name</th>
+                          <th>Birthday</th>
+                          <th>Gender</th>
+                          <th>Color</th>
+                          <th>Reg. no</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <% Dog.dogs.each do |dog| %>
+                          <%= render :partial => 'data', locals: {dog: dog} %>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div id="pane3" class="tab-pane">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Call name</th>
+                          <th>Birthday</th>
+                          <th>Gender</th>
+                          <th>Color</th>
+                          <th>Reg. no</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <% Dog.bitches.each do |dog| %>
+                          <%= render :partial => 'data', locals: {dog: dog} %>
+                        <% end %>
+                      </tbody>
+                    </table>                  
+                  </div> 
                 </div><!-- ./tab-content -->
               </div><!-- ./tabbable -->
             
+            </div>
+
+
         </div>      
       </div>
   </div>

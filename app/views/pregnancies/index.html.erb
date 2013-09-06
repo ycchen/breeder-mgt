@@ -9,19 +9,23 @@
         </div>
         
         <div class="tabbable">
-          <ul class="nav nav-pills" id="listBtns">
+          <ul class="nav nav-pills">
             <li class="active">
-              <a href="#" data-toggle="tab" data-id="due"><span class="badge"><%= Pregnancy.expected.size %></span>&nbsp; Expected soon</a>
+              <a href="#pane1" data-toggle="tab">
+              <span class="badge"><%= @pregnancies.size %></span>&nbsp;All Pregnancies</a>
             </li>
             <li>
-              <a href="#" data-toggle="tab" data-id="already">
-              <span class="badge"><%= Pregnancy.already_due.size %></span>&nbsp;Already Due</a>
+                <a href="#pane2" data-toggle="tab">
+                <span class="badge"><%= Pregnancy.expected.size %></span>&nbsp; Expected soon</a>
             </li>
-            <li><a href="#" data-toggle="tab" data-id="all"><span class="badge"><%= @pregnancies.size %></span>&nbsp;All Pregnancies</a></li> 
+            <li>
+                <a href="#pane3" data-toggle="tab">
+                <span class="badge"><%= Pregnancy.already_due.size %></span>&nbsp;Already Due</a>
+            </li> 
           </ul>
           
           <div class="tab-content">
-            
+            <div id="pane1" class="tab-pane active">
               <% if @pregnancies.any? %>
                 <div><span class="badge"><%= @pregnancies.size %></span> <%= 'pregnancy'.pluralize(@pregnancies.size) %> so far in year of <%= Date.today.year.to_s %>
                 <span class="badge"><%= Pregnancy.expected.size %></span> expected soon
@@ -58,6 +62,59 @@
 
               <br>
               <%= link_to 'New Pregnancy', new_pregnancy_path %>
+            </div>
+
+            <div id="pane2" class="tab-pane">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Pregnant Dog</th>
+                    <th>Heat start date</th>
+                    <th>Estimate Due date</th>
+                    <th>Estimate Surgery date</th>
+                    <th>Due in</th>
+                    <th>Age</th>
+                    <th>Puppy</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% Pregnancy.expected.each do |pregnancy| %>
+                    <%= render :partial => 'data', locals: {pregnancy: pregnancy} %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            
+            <div id="pane3" class="tab-pane">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Pregnant Dog</th>
+                    <th>Heat start date</th>
+                    <th>Estimate Due date</th>
+                    <th>Estimate Surgery date</th>
+                    <th>Due in</th>
+                    <th>Age</th>
+                    <th>Puppy</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% Pregnancy.already_due.each do |pregnancy| %>
+                    <%= render :partial => 'data', locals: {pregnancy: pregnancy} %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            </div>
+
           </div><!-- ./tab-content -->
         </div><!-- ./tabbable -->
 

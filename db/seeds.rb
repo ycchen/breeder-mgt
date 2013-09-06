@@ -8,7 +8,7 @@
 
 # require 'faker'
 
-Rake::Task['db:reset'].invoke
+# Rake::Task['db:reset'].invoke
 
 # pre-populate admin
 u = User.create!(email: "admin@test.com", password: "foobar1234", password_confirmation: "foobar1234")

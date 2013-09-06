@@ -554,3 +554,13 @@ $ rake db:migrate
 
 == Added reports controller
 $ rails g controller reports
+
+
+-- view heroku logs
+$ heroku logs
+$ heroku logs -n 1500 #
+$ heroku logs -t 
+$ heroku logs --tail
+
+-- heroku database backup
+$ heroku pgbackups:capture

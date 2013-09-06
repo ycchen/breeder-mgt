@@ -21,6 +21,8 @@ u2.add_role "user"
 u3 = User.create!(email: "yungchih_chen@yahoo.com", password: "foobar1234!", password_confirmation: "foobar1234!", display_name: 'yungchih')
 u3.add_role "admin"
 
+u4 = User.create!(email: "sank168@yahoo.com", password: "taiwan168!!", password_confirmation: "taiwan168!!", display_name: 'jackson')
+u4.add_role "admin"
 
 Color.create!(name: 'Cream')
 Color.create!(name: 'Brindle & White')

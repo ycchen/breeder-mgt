@@ -14,15 +14,26 @@
 		        		<li><a href="<%= "#{pregnancies_path}" %>">Pregnancies</a></li>
 			        	<li><a href="<%= "#{dog_expenses_path}" %>">Expenses</a></li>
 						<li><a href="<%= "#{dogs_path}" %>">Dogs</a></li>
+			        	<!-- 
+			        	<li class="dropdown">
+			        		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+			        		<ul class="dropdown-menu">
+			        			<li><a href="<%= "#{pregnancies_rpt_path}" %>">Pregnancies Report</a></li>
+			        			<li><a href="<%= "#{dogs_rpt_path}" %>">Dogs Report</a></li>
+			        			<li><a href="<%= "#{sales_rpt_path}" %>">Sales Report</a></li>
+			        			<li><a href="">Report 4</a></li>
+			        		</ul>
+			        	</li>
+						 -->
 			        	<li class="dropdown">
 			              	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<%= "#{sales_path}" %>">Sales</a></li>
 		          				<li><a href="<%= "#{shows_path}" %>">Shows</a></li>
+		          				<li><a href="<%= "#{show_entries_path}" %>">Shows Entries</a></li>
 								<li><a href="<%= "#{customers_path}" %>">Customer</a></li>
 								<li><a href="<%= "#{matings_path}" %>">Matings</a></li>
 								<li><a href="<%= "#{litters_path}" %>">Litters</a></li>
-								
 								<li><a href="<%= "#{charges_path}" %>">Charges</a></li>
 								<li><a href="<%= "#{payment_types_path}" %>">Payment Types</a></li>
 								<li><a href="<%= "#{payment_statuses_path}" %>">Payment Status</a></li>
@@ -36,7 +47,7 @@
 		        <ul class="nav pull-right">
 		          <% if current_user %>  
 		              <li class="dropdown">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <img src="<%= current_user.avatar%>" class="avatar"></img> <%= current_user.email %><b class="caret"></b></a>
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <img src="<%= current_user.avatar%>" class="avatar"></img> <%= current_user.display_name.titleize %><b class="caret"></b></a>
 		                <ul class="dropdown-menu">
 		                  <li><%= link_to 'My Dashboard', "" %></li>
 		                  <li><%= link_to 'Sign out', destroy_user_session_url(), :method => :delete %></li>  

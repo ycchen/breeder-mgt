@@ -8,63 +8,62 @@
           <%= add_new_btn(new_pregnancy_path) %>
         </div>
         
-        <% if @pregnancies.any? %>
-          <div><span class="badge"><%= @pregnancies.size %></span> <%= 'pregnancy'.pluralize(@pregnancies.size) %> so far in year of <%= Date.today.year.to_s %>
-          <span class="badge"><%= Pregnancy.expected.size %></span> expected soon</div>
-        <% end %>
+        <div class="tabbable">
+          <ul class="nav nav-pills" id="listBtns">
+            <li class="active">
+              <a href="#" data-toggle="tab" data-id="due"><span class="badge"><%= Pregnancy.expected.size %></span>&nbsp; Expected soon</a>
+            </li>
+            <li>
+              <a href="#" data-toggle="tab" data-id="already">
+              <span class="badge"><%= Pregnancy.already_due.size %></span>&nbsp;Already Due</a>
+            </li>
+            <li><a href="#" data-toggle="tab" data-id="all"><span class="badge"><%= @pregnancies.size %></span>&nbsp;All Pregnancies</a></li> 
+          </ul>
+          
+          <div class="tab-content">
+            
+              <% if @pregnancies.any? %>
+                <div><span class="badge"><%= @pregnancies.size %></span> <%= 'pregnancy'.pluralize(@pregnancies.size) %> so far in year of <%= Date.today.year.to_s %>
+                <span class="badge"><%= Pregnancy.expected.size %></span> expected soon
+                <span style="float:right">
+                  Download:
+                  <%= link_to('<i class="icon-file"></i>CSV'.html_safe, pregnancies_path(format:"csv")) %> |
+                  <%= link_to('<i class="icon-file"></i>Excel'.html_safe, pregnancies_path(format:"xls"))%>
+                </span>
+              </div>
+              <% end %>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Pregnant Dog</th>
+                    <th>Heat start date</th>
+                    <th>Estimate Due date</th>
+                    <th>Estimate Surgery date</th>
+                    <th>Due in</th>
+                    <th>Age</th>
+                    <th>Puppy</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @pregnancies.each do |pregnancy| %>
+                    <%= render :partial => 'data', locals: {pregnancy: pregnancy} %>
+                  <% end %>
+                </tbody>
+              </table>
+
+              <br>
+              <%= link_to 'New Pregnancy', new_pregnancy_path %>
+          </div><!-- ./tab-content -->
+        </div><!-- ./tabbable -->
+
+
+
         
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Pregnant Dog</th>
-              <th>Heat start date</th>
-              <th>Estimate Due date</th>
-              <th>Estimate Surgery date</th>
-              <th>Due in</th>
-              <th>Puppy</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @pregnancies.each do |pregnancy| %>
-              <tr>
-                <td><%= link_to pregnancy.name, pregnancy %></td>
-                <td><%= pregnancy.dog.call_name %></td>
-                <td><%= pregnancy.heat_start_date %></td>
-                <td><%= pregnancy.due_date %></td>
-                <td><%= pregnancy.surgery_date %></td>
-                <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
-                <td><%= pregnancy.total_puppy %></td>
-                <td>
-                  <div class="btn-group">
-                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                      <i class="icon-edit icon-white"></i>Actions
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_pregnancy_path(pregnancy) %>
-                      </li>
-                      <li class="divider"></li>
-                      <li>
-                        <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, pregnancy, method: :delete, data: {confirm: 'Are you sure?'} %>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <br>
-
-        <%= link_to 'New Pregnancy', new_pregnancy_path %>
       </div>
     </div>
   </div>

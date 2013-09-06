@@ -41,13 +41,10 @@
                           <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                          <li>
-                            <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_customer_path(customer) %>
-                          </li>
+                          <li><%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, customer %></li>
+                          <li><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_customer_path(customer) %></li>
                           <li class="divider"></li>
-                          <li>
-                            <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, customer, method: :delete, data: {confirm: 'Are you sure?'} %>
-                          </li>
+                          <li><%= link_to '<i class="icon-trash"></i> Delete'.html_safe, customer, method: :delete, data: {confirm: 'Are you sure?'} %></li>
                         </ul>
                       </div>
                     </td>

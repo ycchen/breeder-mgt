@@ -16,4 +16,14 @@ class Dog < ActiveRecord::Base
 
 	scope :bitches, lambda{where(gender: 'Female')}
 	scope :dogs, lambda{where(gender: 'Male')}
+	
+	def self.to_csv(options ={})
+		CSV.generate(options) do |csv|
+			csv << column_names
+			all.each do |item|
+				csv << item.attributes.values_at(*column_names)
+			end
+		end
+	end
+
 end

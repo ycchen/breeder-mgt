@@ -6,6 +6,12 @@ class DogExpensesController < ApplicationController
   def index
     # @dog_expenses = DogExpense.all
     @dog_expenses = DogExpense.order('charge_date desc')
+    
+    respond_to do |format|
+      format.html
+      format.csv {send_data @dog_expenses.to_csv}
+      format.xls
+    end
   end
 
   # GET /dog_expenses/1

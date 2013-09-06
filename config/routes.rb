@@ -39,6 +39,10 @@ Showtrac::Application.routes.draw do
 
   resources :shows
 
+  get 'pregnancies_rpt' => 'reports#pregnancies'
+  get 'dogs_rpt' => 'reports#dogs'
+  get 'sales_rpt' => 'reports#sales'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

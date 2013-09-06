@@ -1,0 +1,24 @@
+<tr <% if !Date.parse(pregnancy.surgery_date.to_s).past? %>class="due"<% else %>class="already"<% end %>>
+  <td><%= link_to pregnancy.name, pregnancy %></td>
+  <td><%= pregnancy.dog.call_name %></td>
+  <td><%= pregnancy.heat_start_date %></td>
+  <td><%= pregnancy.due_date %></td>
+  <td><%= pregnancy.surgery_date %></td>
+  <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
+  <td><%= !Date.parse(pregnancy.surgery_date.to_s).past? ? '0': distance_of_time_in_words_to_now(pregnancy.surgery_date) %></td>
+  <td><%= pregnancy.total_puppy %></td>
+  <td>
+    <div class="btn-group">
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-edit icon-white"></i>Actions
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, pregnancy %></li>
+        <li><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_pregnancy_path(pregnancy) %></li>
+        <li class="divider"></li>
+        <li><%= link_to '<i class="icon-trash"></i> Delete'.html_safe, pregnancy, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+      </ul>
+    </div>
+  </td>
+</tr>

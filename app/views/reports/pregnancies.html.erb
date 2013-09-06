@@ -1,0 +1,40 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<!-- <div class="grey-box"> -->
+				<% @pregnancies.each do |pregnancy| %>
+					<div>
+						<div class="span8">
+							<div class="grey-box">
+								<div class="row">
+									<div class="span7 well">
+										<div class="span3" style="margin-left: -3px">
+											<%= pregnancy.dog.name %>
+										</div>
+									</div>
+									<div class="span4">
+										<span class="display-name"><%= pregnancy.dog.call_name %></span><br/>
+										<span class="text-message">
+											Heat Date: <%= pregnancy.heat_start_date%><br/>
+											Due Date:  <%= pregnancy.due_date %><br/>
+											Location:  <%= pregnancy.surgery_date %><br/>
+											Due in: <%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Pass Due': time_ago_in_words(pregnancy.surgery_date) %><br/>
+											Puppies: <%= pregnancy.total_puppy %><br/>
+											Puppies Age: <%= !Date.parse(pregnancy.surgery_date.to_s).past? ? '0': distance_of_time_in_words_to_now(pregnancy.surgery_date) %><br/>
+										</span>
+										<span calss="light">
+											Posted: <%= time_ago_in_words(pregnancy.created_at) %>
+										</span>	
+									</div>
+								</div>
+							</div>	
+						</div>	
+						<div class="span4">
+							span4
+						</div>
+					</div>
+				<% end %>
+			<!-- </div> -->
+	 	</div>
+	</div>
+</div>

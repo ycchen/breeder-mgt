@@ -5,4 +5,14 @@ class Sale < ActiveRecord::Base
 
   validates :dog_id, :customer_id, presence: true
   validates :sale_price, presence: true, numericality: true
+
+
+    def self.to_csv(options ={})
+		CSV.generate(options) do |csv|
+			csv << column_names
+			all.each do |item|
+				csv << item.attributes.values_at(*column_names)
+			end
+		end
+	end
 end

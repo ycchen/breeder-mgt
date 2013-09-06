@@ -5,6 +5,13 @@ class ShowEntriesController < ApplicationController
   # GET /show_entries.json
   def index
     @show_entries = ShowEntry.all.order("show_date")
+    
+    respond_to do |format|
+      format.html
+      format.csv {send_data @show_entries.to_csv}
+      format.xml
+    end
+
   end
 
   # GET /show_entries/1

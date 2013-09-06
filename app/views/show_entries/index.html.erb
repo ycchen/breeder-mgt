@@ -2,8 +2,18 @@
   <div class="row">
       <div class="span12">
           <div class="grey-box">
-          <h4>Listing show_entries</h4>
           
+          <div class="page-header">
+            <h4>Show Entries</h4>
+            <%= add_new_btn(new_show_entry_path) %>
+          </div>
+          <div>
+            <span style="float:right">
+              Download:
+              <%= link_to('<i class="icon-file"></i>CSV'.html_safe, show_entries_path(format:"csv")) %> |
+              <%= link_to('<i class="icon-file"></i>Excel'.html_safe, show_entries_path(format:"xls"))%>
+            </span>
+          </div>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -14,10 +24,8 @@
                 <th>Expense</th>
                 <th>Points</th>
                 <th>Title</th>
-                <th>Judge</th>
+                <!-- <th>Judge</th> -->
                 <th>Photos</th>
-                <th></th>
-                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -32,11 +40,27 @@
                   <td><%= number_to_currency(show_entry.expense) %></td>
                   <td><%= show_entry.points %></td>
                   <td><%= show_entry.title %></td>
-                  <td><%= show_entry.judge %></td>
+                  <!-- <td><%= show_entry.judge %></td> -->
                   <td><%= show_entry.pictures.size %></td>  
+                  <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="icon-edit icon-white"></i>Actions
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, show_entry %></li>
+                          <li><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_show_entry_path(show_entry) %></li>
+                          <li class="divider"></li>
+                          <li><%= link_to '<i class="icon-trash"></i> Delete'.html_safe, show_entry, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+                        </ul>
+                      </div>  
+                  </td>
+                  <!-- 
                   <td><%= link_to 'Show', show_entry %></td>
                   <td><%= link_to 'Edit', edit_show_entry_path(show_entry) %></td>
                   <td><%= link_to 'Destroy', show_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                   -->
                 </tr>
               <% end %>
               <tr>
@@ -46,8 +70,6 @@
                 <td><%= number_to_currency(@show_entries.map(&:expense).sum) %></td>
                 <td><%= @show_entries.map(&:points).sum %></td><td>&nbsp;</td>
                 <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
               </tr>
             </tbody>
           </table>
@@ -55,9 +77,9 @@
           <br>
 
           <%= link_to 'New Show entry', new_show_entry_path %>
-          <pre>
+          <!-- <pre>
             <%#= @show_entries.to_yaml %>
-          </pre>
+          </pre> -->
         </div>      
       </div>
   </div>

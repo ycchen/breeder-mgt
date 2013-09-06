@@ -50,7 +50,7 @@ group :production do
 	gem 'rails_12factor'
 end
 
-gem 'simple_form'
+gem 'simple_form', '>= 3.0.0.rc'
 
 # rolify gem to handle user roles
 gem 'rolify'

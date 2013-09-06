@@ -5,6 +5,11 @@ class DogsController < ApplicationController
   # GET /dogs.json
   def index
     @dogs = Dog.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @dogs.to_csv}
+      format.xls
+    end
   end
 
   # GET /dogs/1

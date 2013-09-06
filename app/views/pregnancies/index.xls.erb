@@ -1,0 +1,28 @@
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Pregnant Dog</th>
+    <th>Heat start date</th>
+    <th>Estimate Due date</th>
+    <th>Estimate Surgery date</th>
+    <th>Due in</th>
+    <th>Puppy</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @pregnancies.each do |pregnancy| %>
+    <tr>
+      <td><%= link_to pregnancy.name, pregnancy %></td>
+      <td><%= pregnancy.dog.call_name %></td>
+      <td><%= pregnancy.heat_start_date %></td>
+      <td><%= pregnancy.due_date %></td>
+      <td><%= pregnancy.surgery_date %></td>
+      <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
+      <td><%= pregnancy.total_puppy %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+

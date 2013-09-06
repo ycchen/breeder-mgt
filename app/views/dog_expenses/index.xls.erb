@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th>Dog</th>
+      <th>Charge</th>
+      <th>Charge date</th>
+      <th>Amount</th>
+      <th>Note</th>
+      <th>Show Entry</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dog_expenses.each do |dog_expense| %>
+      <tr>
+        <td><%= dog_expense.dog.call_name %></td>
+        <td><%= dog_expense.charge.name %></td>
+        <td><%= dog_expense.charge_date %></td>
+        <td><%= currency_to(dog_expense.amount, dog_expense.currency) %></td>
+        <td><%= dog_expense.note %></td>
+        <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><%= number_to_currency(@dog_expenses.map(&:amount).sum) %></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>

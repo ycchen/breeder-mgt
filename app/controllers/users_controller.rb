@@ -10,24 +10,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    # @user = User.new(user_params)
-
-    render params.inspect
-
-    # respond_to do |format|
-    #   if @user.save
-    #       # if params[:roles] == 'admin'
-    #       #   @user.add_role(:admin)
-    #       # else
-    #       #   @user.add_role(:user)
-    #       # end
-    #     format.html { redirect_to action: :index, notice: 'User was successfully created'}
-    #     format.json { render action: :show, status: :created, location: @user}
-    #   else
-    #     format.html { render action: :new}
-    #     format.json { render json: @user.errors, status: :unprocessable_entity}
-    #   end
-    # end
+    @user = User.new(user_params)
+    # render params.inspect
+    # @user.role_ids = params[:user][:role_ids] if params[:user]
+    # @user.role_ids = Role.last.id
+    respond_to do |format|
+      if @user.save
+        flash[:notice] = "User was successfully created"
+        format.html { redirect_to action: :index}
+        format.json { render action: :show, status: :created, location: @user}
+      else
+        format.html { render action: :new}
+        format.json { render json: @user.errors, status: :unprocessable_entity}
+      end
+    end
   
   end
 
@@ -38,11 +34,6 @@ class UsersController < ApplicationController
     # render params.inspect
     respond_to do |format|
       if @user.update(user_params)
-         if params[:roles] == 'admin'
-            @user.add_role(:admin)
-          else
-            @user.add_role(:user)
-          end
         format.html { redirect_to users_path, notice: 'User was successfully updated'}
         format.json { head :no_content}
       else
@@ -54,6 +45,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    flash[:notice] = "User was successfully deleted"
     redirect_to action: :index
   end
 
@@ -64,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:display_name, :email, :password, :password_confirmation, :role_ids)
   end
 
 end

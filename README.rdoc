@@ -531,8 +531,26 @@ $ rake db:migrate
 -- Added simple_form gem
 gem 'simple_form'
 
+-- Install simple_form # this will generated few files
+$ rails g simple_form:install
+      create  config/initializers/simple_form.rb
+      create  config/locales/simple_form.en.yml
+      create  lib/templates/erb/scaffold/_form.html.erb
+
 -- Added Users controller
 $ rails g controller Users index new create edit update destroy
 -- Updated routes.rb
 resources :users
 
+-- Added display_name to User model
+$ rails g migration add_display_name_to_user display_name:string
+$ rake db:migrate
+
+-- Updated models\user.rb to make display_name is required
+-- Updated views\users\ all file to added display_name column
+
+== Added CSV download on all model
+-- Added require 'csv' in config/application.rb
+
+== Added reports controller
+$ rails g controller reports

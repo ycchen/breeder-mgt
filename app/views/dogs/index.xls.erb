@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Call name</th>
+      <th>Birthday</th>
+      <th>Gender</th>
+      <th>Color</th>
+      <th>Reg. no</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dogs.each do |dog| %>
+      <tr>
+        <td><%= dog.name %></td>
+        <td><%= dog.call_name %></td>
+        <td><%= dog.birthday %></td>
+        <td><%= dog.gender %></td>
+        <td><%= dog.color.name %></td>
+        <td><%= dog.registration_no %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

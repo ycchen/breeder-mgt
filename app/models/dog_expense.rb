@@ -7,4 +7,13 @@ class DogExpense < ActiveRecord::Base
   validates :dog_id, :charge_id, presence:true
   validates :amount, presence: true, numericality: true
 
+
+	def self.to_csv(options ={})
+		CSV.generate(options) do |csv|
+			csv << column_names
+			all.each do |dog_expense|
+				csv << dog_expense.attributes.values_at(*column_names)
+			end
+		end
+	end
 end

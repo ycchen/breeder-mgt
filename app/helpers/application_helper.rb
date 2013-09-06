@@ -27,5 +27,4 @@ module ApplicationHelper
 	def add_new_btn(path)
 		link_to '<i class="icon-plus"></i> Add New'.html_safe, path , class: 'btn btn-large' 
 	end
-
 end

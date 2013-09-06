@@ -9,7 +9,15 @@
           </div>
           
           <% if @dog_expenses.any? %>
-            <div><span class="badge"><%= @dog_expenses.size %></span> expenses</div>
+            <div>
+              <span class="badge"><%= @dog_expenses.size %></span> expenses
+              <span style="float:right">
+                Download:
+                <%= link_to('<i class="icon-file"></i>CSV'.html_safe, dog_expenses_path(format:"csv")) %> |
+                <%= link_to('<i class="icon-file"></i>Excel'.html_safe, dog_expenses_path(format:"xls"))%>
+              </span>
+            </div>
+
           <% end %>
           
           <table class="table table-striped">
@@ -46,16 +54,10 @@
                         <span class="caret"></span>
                       </a>
                       <ul class="dropdown-menu">
-                        <li>
-                          <%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, dog_expense%>
-                        </li>
-                        <li>
-                          <%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_dog_expense_path(dog_expense) %>
-                        </li>
+                        <li><%= link_to '<i class="icon-eye-open"></i> Show'.html_safe, dog_expense%></li>
+                        <li><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_dog_expense_path(dog_expense) %></li>
                         <li class="divider"></li>
-                        <li>
-                          <%= link_to '<i class="icon-trash"></i> Delete'.html_safe, dog_expense, method: :delete, data: {confirm: 'Are you sure?'} %>
-                        </li>
+                        <li><%= link_to '<i class="icon-trash"></i> Delete'.html_safe, dog_expense, method: :delete, data: {confirm: 'Are you sure?'} %></li>
                       </ul>
                     </div>
                   </td>

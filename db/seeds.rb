@@ -11,14 +11,14 @@
 # Rake::Task['db:reset'].invoke
 
 # pre-populate admin
-u = User.create!(email: "admin@test.com", password: "foobar1234", password_confirmation: "foobar1234")
+u = User.create!(email: "admin@test.com", password: "foobar1234", password_confirmation: "foobar1234", display_name: 'admin')
 # added 'admin' to the role table and assigned to admin@test.com 
 u.add_role "admin"
 
-u2 = User.create!(email: "user@test.com", password: "test1234", password_confirmation: "test1234")
+u2 = User.create!(email: "user@test.com", password: "test1234", password_confirmation: "test1234", display_name: 'user')
 u2.add_role "user"
 
-u3 = User.create!(email: "yungchih_chen@yahoo.com", password: "foobar1234!", password_confirmation: "foobar1234!")
+u3 = User.create!(email: "yungchih_chen@yahoo.com", password: "foobar1234!", password_confirmation: "foobar1234!", display_name: 'yungchih')
 u3.add_role "admin"
 
 

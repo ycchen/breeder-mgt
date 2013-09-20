@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
+ *= require bootstrap-responsive
  *= require_self
  *= require_tree .
  */
@@ -41,6 +42,7 @@ body {
 
 .grey-box {
   background: rgba(245, 245, 245, .93);
+  border-radius: 4px 4px 4px 4px;
   color: black;
   padding: 20px;
 }
@@ -139,4 +141,13 @@ body {
 }
 .panel{
     display: none;
+}
+.page-header-text{
+  display: inline;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.page-header{
+  margin: 20px 0 10px;
+  border-bottom: 1px solid #ffffff;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904191938) do
+ActiveRecord::Schema.define(version: 20130919144056) do
 
   create_table "charges", force: true do |t|
     t.string   "name"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20130904191938) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "note"
   end
 
   add_index "pregnancies", ["dog_id"], name: "index_pregnancies_on_dog_id"

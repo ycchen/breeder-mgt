@@ -4,7 +4,7 @@ class PregnanciesController < ApplicationController
   # GET /pregnancies
   # GET /pregnancies.json
   def index
-    @pregnancies = Pregnancy.all
+    @pregnancies = Pregnancy.order('heat_start_date and surgery_date')
     respond_to do |format|
       format.html
       format.csv {send_data @pregnancies.to_csv}
@@ -74,6 +74,6 @@ class PregnanciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pregnancy_params
-      params.require(:pregnancy).permit(:name, :dog_id, :heat_start_date, :due_date, :surgery_date, :total_puppy)
+      params.require(:pregnancy).permit(:name, :dog_id, :heat_start_date, :due_date, :surgery_date, :total_puppy, :note)
     end
 end

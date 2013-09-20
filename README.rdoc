@@ -564,3 +564,6 @@ $ heroku logs --tail
 
 -- heroku database backup
 $ heroku pgbackups:capture
+
+-- Added note column to pregnancies table
+$ rails g migration add_note_to_pregnancy  note:text

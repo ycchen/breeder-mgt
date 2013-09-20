@@ -24,9 +24,10 @@
             <thead>
               <tr>
                 <th>Dog</th>
-                <th>Charge</th>
+                <th>Charge for</th>
                 <th>Charge date</th>
-                <th>Amount</th>
+                <th>Amount in $USD</th>
+                <th>Amount in $NTD</th>
                 <th>Note</th>
                 <th>Show Entry</th>
                 <th></th>
@@ -42,9 +43,11 @@
                   <td><%= dog_expense.charge.name %></td>
                   <td><%= dog_expense.charge_date %></td>
                   <td>
-                    <%= currency_to(dog_expense.amount, dog_expense.currency) %>
+                    <%= currency_to(dog_expense.amount, dog_expense.currency) if dog_expense.currency == 'USD'%>
                     <%#= number_to_currency(dog_expense.amount, dog_expense.currency =='TW'? {:locale=>'zh-TW'} : {}) %>
                   </td>
+                  <td><%= currency_to(dog_expense.amount, dog_expense.currency) if dog_expense.currency == 'TW'%></td>
+                  
                   <td><%= dog_expense.note %></td>
                   <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
                   <td>
@@ -72,7 +75,10 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td><%= number_to_currency(@dog_expenses.map(&:amount).sum) %></td>
+                <td><%#= number_to_currency(@dog_expenses.map(&:amount).sum) %>
+                  <%= currency_to(DogExpense.us_dollars.sum("amount").to_i,'USD') %>
+                </td>
+                <td><%= currency_to(DogExpense.tw_dollars.sum("amount").to_i,'TW') %></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

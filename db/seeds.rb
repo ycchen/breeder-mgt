@@ -41,6 +41,7 @@ brindle = Color.where(name: 'Brindle').first
 bw = Color.where(name: 'Brindle & White').first
 cream = Color.where(name: 'Cream').first
 fawn = Color.where(name: 'Fawn').first
+fw = Color.where(name: 'Fawn & White').first
 
 # pre-populate dogs table
 Dog.create!(name: "A'VIGDORS DUPONT AURELIE FOR HUNGKWANG", call_name: "Happy", color_id: brindle.id, birthday: Date.new(2012,10,5), gender: Dog::GENDER_TYPE.first, registration_no: 'NP34343401')
@@ -52,16 +53,16 @@ Dog.create!(name: "HAPPY LIFE OF LITTLE PEARLS CARMEN", call_name: "Carmen", col
 Dog.create!(name: "DUSTIN VIVA ATLETIC", call_name: "Dustin", color_id: brindle.id, birthday: Date.new(2012,5,8), gender: Dog::GENDER_TYPE.last)
 Dog.create!(name: "Kato", call_name: "Kato", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
 Dog.create!(name: "Lucky", call_name: "Lucky", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
-Dog.create!(name: "Frank", call_name: "Frank", color_id: cream.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
-Dog.create!(name: "Chris", call_name: "Chris", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
+Dog.create!(name: "Frank", call_name: "Frank", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
+Dog.create!(name: "Chris", call_name: "Chris", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
 Dog.create!(name: "HAPPY LIFE OF LITTLE PEARLS CORRADO", call_name: "Corrado", color_id: fawn.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
 
 Dog.create!(name: "HUNGKWANG KHULAN", call_name: "Raven", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
-Dog.create!(name: "Jessica", call_name: "Jessica", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
-Dog.create!(name: "Betty", call_name: "Betty", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
+Dog.create!(name: "Jessica", call_name: "Jessica", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
+Dog.create!(name: "Betty", call_name: "Betty", color_id: fw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "Sissy", call_name: "Sissy", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "Tiffany", call_name: "Tiffany", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
-Dog.create!(name: "Margo", call_name: "Margo", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
+Dog.create!(name: "Margo", call_name: "Margo", color_id: fw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "Vicky", call_name: "Vicky", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "HUNGKWANG Jackie", call_name: "Jackie", color_id: brindle.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 
@@ -75,10 +76,10 @@ Dog.create!(name: "Diamond", call_name: "Diamond", color_id: fawn.id, birthday: 
 Dog.create!(name: "FANCIBUL JEST DIPPED- N BUTTERSCOTCH", call_name: "Butter", color_id: fawn.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 
 Dog.create!(name: "ESME VIVA ATLETIC", call_name: "Esme", color_id: bw.id, birthday: Date.new(2012,6,1), gender: Dog::GENDER_TYPE.first)
-Dog.create!(name: "Apple", call_name: "Apple", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
+Dog.create!(name: "Apple", call_name: "Apple", color_id: cream.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "Melody", call_name: "Melody", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
 Dog.create!(name: "Ella", call_name: "Ella", color_id: bw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.first)
-
+Dog.create!(name: "Domingo", call_name: "Domingo", color_id: fw.id, birthday: Date.new(2013,1,1), gender: Dog::GENDER_TYPE.last)
 
 
 
@@ -246,11 +247,21 @@ Litter.create!(pregnancy_id:7, gender: 'Female', color_id:	5, survival: TRUE)
 Litter.create!(pregnancy_id:7, gender: 'Male', color_id:	5, survival: TRUE)
 Litter.create!(pregnancy_id:7, gender: 'Male', color_id:	5, survival: TRUE)
 Litter.create!(pregnancy_id:8, gender: 'Female', color_id:	5, survival: TRUE)
+
 Litter.create!(pregnancy_id:9, gender: 'Female', color_id:	5, survival: TRUE)
-Litter.create!(pregnancy_id:9, gender: 'Female', color_id:	5, survival: TRUE)
-Litter.create!(pregnancy_id:9, gender: 'Female', color_id:	5, survival: TRUE)
+Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	5, survival: TRUE)
+Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	5, survival: TRUE)
 Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	4, survival: TRUE)
+Litter.create!(pregnancy_id:9, gender: 'Female', color_id:	2, survival: FALSE)
+Litter.create!(pregnancy_id:9, gender: 'Female', color_id:	2, survival: TRUE)
 Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	2, survival: TRUE)
-Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	2, survival: TRUE)
-Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	2, survival: TRUE)
-Litter.create!(pregnancy_id:9, gender: 'Male', color_id:	2, survival: TRUE)
+
+Litter.create!(pregnancy_id:10, gender: 'Male', color_id:	4, survival: TRUE)
+Litter.create!(pregnancy_id:10, gender: 'Female', color_id:	2, survival: TRUE)
+
+Litter.create!(pregnancy_id:11, gender: 'Female', color_id:	1, survival: TRUE)
+Litter.create!(pregnancy_id:11, gender: 'Male', color_id:	4, survival: TRUE)
+Litter.create!(pregnancy_id:11, gender: 'Female', color_id:	6, survival: TRUE)
+
+
+

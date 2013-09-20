@@ -5,7 +5,7 @@ class DogExpensesController < ApplicationController
   # GET /dog_expenses.json
   def index
     # @dog_expenses = DogExpense.all
-    @dog_expenses = DogExpense.order('charge_date desc')
+    @dog_expenses = DogExpense.order('charge_date DESC')
     
     respond_to do |format|
       format.html

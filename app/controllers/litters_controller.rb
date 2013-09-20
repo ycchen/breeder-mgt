@@ -4,7 +4,7 @@ class LittersController < ApplicationController
   # GET /litters
   # GET /litters.json
   def index
-    @litters = Litter.all
+    @litters = Litter.order('pregnancy_id')
   end
 
   # GET /litters/1

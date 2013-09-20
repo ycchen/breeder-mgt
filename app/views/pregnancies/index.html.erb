@@ -57,6 +57,7 @@
                   <% @pregnancies.each do |pregnancy| %>
                     <%= render :partial => 'data', locals: {pregnancy: pregnancy} %>
                   <% end %>
+                  <tr><td colspan="7">&nbsp;</td><td><%= Litter.count%></td></tr>
                 </tbody>
               </table>
 

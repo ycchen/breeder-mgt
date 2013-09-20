@@ -12,27 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :dog %><br>
+    <%= f.label :dog %>
     <%= f.select(:dog_id, Dog.bitches.all.map{|b|[b.name, b.id]}, include_blank: 'Select a Bitch')%>
   </div>
   <div class="field">
-    <%= f.label :heat_start_date %><br>
+    <%= f.label :heat_start_date %>
     <%= f.date_select :heat_start_date %>
   </div>
   <div class="field">
-    <%= f.label :Estimate_due_date %><br>
+    <%= f.label :Estimate_due_date %>
     <%= f.date_select :due_date %>
   </div>
   <div class="field">
-    <%= f.label :Estimate_surgery_date %><br>
+    <%= f.label :Estimate_surgery_date %>
     <%= f.date_select :surgery_date %>
   </div>
   <div class="field">
-    <%= f.label :total_puppy %><br>
+    <%= f.label :note %>
+    <%= f.text_area :note %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :total_puppy %>
     <%= f.number_field :total_puppy %>
   </div>
   <div class="actions">

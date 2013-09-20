@@ -6,8 +6,8 @@ class Pregnancy < ActiveRecord::Base
   validates :dog_id, presence: true
   validates :total_puppy, presence: true, numericality: true
 
-  scope :expected, lambda{where('surgery_date >= ?', Date.today.to_s)}
-  scope :already_due, lambda{where('surgery_date <= ?', Date.today.to_s)}
+  scope :expected, lambda{where('surgery_date >= ?', Date.today.to_s).order('heat_start_date')}
+  scope :already_due, lambda{where('surgery_date <= ?', Date.today.to_s).order('surgery_date desc')}
 
   def self.to_csv(options ={})
   	CSV.generate(options) do |csv|
@@ -17,5 +17,10 @@ class Pregnancy < ActiveRecord::Base
   		end
   	end
   end
+  
+  def total_puppies
+    litters.size
+  end
+
   
 end

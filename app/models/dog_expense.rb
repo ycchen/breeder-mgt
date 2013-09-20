@@ -6,7 +6,10 @@ class DogExpense < ActiveRecord::Base
 
   validates :dog_id, :charge_id, presence:true
   validates :amount, presence: true, numericality: true
-
+  
+  # scope :tw_dollars, -> {where(currency: 'TW')}
+  scope :tw_dollars, lambda{where(currency: 'TW')}
+  scope :us_dollars, lambda{where(currency: 'USD')}
 
 	def self.to_csv(options ={})
 		CSV.generate(options) do |csv|

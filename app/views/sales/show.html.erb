@@ -37,7 +37,7 @@
       <p>
         <strong>Payment(s):</strong>
         <table class="table table-strped">
-        <% @sale.payments.each do |pay| %>
+        <% @sale.payments.order("payment_date").each do |pay| %>
           <tr>
             <td><%= pay.payment_date %></td>
             <td><%= pay.payment_type.name %></td>

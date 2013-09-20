@@ -4,7 +4,7 @@ class PregnanciesController < ApplicationController
   # GET /pregnancies
   # GET /pregnancies.json
   def index
-    @pregnancies = Pregnancy.order('heat_start_date AND surgery_date')
+    @pregnancies = Pregnancy.order('heat_start_date, surgery_date')
     respond_to do |format|
       format.html
       format.csv {send_data @pregnancies.to_csv}

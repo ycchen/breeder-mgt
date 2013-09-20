@@ -142,6 +142,10 @@ body {
 .panel{
     display: none;
 }
+textarea#message_area {
+  width: 400px;
+  height: 150px;
+}
 .page-header-text{
   display: inline;
   vertical-align: middle;

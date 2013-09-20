@@ -7,6 +7,7 @@
   <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
   <td><%= !Date.parse(pregnancy.surgery_date.to_s).past? ? '0': distance_of_time_in_words_to_now(pregnancy.surgery_date) %></td>
   <td><%= pregnancy.total_puppies %></td>
+  <td><%= pregnancy.note %></td>
   <td>
     <div class="btn-group">
       <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">

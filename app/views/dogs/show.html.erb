@@ -31,11 +31,11 @@
       </p>
       <p>
         <strong>Sire:</strong>
-        <%= @dog.sire.name %>
+        <%= @dog.sire.name if @dog.sire %>
       </p>
       <p>
         <strong>Dams:</strong>
-        <%= @dog.dams.name%>
+        <%= @dog.dams.name if @dog.dams %>
       </p>            
       <p>
         <strong>Birthday:</strong>
@@ -88,7 +88,8 @@
         <tr>
             <td><%= expense.charge_date %></td>
             <td><%= expense.charge.name %></td>
-            <td><%= number_to_currency(expense.amount) %></td>
+            <td><%#= number_to_currency(expense.amount) %>
+              <%= currency_to(expense.amount, expense.currency)%></td>
             <td><%= expense.note %></td>
         </tr>
         <% end %>

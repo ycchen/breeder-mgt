@@ -1,0 +1,8 @@
+<tr>
+<td><%= link_to(dog.call_name, dog) %></td>
+<td><%= dog.birthday %></td>
+<td><%= dog.gender %></td>
+<td><%= dog.color.name %></td>
+<td><%= dog.sales.first.customer.name %></td>
+<td><%= currency_to(dog.sales.first.sale_price, dog.sales.first.currency) %></td>
+</tr>

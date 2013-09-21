@@ -21,6 +21,11 @@
                     <a href="#pane3" data-toggle="tab">
                     <span class="badge"><%= Dog.bitches.size %></span>&nbsp;Female</a
                   </li>
+                  <li>
+                    <a href="#pane4" data-toggle="tab">
+                    <span class="badge"><%= Dog.sold.size %></span>&nbsp;Sold</a
+                  </li>
+                  
                 </ul>
                 
                 <div class="tab-content">
@@ -106,7 +111,30 @@
                         <% end %>
                       </tbody>
                     </table>                  
+                  </div>
+                  <div id="pane4" class="tab-pane">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Call name</th>
+                          <th>Birthday</th>
+                          <th>Gender</th>
+                          <th>Color</th>
+                          <th>Customer</th>
+                          <th>Sold Price</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <% Dog.sold.each do |dog| %>
+                          <%= render :partial => 'sold', locals: {dog: dog} %>
+                        <% end %>
+                      </tbody>
+                    </table>                  
                   </div> 
+
                 </div><!-- ./tab-content -->
               </div><!-- ./tabbable -->
             

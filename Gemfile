@@ -20,6 +20,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -36,6 +37,12 @@ gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require 
 gem 'bootstrap-sass'		  	# bootstrap framework
 gem 'carrierwave'				# upload file gem
 gem 'nested_form'				# Use neted_form gem
+gem 'bootstrap-datepicker-rails'
+gem 'simple_form', '>= 3.0.0.rc'
+gem 'rolify'					# rolify gem to handle user roles
+gem 'cancan'					# cancan to handle authroization
+gem 'gravatar-ultimate' 		# Gravatar gem 
+
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
@@ -50,16 +57,7 @@ group :production do
 	gem 'rails_12factor'
 end
 
-gem 'simple_form', '>= 3.0.0.rc'
 
-# rolify gem to handle user roles
-gem 'rolify'
-
-# cancan to handle authroization
-gem 'cancan'
-
-# Gravatar gem 
-gem 'gravatar-ultimate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -17,7 +17,9 @@
         </div>
         <div class="field">
           <%= f.label :payment_date %><br>
-          <%= f.date_select :payment_date %>
+          <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+            <%= f.text_field :payment_date, value: date_value(Date.today), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+          </div>
         </div>
         <div class="field">
           <%= f.label :payment_status %><br>

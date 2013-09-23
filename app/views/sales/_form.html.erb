@@ -21,7 +21,10 @@
   </div>
   <div class="field">
     <%= f.label :sale_date %><br>
-    <%= f.date_select :sale_date %>
+    <%#= f.date_select :sale_date %>
+    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+      <%= f.text_field :sale_date, value: date_value(@sale.sale_date), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
   </div>
   <div class="field">
     <%= f.label :currency %><br>

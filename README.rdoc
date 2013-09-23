@@ -567,3 +567,30 @@ $ heroku pgbackups:capture
 
 -- Added note column to pregnancies table
 $ rails g migration add_note_to_pregnancy  note:text
+
+https://github.com/Nerian/bootstrap-datepicker-rails
+-- Added bootstrap-datepicker-rails gem
+-- modified application.css to add
+ *= require bootstrap-datepicker
+-- modified application.js to add
+//= require bootstrap-datepicker
+
+-- Added $('#dp3').datepicker() to application.js
+
+## Turbolinks causes other JS works normally
+-- Added gem 'jquery-turbolinks' in the Gemfile
+-- Added //= require jquery.turbolinks in application.js
+
+-- Added github repository location using git remote
+-- frist create an empty repository at github and get the URL
+$ git remote add origin https://github.com/ycchen/dms-contact-manager.git
+$ git remote -v
+heroku  git@heroku.com:dmsbcm.git (fetch)
+heroku  git@heroku.com:dmsbcm.git (push)
+origin  https://github.com/ycchen/dms-contact-manager.git (fetch)
+origin  https://github.com/ycchen/dms-contact-manager.git (push)
+
+-- push to github
+$ git push -u origin master
+
+-- provided username at github and password

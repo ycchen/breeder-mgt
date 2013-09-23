@@ -12,16 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pregnancy %><br>
+    <%= f.label :pregnancy %>
     <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}",p.id]},include_blank: 'Select a pregnant bitch')%>
   </div>
   <div class="field">
-    <%= f.label :sire_id %><br>
+    <%= f.label :sire_id %>
     <%= f.select(:sire_id, Dog.dogs.all.map{|d|[d.call_name, d.id]}, include_blank: 'Select a mating dog') %>
   </div>
   <div class="field">
-    <%= f.label :mating_date %><br>
-    <%= f.date_select :mating_date %>
+    <%= f.label :mating_date %>
+    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+      <%= f.text_field :mating_date, value: date_value(@mating.mating_date), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
   </div>
 
   <div class="actions">

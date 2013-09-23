@@ -19,18 +19,23 @@
     <%= f.label :dog %>
     <%= f.select(:dog_id, Dog.bitches.all.map{|b|[b.name, b.id]}, include_blank: 'Select a Bitch')%>
   </div>
+
   <div class="field">
     <%= f.label :heat_start_date %>
-    <%= f.date_select :heat_start_date %>
+    <%= f.text_field :heat_start_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.heat_start_date), :readonly => true %>
   </div>
+
   <div class="field">
     <%= f.label :Estimate_due_date %>
-    <%= f.date_select :due_date %>
+    <%= f.text_field :due_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.due_date), :readonly => true %>
   </div>
+
   <div class="field">
     <%= f.label :Estimate_surgery_date %>
-    <%= f.date_select :surgery_date %>
+    <%= f.text_field :surgery_date, 'data-behaviour' => 'datepicker',value: date_value(@pregnancy.surgery_date), :readonly => true %>
+    
   </div>
+
   <div class="field">
     <%= f.label :note %>
     <%= f.text_area :note, id: 'message_area'%>

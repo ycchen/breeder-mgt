@@ -14,9 +14,16 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require bootstrap
+//= require bootstrap-datepicker
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
 
 $(function(){
 	$('.alert').delay(5000).slideUp('slow');
+	// $('#dp3').datepicker();
 });
+
+// $(document).ready(function () {
+//   $('#dp3').datepicker();
+// });

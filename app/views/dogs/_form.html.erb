@@ -11,40 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :call_name %><br>
-    <%= f.text_field :call_name %>
-  </div>
-  <div class="field">
-    <%= f.label :color_id %><br>
-    <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
-  </div>
   
-  <div class="field">
-    <%= f.label :Sire %><br>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  
+  
+    <%= f.label :call_name %>
+    <%= f.text_field :call_name %>
+  
+  
+    <%= f.label :color_id %>
+    <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
+  
+  
+  
+    <%= f.label :Sire %>
     <%= f.select(:sire_id, Dog.dogs.all.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
-  </div>
-  <div class="field">
-    <%= f.label :Dams %><br>
+  
+  
+    <%= f.label :Dams %>
     <%= f.select(:dams_id, Dog.bitches.all.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
-  </div>  
-  <div class="field">
-    <%= f.label :birthday %><br>
-    <%= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
+    
+  
+    <%= f.label :birthday %>
+    <%#= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
+    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+      <%= f.text_field :birthday, value: date_value(@dog.birthday), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
+  
+    <%= f.label :gender %>
     <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
-  </div>
-  <div class="field">
-    <%= f.label :registration_no %><br>
+  
+  
+    <%= f.label :registration_no %>
     <%= f.text_field :registration_no %>
-  </div>
-  <div class="field">
+  
+  
     <%= f.fields_for :pictures do |p| %>
       <%= image_tag(p.object.file.url, height: 200, width: 200) if p.object.file? %>
       <%= p.label :file %>
@@ -52,7 +54,7 @@
       <%= p.link_to_remove t('.remove_image') %>
     <% end %>
     <%= f.link_to_add t('.add_image'), :pictures %>
-  </div>
+  
 
   <div class="actions">
     <%= f.submit class: 'btn btn-primary'%>

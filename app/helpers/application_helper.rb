@@ -27,4 +27,8 @@ module ApplicationHelper
 	def add_new_btn(path)
 		link_to '<i class="icon-plus"></i> Add New'.html_safe, path , class: 'btn btn-large' 
 	end
+
+	def date_value(date)
+		date ? date.strftime("%Y-%m-%d") : Date.today.strftime("%Y-%m-%d")
+	end
 end

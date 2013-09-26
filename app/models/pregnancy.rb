@@ -22,5 +22,11 @@ class Pregnancy < ActiveRecord::Base
     litters.size
   end
 
+  def self.set_value(data)
+    pie_data=[]
+    data.each do |key, value|
+      pie_data << {:name => key, :value=> value}
+    end
+  end
   
 end

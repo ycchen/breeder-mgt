@@ -594,3 +594,20 @@ origin  https://github.com/ycchen/dms-contact-manager.git (push)
 $ git push -u origin master
 
 -- provided username at github and password
+
+== Added rails-erd gem to generate Entity-Relationship Diagrams for Rails application
+-- https://github.com/voormedia/rails-erd
+
+== Added lazy_high_charts HighChart to Gemfile
+https://github.com/michelson/lazy_high_charts/wiki
+gem 'lazy_high_charts'
+
+$ bundle install
+
+-- Added javascript to application.js
+
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/modules/exporting
+-- Create an object of LazyHighCharts in the controller
+LazyHighCharts::HighChart

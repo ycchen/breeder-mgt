@@ -42,6 +42,7 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'rolify'					# rolify gem to handle user roles
 gem 'cancan'					# cancan to handle authroization
 gem 'gravatar-ultimate' 		# Gravatar gem 
+gem 'lazy_high_charts'			# HighCharts gem
 
 group :development, :test do
 	# Use sqlite3 as the database for Active Record

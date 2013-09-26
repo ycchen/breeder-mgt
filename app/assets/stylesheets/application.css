@@ -156,3 +156,6 @@ textarea#message_area {
   margin: 20px 0 10px;
   border-bottom: 1px solid #ffffff;
 }
+#chart3{
+	width: 550px;
+}

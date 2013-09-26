@@ -25,7 +25,7 @@ class Pregnancy < ActiveRecord::Base
   def self.set_value(data)
     pie_data=[]
     data.each do |key, value|
-      pie_data << {:name => key, :value=> value}
+      pie_data << {:name => "#{key} - #{value}", :value=> value}
     end
   end
   

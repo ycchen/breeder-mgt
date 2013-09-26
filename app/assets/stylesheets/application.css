@@ -157,5 +157,7 @@ textarea#message_area {
   border-bottom: 1px solid #ffffff;
 }
 #chart3{
-	width: 550px;
+	width: 570px;
+	/*height: 400px;*/
+
 }

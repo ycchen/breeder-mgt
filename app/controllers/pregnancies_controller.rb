@@ -6,7 +6,7 @@ class PregnanciesController < ApplicationController
   def index
     @pregnancies = Pregnancy.order('heat_start_date, surgery_date')
 
-    
+    @colors = [ [ "#8a10ae" ],[ "#f45a39" ],[ "#fa7083" ],[ "#b8ad3c" ],[ "#2babf2" ],[ "#1dae30" ],[ "#b6932d" ],[ "#e24436" ]]
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Pregnancies in 2003 as #{Date.today}")
       f.xAxis(:categories => @pregnancies.already_due.order('due_date').map{|x| x.dog.call_name})
@@ -18,12 +18,13 @@ class PregnanciesController < ApplicationController
 
       f.series(:type => "pie", :name=> 'puppies', 
         :center=> [150, 80], :size=> 100, :showInLegend=> false,
-        :data =>Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]})
+        :data =>Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
+        :colors => @colors)
        
     end
-    @colors = Color.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
+    # @colors = Color.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
     @chart3 = LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]} )
+      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
       series = {
         :type=> 'pie',
         :name=> 'Browser share',
@@ -35,16 +36,13 @@ class PregnanciesController < ApplicationController
 
       f.series(series)
       f.options[:title][:text] = "Puppies by colors"
-      f.legend(:layout=> 'vertical',:style=> {:left=> 'auto', :bottom=> 'auto',:right=> '50px',:top=> '100px'}) 
+      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'left', verticalAlign: 'middle') 
       f.plot_options(:pie=>{
         :allowPointSelect=>true, 
         :cursor=>"pointer" , 
         :dataLabels=>{
           :enabled=>true,
-          :color=>"black",
-          :style=>{
-            :font=>"13px Trebuchet MS, Verdana, sans-serif"
-          }
+          :color=>"black"
         }
       })
      end

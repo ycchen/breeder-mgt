@@ -31,4 +31,8 @@ module ApplicationHelper
 	def date_value(date)
 		date ? date.strftime("%Y-%m-%d") : Date.today.strftime("%Y-%m-%d")
 	end
+
+	def yesno(v)
+		v ? "Yes" : "No"
+	end
 end

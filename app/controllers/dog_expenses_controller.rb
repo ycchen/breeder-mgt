@@ -7,6 +7,33 @@ class DogExpensesController < ApplicationController
     # @dog_expenses = DogExpense.all
     @dog_expenses = DogExpense.order('charge_date DESC')
     
+
+    @colors = Charge.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
+    @chart = LazyHighCharts::HighChart.new('pie') do |f|
+      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
+      series = {
+        :type=> 'pie',
+        :name=> 'Browser share',
+        :data=> Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.sum(:amount).to_f}) - (#{c.dog_expenses.size})", c.dog_expenses.sum(:amount).to_f]},
+        # :data => Pregnancy.set_value( Color.all.map{|c| [c.name, c.litters.size]} ),
+        :colors => @colors,
+        showInLegend: true
+      }
+
+      f.series(series)
+      f.options[:title][:text] = "Puppies by colors"
+      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'left', verticalAlign: 'top') 
+      f.plot_options(:pie=>{
+        :allowPointSelect=>true, 
+        :cursor=>"pointer" , 
+        :dataLabels=>{
+          :enabled=>true,
+          :color=>"black"
+        }
+      })
+     end
+
+
     respond_to do |format|
       format.html
       format.csv {send_data @dog_expenses.to_csv}

@@ -108,7 +108,7 @@
                 <tr>
                   <td><%= litter.gender %></td>
                   <td><%= litter.color.name %></td>
-                  <td><%= litter.survival %></td>  
+                  <td><%= yesno(litter.survival) %></td>  
                 </tr>
               <% end %>
             </table>    

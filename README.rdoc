@@ -611,3 +611,69 @@ $ bundle install
 //= require highcharts/modules/exporting
 -- Create an object of LazyHighCharts in the controller
 LazyHighCharts::HighChart
+
+== Generate mailer
+$ rails g mailer UserMailer
+ create  app/mailers/user_mailer.rb
+ invoke  erb
+ create    app/views/user_mailer
+ invoke  test_unit
+ create    test/mailers/user_mailer_test.rb
+
+-- Added config\initializers\setup_mail.rb to use gmail as smtp server to send out email
+ActionMailer::Base.smtp_settings = {  
+      :address              => "smtp.gmail.com",  
+      :port                 => 587,  
+      :domain               => "gmail.com",  
+	  :user_name            => "your username",  
+      :password             => "your password",  
+      :authentication       => "plain",  
+      :enable_starttls_auto => true  
+   } 
+
+-- Added welcome_email method in /mailers/user_mailer.rb
+  def welcome_email(user)
+  	@user = user
+  	@url = 'http://localhost:3000/'
+  	mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+  end
+
+-- Added views/user_mailer/welcome_email.html.erb and welcome_email.text.erb
+
+-- Updated controllers/users_controller.rb to add a triger to send out email inside of create method
+ UserMailer.welcome_email(@user).deliver
+
+-- Set environment variables for GMAIL_USER AND GMAIL_PWD (use cmd.exe not powershell.exe)
+$ set GMAIL_USER "USER"
+$ set GMAIL_PWD "PWD"
+
+-- Updated setup_mail.rb and replace 
+:user_name            => ENV['GMAIL_USER'],  
+:password             => ENV['GMAIL_PWD'],  
+
+
+-- Set up environment variables in Heroku
+https://devcenter.heroku.com/articles/config-vars
+
+$ heroku config:set GMAIL_USER=joesmith
+$ heroku config:set GMAIL_PWD=password
+
+$ heroku config
+GITHUB_USERNAME: joesmith
+OTHER_VAR:       production
+
+$ heroku config:get GITHUB_USERNAME
+joesmith
+
+$ heroku config:unset GITHUB_USERNAME
+Unsetting GITHUB_USERNAME and restarting myapp... done, v13
+
+== Added yesno helper /helper/application.rb
+def yesno(x)
+	x ? "Yes" : "No"
+end
+
+-- views\pregnancies\show.html.erb
+<%= yesno(myboolean) %>
+
+== Added whenever gem for cron job to send out email

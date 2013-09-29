@@ -21,7 +21,7 @@
 
 		<p>
 		  <strong>Survival:</strong>
-		  <%= @litter.survival %>
+		  <%= yesno(@litter.survival) %>
 		</p>
 
 		<%= link_to 'Edit', edit_litter_path(@litter) ,class: 'btn btn-primary' %> |

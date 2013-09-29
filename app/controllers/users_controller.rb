@@ -16,6 +16,8 @@ class UsersController < ApplicationController
     # @user.role_ids = Role.last.id
     respond_to do |format|
       if @user.save
+        # Tell the UserMailer to send a weclome Email after save
+        UserMailer.welcome_email(@user).deliver
         flash[:notice] = "User was successfully created"
         format.html { redirect_to action: :index}
         format.json { render action: :show, status: :created, location: @user}

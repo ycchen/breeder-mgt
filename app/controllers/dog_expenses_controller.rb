@@ -28,10 +28,10 @@ class DogExpensesController < ApplicationController
                 data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'TW').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'TW').size})", c.dog_expenses.where(currency: 'TW').sum(:amount).to_f]},
                 colors: @colors2,
                 showInLegend: true,
-                center: [750,50],
+                center: [800,50],
                 size: 150
                })
-      f.options[:title][:text] = "Expenses charge by USD & TW"
+      f.options[:title][:text] = "Expenses by USD & TW"
       f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 
       f.plot_options(:pie=>{
         :allowPointSelect=>true, 

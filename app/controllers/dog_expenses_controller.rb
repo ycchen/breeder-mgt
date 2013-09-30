@@ -15,21 +15,19 @@ class DogExpensesController < ApplicationController
       f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
       f.series({type: 'pie',
                 name: 'Charge in USD',
-                size: 150,
                 data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'USD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'USD').size})", c.dog_expenses.where(currency: 'USD').sum(:amount).to_f]},
                 colors: @colors,
-                showInLegend: true,
-                center: [200,50],
-                size: 150
+                showInLegend: false,
+                center: [210,100],
+                size: 160
                })
       f.series({type: 'pie',
                 name: 'Charge in TW',
-                size: 150,
                 data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'TW').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'TW').size})", c.dog_expenses.where(currency: 'TW').sum(:amount).to_f]},
                 colors: @colors2,
-                showInLegend: true,
-                center: [800,50],
-                size: 150
+                showInLegend: false,
+                center: [800,100],
+                size: 160
                })
       f.options[:title][:text] = "Expenses by USD & TW"
       f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 

@@ -680,4 +680,7 @@ end
 == Updated Pregnancies, Expenses highcharts
 -- Added 2 pie charts on dog_expense model
 
+-- Updated all chart with javascript
+
+
 == Added whenever gem for cron job to send out email

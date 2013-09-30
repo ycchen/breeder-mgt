@@ -1,0 +1,37 @@
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  new Highcharts.Chart({
+    chart: {
+            renderTo: 'mychart', 
+            type: 'column'
+           },
+    title: {text: ''},
+    xAxis: {categories: <%= @plist %>},
+    yAxis: {title: {text: "Puppies", margin: 50},
+            stackLabels:{enabled: true, color: 'gray'}
+    },
+    // credits: {enabled: true, href: 'http://hungkwang.com', text: 'hungkwang.com'},
+    credits: {enabled: false},
+    plotOptions: {
+              column:{
+                stacking: 'normal',
+                dataLabels:{ enbaled: true, color: 'white'}
+              }
+    },
+
+    series: [
+              {name: 'Puppies survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size} %>},
+              {name: 'Puppies not survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size} %>},
+              {type: 'pie',name: 'Puppies',
+               center: [150,80],
+               size: 150,
+               showInLegend: false,
+               colors: <%= @colors.to_s.html_safe %>,
+               data: <%= @puppy_count %>
+              }
+            ]
+
+  });
+});
+</script>

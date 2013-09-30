@@ -11,35 +11,35 @@ class DogExpensesController < ApplicationController
     @colors = Charge.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
     @colors2 = Charge.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
 
-    @chart = LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
-      f.series({type: 'pie',
-                name: 'Charge in USD',
-                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'USD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'USD').size})", c.dog_expenses.where(currency: 'USD').sum(:amount).to_f]},
-                colors: @colors,
-                showInLegend: false,
-                center: [210,100],
-                size: 160
-               })
-      f.series({type: 'pie',
-                name: 'Charge in TW',
-                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'TW').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'TW').size})", c.dog_expenses.where(currency: 'TW').sum(:amount).to_f]},
-                colors: @colors2,
-                showInLegend: false,
-                center: [800,100],
-                size: 160
-               })
-      f.options[:title][:text] = "Expenses by USD & TW"
-      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 
-      f.plot_options(:pie=>{
-        :allowPointSelect=>true, 
-        :cursor=>"pointer" , 
-        :dataLabels=>{
-          :enabled=>true,
-          :color=>"black"
-        }
-      })
-     end
+    # @chart = LazyHighCharts::HighChart.new('pie') do |f|
+    #   f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
+    #   f.series({type: 'pie',
+    #             name: 'Charge in USD',
+    #             data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'USD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'USD').size})", c.dog_expenses.where(currency: 'USD').sum(:amount).to_f ]},
+    #             colors: @colors,
+    #             showInLegend: false,
+    #             center: [210,100],
+    #             size: 160
+    #            })
+    #   f.series({type: 'pie',
+    #             name: 'Charge in TW',
+    #             data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'TW').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'TW').size})", c.dog_expenses.where(currency: 'TW').sum(:amount).to_f]},
+    #             colors: @colors2,
+    #             showInLegend: false,
+    #             center: [800,100],
+    #             size: 160
+    #            })
+    #   f.options[:title][:text] = "Expenses by USD & TW"
+    #   f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 
+    #   f.plot_options(:pie=>{
+    #     :allowPointSelect=>true, 
+    #     :cursor=>"pointer" , 
+    #     :dataLabels=>{
+    #       :enabled=>true,
+    #       :color=>"black"
+    #     }
+    #   })
+    #  end
 
     respond_to do |format|
       format.html

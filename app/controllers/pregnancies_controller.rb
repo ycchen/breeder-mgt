@@ -6,61 +6,67 @@ class PregnanciesController < ApplicationController
   def index
     @pregnancies = Pregnancy.order('heat_start_date, surgery_date')
 
+    @plist = @pregnancies.already_due.order('due_date').map{|x| x.dog.call_name}.to_s.html_safe 
     @colors = [ [ "#8a10ae" ],[ "#f45a39" ],[ "#fa7083" ],[ "#b8ad3c" ],[ "#2babf2" ],[ "#1dae30" ],[ "#b6932d" ],[ "#e24436" ]]
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.chart({:type => "column"})
-      f.title(:text => "Pregnancies in 2003 as #{Date.today}")
-      f.xAxis(:categories => @pregnancies.already_due.order('due_date').map{|x| x.dog.call_name})
+    @puppy_count = Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]}.to_s.html_safe
+    
+   
+    # @chart = LazyHighCharts::HighChart.new('graph') do |f|
+    #   f.chart({:type => "column"})
+    #   f.title(:text => "Pregnancies in 2003 as #{Date.today}")
+    #   f.xAxis(:categories => @pregnancies.already_due.order('due_date').map{|x| x.dog.call_name})
       
-      # f.tooltip(:formatter => "function() { return this.x +' '+ this.y + '<br>'+' Total:' + this.point.stackTotal;}".js_code)
+    #   # f.tooltip(:formatter => "function() { return this.x +' '+ this.y + '<br>'+' Total:' + this.point.stackTotal;}".js_code)
 
-      f.series(:name => "Puppies survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size})
-      f.series(:name => "Puppies not survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size})
+    #   f.series(:name => "Puppies survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size})
+    #   f.series(:name => "Puppies not survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size})
       
-      f.plotOptions({column:{
-        stacking: 'normal',
-        # pointPadding: 0,
-        groupPadding: 0, 
-        dataLabels:{
-          enabled: true,
-          color: 'white'}
-          }})
+    #   f.plotOptions({column:{
+    #     stacking: 'normal',
+    #     # pointPadding: 0,
+    #     groupPadding: 0, 
+    #     dataLabels:{
+    #       enabled: true,
+    #       color: 'white'}
+    #       }})
 
-      f.yAxis( 
-         title: { text: "Puppies", margin: 50},
-         stackLabels: {style: {color: 'gray'},enabled: true}
-        )
+    #   f.yAxis( 
+    #      title: { text: "Puppies", margin: 50},
+    #      stackLabels: {
+    #         style: {color: 'gray'},
+    #         enabled: true}
+    #     )
 
-      f.series(:type => "pie", :name=> 'puppies', 
-        :center=> [150, 80], :size=> 150, :showInLegend=> false,
-        :data =>Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
-        :colors => @colors)
-       
-    end
+    #   f.series(:type => "pie", :name=> 'puppies', 
+    #     :center=> [150, 80], :size=> 150, :showInLegend=> false,
+    #     :data =>Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
+    #     :colors => @colors)
+    # end
+
     # @colors = Color.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
-    @chart3 = LazyHighCharts::HighChart.new('pie') do |f|
-      f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
-      series = {
-        :type=> 'pie',
-        :name=> 'Browser share',
-        :data=> Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
-        # :data => Pregnancy.set_value( Color.all.map{|c| [c.name, c.litters.size]} ),
-        :colors => @colors,
-        showInLegend: false
-      }
+    # @chart3 = LazyHighCharts::HighChart.new('pie') do |f|
+    #   f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
+    #   series = {
+    #     :type=> 'pie',
+    #     :name=> 'Browser share',
+    #     :data=> Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
+    #     # :data => Pregnancy.set_value( Color.all.map{|c| [c.name, c.litters.size]} ),
+    #     :colors => @colors,
+    #     showInLegend: false
+    #   }
 
-      f.series(series)
-      f.options[:title][:text] = "Puppies by colors"
-      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'left', verticalAlign: 'middle') 
-      f.plot_options(:pie=>{
-        :allowPointSelect=>true, 
-        :cursor=>"pointer" , 
-        :dataLabels=>{
-          :enabled=>true,
-          :color=>"black"
-        }
-      })
-     end
+    #   f.series(series)
+    #   f.options[:title][:text] = "Puppies by colors"
+    #   f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'left', verticalAlign: 'middle') 
+    #   f.plot_options(:pie=>{
+    #     :allowPointSelect=>true, 
+    #     :cursor=>"pointer" , 
+    #     :dataLabels=>{
+    #       :enabled=>true,
+    #       :color=>"black"
+    #     }
+    #   })
+    #  end
 
     # @chart1 = LazyHighCharts::HighChart.new('graph') do |f|
     #   f.title({ :text=>"Combination chart"})

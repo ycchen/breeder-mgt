@@ -23,15 +23,15 @@ class DogExpensesController < ApplicationController
                 size: 150
                })
       f.series({type: 'pie',
-                name: 'Charge in NTD',
+                name: 'Charge in TW',
                 size: 150,
-                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'NTD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'NTD').size})", c.dog_expenses.where(currency: 'NTD').sum(:amount).to_f]},
+                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'TW').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'TW').size})", c.dog_expenses.where(currency: 'TW').sum(:amount).to_f]},
                 colors: @colors2,
                 showInLegend: false,
                 center: [750,100],
                 size: 150
                })
-      f.options[:title][:text] = "Expenses charge by USD & NTD"
+      f.options[:title][:text] = "Expenses charge by USD & TW"
       f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 
       f.plot_options(:pie=>{
         :allowPointSelect=>true, 

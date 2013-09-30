@@ -8,16 +8,31 @@ class PregnanciesController < ApplicationController
 
     @colors = [ [ "#8a10ae" ],[ "#f45a39" ],[ "#fa7083" ],[ "#b8ad3c" ],[ "#2babf2" ],[ "#1dae30" ],[ "#b6932d" ],[ "#e24436" ]]
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.chart({:type => "column"})
       f.title(:text => "Pregnancies in 2003 as #{Date.today}")
       f.xAxis(:categories => @pregnancies.already_due.order('due_date').map{|x| x.dog.call_name})
-      f.series(:type=> "column",:name => "Puppies", :yAxis => 0, :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.size})
-      f.plotOptions({column:{dataLabels:{enabled: true}}})
-      f.yAxis [
-        {:title => {:text => "Puppies", :margin => 70}},
-      ]
+      
+      # f.tooltip(:formatter => "function() { return this.x +' '+ this.y + '<br>'+' Total:' + this.point.stackTotal;}".js_code)
+
+      f.series(:name => "Puppies survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size})
+      f.series(:name => "Puppies not survive", :data => @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size})
+      
+      f.plotOptions({column:{
+        stacking: 'normal',
+        # pointPadding: 0,
+        groupPadding: 0, 
+        dataLabels:{
+          enabled: true,
+          color: 'white'}
+          }})
+
+      f.yAxis( 
+         title: { text: "Puppies", margin: 50},
+         stackLabels: {style: {color: 'gray'},enabled: true}
+        )
 
       f.series(:type => "pie", :name=> 'puppies', 
-        :center=> [150, 80], :size=> 100, :showInLegend=> false,
+        :center=> [150, 80], :size=> 150, :showInLegend=> false,
         :data =>Color.all.map{|c| ["#{c.name} - (#{c.litters.size})", c.litters.size]},
         :colors => @colors)
        

@@ -5,4 +5,7 @@ class Litter < ActiveRecord::Base
 
   validates :pregnancy_id, :gender, :color_id, presence: true
 
+  def self.survial_count(pregnancy)
+  	pregnancy.where(survival: true).size
+  end
 end

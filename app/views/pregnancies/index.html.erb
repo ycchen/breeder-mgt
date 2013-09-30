@@ -15,7 +15,8 @@
             <%#= high_chart("chart3", @chart3) %>
             <%#= high_chart("chart4", @chart4) %>
         </div>
-
+<%#= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size} %>
+<%#= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size} %>
 
         <div class="tabbable">
           <ul class="nav nav-pills">

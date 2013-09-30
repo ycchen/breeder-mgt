@@ -6,7 +6,7 @@ class Pregnancy < ActiveRecord::Base
   validates :dog_id, presence: true
   validates :total_puppy, presence: true, numericality: true
 
-  scope :expected, lambda{where('surgery_date >= ?', Date.today.to_s).order('heat_start_date')}
+  scope :expected, lambda{where('surgery_date >= ?', Date.today.to_s).order('surgery_date')}
   scope :already_due, lambda{where('surgery_date <= ?', Date.today.to_s).order('surgery_date desc')}
 
   def self.to_csv(options ={})
@@ -22,6 +22,7 @@ class Pregnancy < ActiveRecord::Base
     litters.size
   end
 
+  
   def self.set_value(data)
     pie_data=[]
     data.each do |key, value|

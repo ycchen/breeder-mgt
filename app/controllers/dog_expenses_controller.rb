@@ -9,20 +9,30 @@ class DogExpensesController < ApplicationController
     
 
     @colors = Charge.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
+    @colors2 = Charge.all.map{|c| ["##{rand(0xffffff).to_s(16)}"]}
+
     @chart = LazyHighCharts::HighChart.new('pie') do |f|
       f.chart({:defaultSeriesType=>"pie" , :margin=> [50, 50, 50, 50]})
-      series = {
-        :type=> 'pie',
-        :name=> 'Browser share',
-        :data=> Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.sum(:amount).to_f}) - (#{c.dog_expenses.size})", c.dog_expenses.sum(:amount).to_f]},
-        # :data => Pregnancy.set_value( Color.all.map{|c| [c.name, c.litters.size]} ),
-        :colors => @colors,
-        showInLegend: true
-      }
-
-      f.series(series)
-      f.options[:title][:text] = "Puppies by colors"
-      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'left', verticalAlign: 'top') 
+      f.series({type: 'pie',
+                name: 'Charge in USD',
+                size: 150,
+                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'USD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'USD').size})", c.dog_expenses.where(currency: 'USD').sum(:amount).to_f]},
+                colors: @colors,
+                showInLegend: true,
+                center: [200,100],
+                size: 150
+               })
+      f.series({type: 'pie',
+                name: 'Charge in NTD',
+                size: 150,
+                data: Charge.all.map{|c| ["#{c.name} - (#{c.dog_expenses.where(currency: 'NTD').sum(:amount).to_f}) - (#{c.dog_expenses.where(currency: 'NTD').size})", c.dog_expenses.where(currency: 'NTD').sum(:amount).to_f]},
+                colors: @colors2,
+                showInLegend: false,
+                center: [750,100],
+                size: 150
+               })
+      f.options[:title][:text] = "Expenses charge by USD & NTD"
+      f.legend(:layout=> 'vertical',:width => 220,:borderWidth => 0, align: 'center', verticalAlign: 'bottom') 
       f.plot_options(:pie=>{
         :allowPointSelect=>true, 
         :cursor=>"pointer" , 
@@ -32,7 +42,6 @@ class DogExpensesController < ApplicationController
         }
       })
      end
-
 
     respond_to do |format|
       format.html

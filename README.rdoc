@@ -682,5 +682,31 @@ end
 
 -- Updated all chart with javascript
 
+== Converted Postgres Sql to sqlite3
+-- heroku database backup
+$ heroku pgbackups:capture
+
+-- download most recent backup dump file
+
+-- restore heroku dump file to local Postgres sql database
+
+-- cd C:\Program Files\PostgreSQL\9.2\bin
+$ pg_dump -U postgres -W --data-only --inserts showdog > c:\sd.sql
+password: admin
+
+http://manuel.manuelles.nl/blog/2012/01/18/convert-postgresql-to-sqlite/
+
+1. Remove/modify the dump.
+2. Remove the lines starting with SET
+3. Remove the lines starting with SELECT pg_catalog.setval
+4. Replace true for ‘t’
+5. Replace false for ‘f’
+6. Add BEGIN; as first line and END; as last line
+
+7. Recreate an empty development database. bundle exec rake db:migrate
+8. Import the dump.
+sqlite3 db/development.sqlite3
+sqlite> delete from schema_migrations;
+sqlite> .read dump.sql
 
 == Added whenever gem for cron job to send out email

@@ -14,6 +14,7 @@ $(function(){
 		title: {
 				text: 'Expenses in USD & TW'
 		},
+		credits: {enabled: false},
 		plotOptions:{
 			pie:{
 				allowPointSelect: true,
@@ -26,14 +27,14 @@ $(function(){
 		},
 		series: [	{
 		                name: 'Charges in USD',
-		                center: [250, 140],
+		                center: [250, 120],
 		                showInLegend:true,
 		                colors: <%= @colors.to_s.html_safe %>,
 		                data: <%= data1.to_s.html_safe %>
 	                },
 	                {
 		                name: 'Charges in TW',
-		                center: [650, 140],
+		                center: [700, 120],
 		                showInLegend:true,
 		                colors: <%= @colors2.to_s.html_safe %>,
 		                data: <%= data2.to_s.html_safe %>

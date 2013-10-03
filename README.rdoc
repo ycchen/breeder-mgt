@@ -709,4 +709,9 @@ sqlite3 db/development.sqlite3
 sqlite> delete from schema_migrations;
 sqlite> .read dump.sql
 
+== Added better_errors gem
+group :development do
+	gem 'better_errors'
+end
+
 == Added whenever gem for cron job to send out email

@@ -1,9 +1,10 @@
 Showtrac::Application.routes.draw do
-  resources :litters
-
-  resources :matings
-
-  resources :pregnancies
+  
+  
+  resources :pregnancies do
+    resources :matings
+    resources :litters
+  end
 
   resources :colors
 

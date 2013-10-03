@@ -51,6 +51,9 @@ group :development, :test do
 	gem 'capistrano'			# interation testing tools for rack based web application
 	gem 'factory_girl_rails' 	# fixtures replacement
 	gem 'faker'					# generate fake data
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	gem 'meta_request'
 end
 
 group :production do

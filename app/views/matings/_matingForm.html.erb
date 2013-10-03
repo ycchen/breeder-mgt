@@ -1,4 +1,4 @@
-<%= form_for([@pregnancy, @mating]) do |f| %>
+<%= form_for([@pregnancy, @pregnancy.matings.build]) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this pregnancy from being saved:</h4>
@@ -21,7 +21,9 @@
   </div>
   <div class="field">
     <%= f.label :mating_date %>
-    <%= f.text_field :mating_date,'data-behaviour' => 'datepicker', value: date_value(@mating.mating_date), :readonly => true %>
+    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+      <%= f.text_field :mating_date, value: date_value(Date.today), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
   </div>
 
   <div class="actions">

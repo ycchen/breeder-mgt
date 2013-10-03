@@ -143,6 +143,9 @@ body {
 .panel{
     display: none;
 }
+.litter-panel{
+    display: none;
+}
 textarea#message_area {
   width: 400px;
   height: 150px;
@@ -161,3 +164,6 @@ textarea#message_area {
 	/*height: 400px;*/
 
 }
+/*#dp3 { z-index: 1151; width: 17em; padding: .2em .2em 0; }
+*//*{z-index: 1151 !important;}*/
+/*#dp3 {z-index: 1150 !important;}*/

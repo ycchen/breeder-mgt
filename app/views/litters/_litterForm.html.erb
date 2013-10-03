@@ -1,4 +1,4 @@
-<%= simple_form_for([@pregnancy,@litter]) do |f| %>
+<%= simple_form_for([@pregnancy, @pregnancy.litters.build]) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this litter from being saved:</h4>
@@ -24,7 +24,8 @@
     <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, include_blank: 'Select a color') %>
   </div>
     <%= f.label :survival %>
-    <%= f.input :survival, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
+    <%#= f.collection_radio_buttons(:survival, [[true, 'Yes'], [false, 'No']],:first, :last, item_wrapper_class: "inline", default: true) %>
+     <%= f.input :survival, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
   
   <div class="actions">
     <%= f.submit class: 'btn btn-primary'  %>

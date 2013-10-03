@@ -1,0 +1,6 @@
+// alert('love it');
+// $('#my-modal').append('<%=j render partial: 'matingForm' %>')
+
+	$('#my-modal').modal('show');
+	$('.modal-body').html('<%= escape_javascript(render partial: "form") %>')
+// $('.modal-body').html('<%= escape_javascript(render :partial => "form", :object => @country) %>');

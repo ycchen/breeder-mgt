@@ -19,16 +19,18 @@ class LittersController < ApplicationController
 
   # GET /litters/1/edit
   def edit
+    @pregnancy = @litter.pregnancy
   end
 
   # POST /litters
   # POST /litters.json
   def create
+    @pregnancy = Pregnancy.find(params[:pregnancy_id])
     @litter = Litter.new(litter_params)
 
     respond_to do |format|
       if @litter.save
-        format.html { redirect_to @litter, notice: 'Litter was successfully created.' }
+        format.html { redirect_to @pregnancy, notice: 'Litter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @litter }
       else
         format.html { render action: 'new' }
@@ -40,9 +42,10 @@ class LittersController < ApplicationController
   # PATCH/PUT /litters/1
   # PATCH/PUT /litters/1.json
   def update
+    @pregnancy = @litter.pregnancy
     respond_to do |format|
       if @litter.update(litter_params)
-        format.html { redirect_to @litter, notice: 'Litter was successfully updated.' }
+        format.html { redirect_to @pregnancy, notice: 'Litter was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

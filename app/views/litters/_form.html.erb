@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pregnancy %><br>
+    <%= f.label :pregnancy %>
     <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, include_blank: 'Select a pregnant bitch') %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
+    <%= f.label :gender %>
     <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
   </div>
   <div class="field">
-    <%= f.label :color %><br>
+    <%= f.label :color %>
     <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, include_blank: 'Select a color') %>
   </div>
     <%= f.label :survival %>

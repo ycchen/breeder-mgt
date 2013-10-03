@@ -47,9 +47,11 @@ class LittersController < ApplicationController
       if @litter.update(litter_params)
         format.html { redirect_to @pregnancy, notice: 'Litter was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @litter.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

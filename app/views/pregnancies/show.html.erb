@@ -95,22 +95,11 @@
                   <td><%= mating.mating_date %></td><td><%=  distance_of_time_in_words(mating.mating_date, @pregnancy.heat_start_date)%></td>
                   <td>
                     <%#= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn"%>
-                    <%= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal", "data-no-turbolink" => true %>
+                    <%= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
                   </td>
                 </tr>
               <% end %>
             </table> 
-                    <div class="modal hide fade" id="my-modal" title="My modal">
-                      <div class="modal-header">
-                        <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
-                        <h3 id="myModalLabel">Modal header</h3>
-                      </div>
-                      <div class="modal-body">
-                      </div>
-                      <div class="modal-footer">
-                        <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
             <div>
             <a href="javascript:void(0)" onclick="javascript:$('.panel').slideToggle('slow')" class="btn btn-primary">Add Mating</a>
             </div>
@@ -137,7 +126,10 @@
                   <td><%= litter.gender %></td>
                   <td><%= litter.color.name %></td>
                   <td><%= yesno(litter.survival) %></td> 
-                  <td><%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter) %></td> 
+                  <td>
+                    <%#= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter) %>
+                    <%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
+                  </td> 
                 </tr>
               <% end %>
             </table>
@@ -149,7 +141,20 @@
               <h4>Add Litter</h4>
               <%= render 'litters/litterForm' %>
             </div>    
-            <!-- </div> -->
+           
+
+            <div class="modal hide fade" id="my-modal" title="My modal">
+              <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+              </div>
+              <div class="modal-body">
+              </div>
+              <div class="modal-footer">
+                <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
             
           </div><!-- ./tab-content -->
         </div><!-- ./tabbable -->

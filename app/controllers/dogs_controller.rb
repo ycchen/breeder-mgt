@@ -4,7 +4,7 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.all
+    @dogs = Dog.where(nil)
     respond_to do |format|
       format.html
       format.csv {send_data @dogs.to_csv}

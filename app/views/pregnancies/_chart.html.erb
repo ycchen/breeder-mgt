@@ -19,7 +19,12 @@ $(function(){
                 dataLabels:{ enbaled: true, color: 'white'}
               }
     },
-
+    legend: {
+           align: 'center', 
+           labelFormatter: function(){
+            return this.name;
+           }
+    },
     series: [
               {name: 'Puppies survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size} %>},
               {name: 'Puppies not survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size} %>},

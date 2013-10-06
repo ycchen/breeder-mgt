@@ -52,20 +52,7 @@
 
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Dog</th>
-                    <th>Heat start date</th>
-                    <th>Estimate Due date</th>
-                    <th>Estimate Surgery date</th>
-                    <th>Due in</th>
-                    <th>Age</th>
-                    <th>Puppy</th>
-                    <th>Note</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
+                  <%= render :partial => 'theader' %>
                 </thead>
                 <tbody>
                   <% @pregnancies.each do |pregnancy| %>
@@ -82,20 +69,7 @@
             <div id="pane2" class="tab-pane">
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Pregnant Dog</th>
-                    <th>Heat start date</th>
-                    <th>Estimate Due date</th>
-                    <th>Estimate Surgery date</th>
-                    <th>Due in</th>
-                    <th>Age</th>
-                    <th>Puppy</th>
-                    <th>Note</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
+                  <%= render :partial => 'theader' %>
                 </thead>
                 <tbody>
                   <% Pregnancy.expected.each do |pregnancy| %>
@@ -108,20 +82,7 @@
             <div id="pane3" class="tab-pane">
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Pregnant Dog</th>
-                    <th>Heat start date</th>
-                    <th>Estimate Due date</th>
-                    <th>Estimate Surgery date</th>
-                    <th>Due in</th>
-                    <th>Age</th>
-                    <th>Puppy</th>
-                    <th>Note</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
+                  <%= render :partial => 'theader' %>
                 </thead>
                 <tbody>
                   <% Pregnancy.already_due.each do |pregnancy| %>

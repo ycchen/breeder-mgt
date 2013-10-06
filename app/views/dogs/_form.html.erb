@@ -15,24 +15,18 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   
-  
     <%= f.label :call_name %>
     <%= f.text_field :call_name %>
-  
   
     <%= f.label :color_id %>
     <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
   
-  
-  
     <%= f.label :Sire %>
     <%= f.select(:sire_id, Dog.dogs.all.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
-  
-  
+
     <%= f.label :Dams %>
     <%= f.select(:dams_id, Dog.bitches.all.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
     
-  
     <%= f.label :birthday %>
     <%#= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
     <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">

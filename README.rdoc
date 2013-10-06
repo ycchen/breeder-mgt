@@ -685,6 +685,7 @@ end
 == Converted Postgres Sql to sqlite3
 -- heroku database backup
 $ heroku pgbackups:capture
+$ heroku pgbackups:url # by default the URL will reference the most recent backup
 
 -- download most recent backup dump file
 
@@ -705,13 +706,35 @@ http://manuel.manuelles.nl/blog/2012/01/18/convert-postgresql-to-sqlite/
 
 7. Recreate an empty development database. bundle exec rake db:migrate
 8. Import the dump.
-sqlite3 db/development.sqlite3
+$ cd to c:\sqlite2 with CMD
+sqlite3 c:\websites\breeder_mgt\db\development.sqlite3
 sqlite> delete from schema_migrations;
-sqlite> .read dump.sql
+sqlite> .read c:/dump.sql
 
 == Added better_errors gem
 group :development do
 	gem 'better_errors'
 end
+
+== Disabled logging of asset pipeline in development enviroment
+1. config.assets.debug = false  #in config/environments/development.rb
+2. config.assets.logger = false
+
+
+== Added distinct group count for litter gender
+# app/models/litter.rb
+
+def self.gender_count(pregnancy)
+	where(pregnancy_id: pregnancy).group("gender").size	
+end
+
+or # from views
+
+<% pregnancy.litters.group(:gender).size.each do |key, value| %>
+      <%= key %>: <%= value %>
+<% end %>
+
+-- Group by multiple comlumns
+pregnancy.litters.group(:gender, :survival).count
 
 == Added whenever gem for cron job to send out email

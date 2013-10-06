@@ -5,27 +5,12 @@
         <p id="notice"><%= notice %></p>
         <h4>Pregnancy Detail</h4>
 
-        <div class="tabbable">
+        <div class="span3">
+          <div class="tabbable">
           <ul class="nav nav-pills">
             <li class="active"><a href="#pane1" data-toggle="tab">Pregnancy Information</a></li>
-            <!-- 
-            <li>
-              <a href="#pane2" data-toggle="tab">
-              <span class="badge pull-right"><%= @pregnancy.matings.size %></span>
-              Matting Information
-              </a>
-            </li>
-            <li>
-              <a href="#pane3" data-toggle="tab">
-              <span class="badge pull-right"><%= @pregnancy.litters.size %></span>
-              Litter Information</a>
-            </li>
-            <li><a href="<%= pregnancies_path() %>">Pregnancies List</a></li> 
-          -->
           </ul>
-
-          <div class="tab-content">
-            <div id="pane1" class="tab-pane active">
+          </div>
               <p>
                 <strong>Name:</strong>
                 <%= @pregnancy.name %>
@@ -64,24 +49,20 @@
               </p>
               <%= link_to 'Edit', edit_pregnancy_path(@pregnancy),class: 'btn btn-primary'  %> |
               <%= link_to 'Back', pregnancies_path,class: 'btn btn-primary'  %>
-            </div>
-            <br/>
-            
-            <!-- <div id="pane2" class="tab-pane"> -->
+        </div>
+        <div class="span4">
+          <div class="tabbable">
             <ul class="nav nav-pills">
               <li class="active">
-                <a href="#pane2" data-toggle="tab">
-                <span class="badge pull-right"><%= @pregnancy.matings.size %></span>
-                Matting Information&nbsp;
-                </a>
+                <a href="#pane1" data-toggle="tab"><span class="badge pull-right"><%= @pregnancy.matings.size %></span>Matting Information&nbsp;</a>
               </li>
             </ul>
-            
-            <br/><p><strong>Heat start date:</strong><%= @pregnancy.heat_start_date %></p>
+          </div>
+          <p><strong>Heat start date:</strong><%= @pregnancy.heat_start_date %></p>
+            <p><strong>Dog:</strong> <%= @pregnancy.matings.order('mating_date DESC').first.sire.call_name %>
+            <strong>Color:</strong> <%= @pregnancy.matings.order('mating_date DESC').first.sire.color.name %></p>
             <table class="table table-striped">
               <tr>
-                <td>Sire</td>
-                <td>Color</td>
                 <td>Progesterone</td>
                 <td>Mating Date</td>
                 <td>Days</td>
@@ -89,17 +70,15 @@
               </tr>
               <% @pregnancy.matings.order('mating_date DESC').each do |mating| %>
                 <tr>
-                  <td><%= mating.sire.name %></td>
-                  <td><%= mating.sire.color.name %></td>
                   <td><%= mating.progesterone %> ml</td>
                   <td><%= mating.mating_date %></td><td><%=  distance_of_time_in_words(mating.mating_date, @pregnancy.heat_start_date)%></td>
                   <td>
                     <%#= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn"%>
-                    <%= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
+                    <%= link_to "Edit", edit_pregnancy_mating_path(@pregnancy, mating), :class => "btn btn-mini", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
                   </td>
                 </tr>
               <% end %>
-            </table> 
+            </table>
             <div>
             <a href="javascript:void(0)" onclick="javascript:$('.panel').slideToggle('slow')" class="btn btn-primary">Add Mating</a>
             </div>
@@ -107,18 +86,18 @@
               <h4>Add Mating Record</h4>
               <%= render 'matings/matingForm' %>
             </div>
-            <!-- </div> -->
-            
-            <!-- <div id="pane3" class="tab-pane"> -->
+
+        </div>
+        <div class="span4">
+          <div class="tabbable">
             <ul class="nav nav-pills">
               <li class="active">
-                <a href="#pane3" data-toggle="tab">
-                <span class="badge pull-right"><%= @pregnancy.litters.size %></span>
-                Litter Information&nbsp;</a>
+                <a href="#pane1" data-toggle="tab"><span class="badge pull-right"><%= @pregnancy.litters.size %></span>Litter Information&nbsp;</a>
               </li>
             </ul>
-
-            <h4>Litter Information</h4>
+          </div>
+           <p><strong>Litter Information</strong></p>
+           <p><%= @pregnancy.litters.where(gender: 'Male').size %> M - <%= @pregnancy.litters.where(gender: 'Female').size %> F</p>
             <table class="table table-striped">
               <tr><td>Gender</td><td>Color</td><td>Survival</td><td></td></tr>
               <% @pregnancy.litters.each do |litter| %>
@@ -128,7 +107,7 @@
                   <td><%= yesno(litter.survival) %></td> 
                   <td>
                     <%#= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter) %>
-                    <%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
+                    <%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter), :class => "btn btn-mini", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>
                   </td> 
                 </tr>
               <% end %>
@@ -141,7 +120,11 @@
               <h4>Add Litter</h4>
               <%= render 'litters/litterForm' %>
             </div>    
-           
+        </div>
+
+        <div style="clear: both;"></div>
+
+
 
             <div class="modal hide fade" id="my-modal" title="My modal">
               <div class="modal-header">
@@ -155,9 +138,6 @@
               </div>
             </div>
 
-            
-          </div><!-- ./tab-content -->
-        </div><!-- ./tabbable -->
 
 
 

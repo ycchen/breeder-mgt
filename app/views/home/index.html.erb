@@ -9,18 +9,23 @@
             <% if current_user %>
       				<!-- <p>logged in</p>
       			  <p>Do you have admin role?&nbsp;&nbsp;<strong><%#= current_user.admin? %></strong></p> -->
-                <div>
+              <div class="row"> 
+                <div class="span5" style="width: 550px;">
                   <%= render :partial => 'puppyByColorChart' %>
-                </div><br/>
-                <div>
+                </div>
+                <div class="span7" style="width: 550px;">
                   <%= render :partial => 'puppyByGenderChart' %>
-                </div><br/>
-                <div>
+                </div>
+              </div>
+              <br/> 
+              <div class="row">   
+                <div class="span5" style="width: 550px;">
                   <%= render :partial => 'puppyByLitterBar' %>
-                </div><br/>
-                <div>
+                </div>
+                <div class="span7" style="width: 550px;">
                   <%= render :partial => 'puppyByLitterLine' %>
-                </div><br/>                
+                </div>
+              </div>
             <% else %>
       				not login
       			<% end %>

@@ -6,8 +6,17 @@ $(function(){
             type: 'spline'
            },
     title: {text: 'Puppies survival per litter'},
-    xAxis: {categories: <%= @litter_bitches %>},
-    yAxis: {title: {text: "Puppies", margin: 50}},
+    xAxis: {
+        categories: <%= @litter_bitches %>,
+        labels: {
+          rotation: -90,
+          align: 'right'
+        }
+    },
+    yAxis: {
+      min: 0,
+      title: {text: "Puppies", margin: 50}
+    },
     // credits: {enabled: true, href: 'http://hungkwang.com', text: 'hungkwang.com'},
     credits: {enabled: false},
     plotOptions: {

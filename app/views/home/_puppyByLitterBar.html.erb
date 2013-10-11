@@ -6,9 +6,15 @@ $(function(){
             // renderTo: 'mychart', 
             type: 'column'
            },
-    title: {text: ''},
-    xAxis: {categories: <%= @litter_bitches %>},
-    yAxis: {title: {text: "Puppies", margin: 50},
+    title: {text: 'Puppies survival per litter'},
+    xAxis: {
+      categories: <%= @litter_bitches %>,
+      labels: {
+        rotation: -90,
+        align: 'right'
+      }
+    },
+    yAxis: {title: {text: "Puppies", margin: 20},
             stackLabels:{enabled: true, color: 'gray'}
     },
     // credits: {enabled: true, href: 'http://hungkwang.com', text: 'hungkwang.com'},
@@ -16,7 +22,9 @@ $(function(){
     plotOptions: {
               column:{
                 stacking: 'normal',
-                dataLabels:{ enbaled: true, color: 'white'}
+                dataLabels:{ 
+                  enbaled: true
+                }
               }
     },
     legend: {

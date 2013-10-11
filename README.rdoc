@@ -737,4 +737,10 @@ or # from views
 -- Group by multiple comlumns
 pregnancy.litters.group(:gender, :survival).count
 
+
+== Highcharts with turbolink issue
+-- make sure all of links that has highchart on the page need to add data-no-turbolink='true' to a tag
+-- or using <%= link_to 'Dog', dogs_path(), data: {no_turbolink: true} %>
+-- otherwise you will get Uncaught highcharts error #13
+
 == Added whenever gem for cron job to send out email

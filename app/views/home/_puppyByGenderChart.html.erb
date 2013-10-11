@@ -1,0 +1,57 @@
+
+<script type="text/javascript" charset="utf-8">
+
+$(function(){
+
+    $("#puppy-gender-chart").highcharts({
+        chart: {
+                type: 'pie',
+                // events: {
+                //     load: function(event) {
+                //       $('.highcharts-legend-item').last().append('<br/><div style="width:200px"><hr/> <span style="float:left"> Total </span><span style="float:none;"> ' + 100 + '</span> </div>')
+                //     }
+                //   }
+        },
+        title: {
+                text: 'Puppies survive by color & gender'
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: true,
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0,
+            useHTML: true, 
+            labelFormatter: function() {
+                return this.name + ': ' + this.y;
+            }
+        },
+        plotOptions:{
+            pie:{
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels:{
+                    enabled: true,
+                    formatter: function(){
+                        return '<b>' + this.point.name +'</b>: ' + this.y + '/' + this.total;
+                    }
+                }
+            }
+        },
+
+        series: [   {
+                        name: 'Puppies per color',
+                        // center: [220, 150],
+                        showInLegend:true,
+                        data: <%= @puppy_by_gender.to_s.html_safe %>
+                    }
+                ]
+
+
+    });
+});
+</script>
+<div id="puppy-gender-chart"></div>

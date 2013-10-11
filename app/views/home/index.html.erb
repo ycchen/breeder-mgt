@@ -5,9 +5,22 @@
             <div class="page-header">
               <h4>Welcome</h4>
       			</div>
-      			<% if current_user %>
-      				<p>logged in</p>
-      			  <p>Do you have admin role?&nbsp;&nbsp;<strong><%= current_user.admin? %></strong></p>
+      			
+            <% if current_user %>
+      				<!-- <p>logged in</p>
+      			  <p>Do you have admin role?&nbsp;&nbsp;<strong><%#= current_user.admin? %></strong></p> -->
+                <div>
+                  <%= render :partial => 'puppyByColorChart' %>
+                </div><br/>
+                <div>
+                  <%= render :partial => 'puppyByGenderChart' %>
+                </div><br/>
+                <div>
+                  <%= render :partial => 'puppyByLitterBar' %>
+                </div><br/>
+                <div>
+                  <%= render :partial => 'puppyByLitterLine' %>
+                </div><br/>                
             <% else %>
       				not login
       			<% end %>
@@ -16,4 +29,3 @@
       </div>
   </div>
 </div>
-

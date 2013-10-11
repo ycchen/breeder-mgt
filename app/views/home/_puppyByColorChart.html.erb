@@ -1,0 +1,50 @@
+
+<script type="text/javascript" charset="utf-8">
+
+$(function(){
+	$("#puppy-color-chart").highcharts({	
+		chart: {
+				type: 'pie'
+		},
+		title: {
+				text: 'Puppies by colors'
+		},
+		credits: {enabled: false},
+		legend: {
+            enabled: true,
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0,
+            useHTML: true, 
+            labelFormatter: function() {
+                return this.name + ': ' + this.y;
+            }
+        },
+		plotOptions:{
+			pie:{
+				allowPointSelect: true,
+				cursor: 'pointer',
+				// size: 150,
+				dataLabels:{
+					enabled: true,
+					formatter: function(){
+						return '<b>' + this.point.name +'</b>: ' + this.y + ' out of <b>' + this.total + '</b>'
+					}
+				}
+			}
+		},
+		series: [	{
+		                name: 'Puppies by colors',
+		                // center: [220, 150],
+		                showInLegend:true,
+		                data: <%= @puppy_by_color.to_s.html_safe %>
+	                }
+                ]
+
+
+	});
+});
+</script>
+
+<div id="puppy-color-chart"></div>

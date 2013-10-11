@@ -1,14 +1,13 @@
-
 <script type="text/javascript" charset="utf-8">
 $(function(){
   // new Highcharts.Chart({
-  $("#mychart").highcharts({
+  $("#puppies-by-litter-bar").highcharts({
     chart: {
             // renderTo: 'mychart', 
             type: 'column'
            },
     title: {text: ''},
-    xAxis: {categories: <%= @plist %>},
+    xAxis: {categories: <%= @litter_bitches %>},
     yAxis: {title: {text: "Puppies", margin: 50},
             stackLabels:{enabled: true, color: 'gray'}
     },
@@ -21,8 +20,7 @@ $(function(){
               }
     },
     legend: {
-           align: 'center',
-           enabled: true,
+           align: 'center', 
            labelFormatter: function(){
               var total = 0;
               for(var i=this.yData.length; i--;) {total += this.yData[i];};
@@ -30,16 +28,17 @@ $(function(){
            }
     },
     series: [
-              {name: 'Puppies survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: true).size} %>},
-              {name: 'Puppies not survive', data: <%= @pregnancies.already_due.order('due_date').map{|x| x.litters.where(survival: false).size} %>},
-              {type: 'pie',name: 'Puppies',
-               center: [150,80],
-               size: 150,
-               showInLegend: false,
-               data: <%= @puppy_count %>
-              }
+              {name: 'Puppies survive', data: <%= @pregnancy.map{|x| x.litters.where(survival: true).size} %>},
+              {name: 'Puppies not survive', data: <%= @pregnancy.map{|x| x.litters.where(survival: false).size} %>}
+              // {type: 'pie',name: 'Puppies',
+              //  center: [150,80],
+              //  size: 150,
+              //  showInLegend: false,
+              //  data: <%= @puppy_count %>
+              // }
             ]
 
   });
 });
 </script>
+<div id="puppies-by-litter-bar"></div>

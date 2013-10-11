@@ -6,9 +6,10 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function(){
-	new Highcharts.Chart({
+	// new Highcharts.Chart({
+	$("#mychart").highcharts({
 		chart: {
-				renderTo: 'mychart',
+				// renderTo: 'mychart',
 				type: 'pie'
 		},
 		title: {
@@ -29,14 +30,12 @@ $(function(){
 		                name: 'Charges in USD',
 		                center: [250, 120],
 		                showInLegend:true,
-		                colors: <%= @colors.to_s.html_safe %>,
 		                data: <%= data1.to_s.html_safe %>
 	                },
 	                {
 		                name: 'Charges in TW',
 		                center: [700, 120],
 		                showInLegend:true,
-		                colors: <%= @colors2.to_s.html_safe %>,
 		                data: <%= data2.to_s.html_safe %>
 	                }
                 ]

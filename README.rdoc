@@ -757,5 +757,29 @@ $ rails g migration add_cleft_palate_to_litter cleft_palate:boolean
 
 -- updated views\litters\files to add cleft_palate as radio button
 
+== Added sendgrid:starter to heroku
+
+$ heroku addons:add sendgrid:starter
+
+
+== Modified production environment to use Gmail to send out email config/environments/production.rb
+
+  config.action_mailer.default_url_options ={:host => 'showdogmgt.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings ={
+      address: "smtp.gmail.com",  
+      port: 587,  
+      domain: "showdogmgt.herokuapp.com",  
+      authentication: "plain",
+      enable_starttls_auto: true,  
+      user_name: ENV["GMAIL_USER"],  
+      password: ENV["GMAIL_PWD"]  
+  }
+
+  
+
 
 == Added whenever gem for cron job to send out email

@@ -74,6 +74,6 @@ class LittersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def litter_params
-      params.require(:litter).permit(:pregnancy_id, :gender, :color_id, :survival)
+      params.require(:litter).permit(:pregnancy_id, :gender, :color_id, :survival, :cleft_palate)
     end
 end

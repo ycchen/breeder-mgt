@@ -35,4 +35,15 @@ module ApplicationHelper
 	def yesno(v)
 		v ? "Yes" : "No"
 	end
+
+	def set_value(data)
+		pie_data=[]
+		data.each do |key, value|
+			x = {y: value}
+			# pie_data << {y: value, drilldown:{ name: key, category: ['Male', 'Female'], data: [2,4]}}
+			pie_data << x
+		end
+		pie_data
+	end
+
 end

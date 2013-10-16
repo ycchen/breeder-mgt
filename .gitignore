@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore all uploads/
+/public/uploads/*
+
 # Ignore all project files
 *.sublime-project
 *.sublime-workspace

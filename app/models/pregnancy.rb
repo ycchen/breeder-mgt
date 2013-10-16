@@ -1,4 +1,9 @@
 class Pregnancy < ActiveRecord::Base
+  has_many :pictures, :as => :attachable, :dependent => :destroy
+  accepts_nested_attributes_for :pictures, :allow_destroy => true
+  # belongs_to :attachable, polymorphic: true
+  # mount_uploader :file, FileUploader
+
   belongs_to :dog
   has_many :matings
   has_many :litters

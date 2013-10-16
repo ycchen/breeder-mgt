@@ -164,6 +164,12 @@ textarea#message_area {
 	/*height: 400px;*/
 
 }
+
+.small-image{
+	padding: 5px;
+	width: 200px;
+	/*min-height: 150px;*/
+}
 /*#dp3 { z-index: 1151; width: 17em; padding: .2em .2em 0; }
 *//*{z-index: 1151 !important;}*/
 /*#dp3 {z-index: 1150 !important;}*/

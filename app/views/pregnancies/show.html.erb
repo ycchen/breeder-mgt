@@ -123,7 +123,16 @@
         </div>
 
         <div style="clear: both;"></div>
-
+        <br/>
+        <div class="row">
+          <div class="span12">
+              <% @pregnancy.pictures.each do |pic| %>
+                <div class="small-image" style="float:left;">
+                  <%= image_tag(pic.file.url) %>
+                </div>
+              <% end %>
+          </div>
+        </div>
 
 
             <div class="modal hide fade" id="my-modal" title="My modal">

@@ -49,7 +49,10 @@
         <strong>Registration no:</strong>
         <%= @dog.registration_no %>
       </p>
-
+      <p>
+        <strong>Status:</strong>
+        <%= @dog.status.name %>
+      </p>
       <p>
         <% @dog.pictures.each do |p| %>
           <%= image_tag(p.file.url, heigh: 200, width:200) if p.file? %>

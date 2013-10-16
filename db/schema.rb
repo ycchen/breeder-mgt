@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015191837) do
+ActiveRecord::Schema.define(version: 20131016182623) do
 
   create_table "charges", force: true do |t|
     t.string   "name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131015191837) do
     t.integer  "dams_id"
     t.integer  "color_id"
     t.string   "gender"
+    t.integer  "status_id",       default: 1
   end
 
   add_index "dogs", ["color_id"], name: "index_dogs_on_color_id"
@@ -196,6 +197,13 @@ ActiveRecord::Schema.define(version: 20131015191837) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", force: true do |t|
+    t.string   "name"
+    t.integer  "sort"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -31,6 +31,10 @@ Color.create!(name: 'Fawn')
 Color.create!(name: 'Brindle')
 Color.create!(name: 'Fawn & White')
 
+Status.create!(name: 'Kennel', sort:1)
+Status.create!(name: 'Sold', sort:2)
+Status.create!(name: 'Deceased', sort:3)
+
 PaymentType.create!(name: 'Cash', description: 'Cash')
 PaymentType.create!(name: 'Check', description: 'Check')
 

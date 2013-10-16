@@ -1,0 +1,22 @@
+<div class="root">
+	<div class="row">
+		<div class="span12">
+			<div class="grey-box">	
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <strong>Name:</strong>
+				  <%= @status.name %>
+				</p>
+
+				<p>
+				  <strong>Sort:</strong>
+				  <%= @status.sort %>
+				</p>
+
+				<%= link_to 'Edit', edit_status_path(@status) , class: 'btn btn-primary'%> |
+				<%= link_to 'Back', statuses_path, class: 'btn btn-primary' %>
+			</div>
+		</div>
+	</div>
+</div>

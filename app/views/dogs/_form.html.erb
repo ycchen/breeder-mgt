@@ -22,10 +22,10 @@
     <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
   
     <%= f.label :Sire %>
-    <%= f.select(:sire_id, Dog.dogs.all.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
+    <%= f.select(:sire_id, Dog.dogs.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
 
     <%= f.label :Dams %>
-    <%= f.select(:dams_id, Dog.bitches.all.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
+    <%= f.select(:dams_id, Dog.bitches.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
     
     <%= f.label :birthday %>
     <%#= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
@@ -40,7 +40,12 @@
     <%= f.label :registration_no %>
     <%= f.text_field :registration_no %>
   
-  
+    <%= f.label :status_id %>
+    <%= f.select(:status_id, Status.all.map{|s|[s.name,s.id]}, include_blank: 'Select Status') %>
+
+        
+
+    <div>
     <%= f.fields_for :pictures do |p| %>
       <%= image_tag(p.object.file.url, height: 200, width: 200) if p.object.file? %>
       <%= p.label :file %>
@@ -48,7 +53,7 @@
       <%= p.link_to_remove t('.remove_image') %>
     <% end %>
     <%= f.link_to_add t('.add_image'), :pictures %>
-  
+    </div><br/>
 
   <div class="actions">
     <%= f.submit class: 'btn btn-primary'%>

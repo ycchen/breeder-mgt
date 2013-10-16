@@ -1,6 +1,8 @@
 Showtrac::Application.routes.draw do
   
   
+  resources :statuses
+
   resources :pregnancies do
     resources :matings
     resources :litters

@@ -779,7 +779,22 @@ $ heroku addons:add sendgrid:starter
       password: ENV["GMAIL_PWD"]  
   }
 
-  
+== Added status table
 
+$ rails g scaffold status name:string sort:integer
+
+$ rake db:migrate
+  
+== Added status_id to Dogs table
+
+$ rails g migration add_status_id_to_dog status_id:integer
+
+-- Modified migration script to set status_id default to 1
+
+$ rake db:migrate
+
+-- updated controllers\dogs_controller.rb to add status_id to dog_params
+
+-- updated views\dogs\ all files to added status_id
 
 == Added whenever gem for cron job to send out email

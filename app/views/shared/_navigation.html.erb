@@ -28,19 +28,20 @@
 			        	<li class="dropdown">
 			              	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%= "#{sales_path}" %>">Sales</a></li>
-		          				<li><a href="<%= "#{shows_path}" %>">Shows</a></li>
-		          				<li><a href="<%= "#{show_entries_path}" %>">Shows Entries</a></li>
-								<li><a href="<%= "#{customers_path}" %>">Customer</a></li>
+								<li><%= link_to "Sales", sales_path %></li>
+		          				<li><%= link_to "Shows", shows_path %></li>
+		          				<li><%= link_to "Shows Entries", show_entries_path %></li>
+								<li><%= link_to "Customers", customers_path %></li>
 								<!-- 
 								<li><a href="<%#= "#{matings_path}" %>">Matings</a></li>
 								<li><a href="<%#= "#{litters_path}" %>">Litters</a></li>
 								 -->
-								<li><a href="<%= "#{charges_path}" %>">Charges</a></li>
-								<li><a href="<%= "#{payment_types_path}" %>">Payment Types</a></li>
-								<li><a href="<%= "#{payment_statuses_path}" %>">Payment Status</a></li>
-								<li><a href="<%= "#{colors_path}" %>">Colors</a></li>
-								<li><a href="<%= "#{users_path}" %>">Users</a></li>
+								<li><%= link_to "Charges", charges_path %></li>
+								<li><%= link_to "Payment Types", payment_types_path %></li>
+								<li><%= link_to "Payment Status", payment_statuses_path %></li>
+								<li><%= link_to "Colors", colors_path %></li>
+								<li><%= link_to "Statuses", statuses_path %></li>
+								<li><%= link_to "Users", users_path %></li>
 							</ul>
 				          </li>
 		        	<% end %>

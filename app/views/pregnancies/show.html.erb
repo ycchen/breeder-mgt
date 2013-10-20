@@ -59,10 +59,13 @@
             </ul>
           </div>
           <p><strong>Heat start date:</strong><%= @pregnancy.heat_start_date %></p>
-            <p><strong>Dog:</strong> <%= @pregnancy.matings.order('mating_date DESC').first.sire.call_name %>
-            <strong>Color:</strong> <%= @pregnancy.matings.order('mating_date DESC').first.sire.color.name %></p>
+          <p>
+            <strong>Dog:</strong> <%= @pregnancy.matings.first.sire.call_name  if !@pregnancy.matings.first.nil? %>
+            <strong>Color:</strong> <%= @pregnancy.matings.first.sire.color.name if !@pregnancy.matings.first.nil?%>
+          </p>
             <table class="table table-striped">
               <tr>
+                <td>Dog</td>
                 <td>Progesterone</td>
                 <td>Mating Date</td>
                 <td>Days</td>
@@ -70,6 +73,7 @@
               </tr>
               <% @pregnancy.matings.order('mating_date DESC').each do |mating| %>
                 <tr>
+                  <td><%= mating.sire.call_name %></td>
                   <td><%= mating.progesterone %> ml</td>
                   <td><%= mating.mating_date %></td><td><%=  distance_of_time_in_words(mating.mating_date, @pregnancy.heat_start_date)%></td>
                   <td>
@@ -79,6 +83,7 @@
                 </tr>
               <% end %>
             </table>
+            
             <div>
             <a href="javascript:void(0)" onclick="javascript:$('.panel').slideToggle('slow')" class="btn btn-primary">Add Mating</a>
             </div>

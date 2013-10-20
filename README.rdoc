@@ -797,4 +797,19 @@ $ rake db:migrate
 
 -- updated views\dogs\ all files to added status_id
 
+== Install and gem without doc
+
+$ gem install rails --no-rdoc --no-ri
+
+or automate this with the following in your.gemrc:
+
+gem: --no-ri --no-rdoc
+
+or the alternate configuration is:
+
+install: --no-rdoc --no-ri
+
+update: --no-rdoc --no-ri
+
+
 == Added whenever gem for cron job to send out email

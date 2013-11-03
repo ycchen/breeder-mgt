@@ -28,6 +28,8 @@
   
     <%= f.label :cleft_palate %>
     <%= f.input :cleft_palate, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
+    <%= f.label :dog_id %>
+    <%= f.select(:dog_id, Dog.all.map{|d|[d.call_name, d.id]}, include_blank: 'Select a dog') %>
   <div class="actions">
     <%= f.submit class: 'btn btn-primary'  %>
   </div>

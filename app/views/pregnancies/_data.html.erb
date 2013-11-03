@@ -1,15 +1,18 @@
 <tr <% if !Date.parse(pregnancy.surgery_date.to_s).past? %>class="due"<% else %>class="already"<% end %>>
-  <td><%= link_to pregnancy.name, pregnancy %></td>
-  <td><%= pregnancy.dog.call_name %></td>
-  <td><%= pregnancy.heat_start_date %></td>
-  <td><%= pregnancy.due_date %></td>
-  <td><%= pregnancy.surgery_date %></td>
-  <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %></td>
-  <td><%= !Date.parse(pregnancy.surgery_date.to_s).past? ? '0': distance_of_time_in_words_to_now(pregnancy.surgery_date) %></td>
+  <td><%= link_to pregnancy.name, pregnancy %><br/><%= pregnancy.dog.call_name %></td>
+  <!-- <td><%#= pregnancy.dog.call_name %></td> -->
+  <td><%= pregnancy.heat_start_date %><br/><%= pregnancy.surgery_date %></td>
+  <!-- <td><%#= pregnancy.due_date %></td> -->
+  <!-- <td><%#= pregnancy.surgery_date %></td> -->
+  <td><%= Date.parse(pregnancy.surgery_date.to_s).past? ? 'Due': time_ago_in_words(pregnancy.surgery_date) %><br/>
+  <%= !Date.parse(pregnancy.surgery_date.to_s).past? ? '0': distance_of_time_in_words_to_now(pregnancy.surgery_date) %></td>
+  <td><%= pregnancy.matings.first.sire.call_name  if !pregnancy.matings.first.nil? %></td>
   <td>
-    <% pregnancy.litters.group(:gender).size.each do |key, value| %>
-        <%= key %>=<%= value %>
-    <% end %>
+      <table class="table table-condensed">
+        <% pregnancy.litters.order(:gender, :color_id).each do |p| %>
+        <tr><td><%= p.gender %></td><td><%= p.color.name %></td><td><%= p.survival %></td></tr>
+        <% end %>
+      </table>
   </td>
   <td><%= pregnancy.note %></td>
   <td>

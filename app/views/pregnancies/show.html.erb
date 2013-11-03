@@ -104,12 +104,13 @@
            <p><strong>Litter Information</strong></p>
            <p><%= @pregnancy.litters.where(gender: 'Male').size %> M - <%= @pregnancy.litters.where(gender: 'Female').size %> F</p>
             <table class="table table-striped">
-              <tr><td>Gender</td><td>Color</td><td>Survival</td><td></td></tr>
+              <tr><td>Gender</td><td>Color</td><td>Survival</td><td>Dog</td><td></td></tr>
               <% @pregnancy.litters.each do |litter| %>
                 <tr>
                   <td><%= litter.gender %></td>
                   <td><%= litter.color.name %></td>
                   <td><%= yesno(litter.survival) %></td> 
+                  <td><%= link_to litter.dog.call_name, litter.dog %></td>
                   <td>
                     <%#= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter) %>
                     <%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter), :class => "btn btn-mini", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>

@@ -9,12 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
- *#= require bootstrap-responsive
  *= require bootstrap-datepicker
  *= require_self
  *= require_tree .
  */
-
+/*require bootstrap-responsive*/
 body {
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
   padding-top: 50px;

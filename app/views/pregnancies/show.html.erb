@@ -110,7 +110,7 @@
                   <td><%= litter.gender %></td>
                   <td><%= litter.color.name %></td>
                   <td><%= yesno(litter.survival) %></td> 
-                  <td><%= link_to litter.dog.call_name, litter.dog %></td>
+                  <td><%= litter.dog.call_name if !litter.dog.nil?%></td>
                   <td>
                     <%#= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter) %>
                     <%= link_to "Edit", edit_pregnancy_litter_path(@pregnancy, litter), :class => "btn btn-mini", :remote => true, "data-toggle" => "modal", "data-target" => "my-modal"%>

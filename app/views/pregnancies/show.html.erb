@@ -5,7 +5,7 @@
         <p id="notice"><%= notice %></p>
         <h4>Pregnancy Detail</h4>
 
-        <div class="span3">
+        <div class="col-md-4">
           <div class="tabbable">
           <ul class="nav nav-pills">
             <li class="active"><a href="#pane1" data-toggle="tab">Pregnancy Information</a></li>
@@ -50,7 +50,7 @@
               <%= link_to 'Edit', edit_pregnancy_path(@pregnancy),class: 'btn btn-primary'  %> |
               <%= link_to 'Back', pregnancies_path,class: 'btn btn-primary'  %>
         </div>
-        <div class="span4">
+        <div class="col-md-4">
           <div class="tabbable">
             <ul class="nav nav-pills">
               <li class="active">
@@ -93,7 +93,7 @@
             </div>
 
         </div>
-        <div class="span4">
+        <div class="col-md-4">
           <div class="tabbable">
             <ul class="nav nav-pills">
               <li class="active">
@@ -129,30 +129,37 @@
         </div>
 
         <div style="clear: both;"></div>
-        <br/>
+        
         <div class="row">
-          <div class="span12">
-              <% @pregnancy.pictures.each do |pic| %>
-                <div class="small-image" style="float:left;">
-                  <%= image_tag(pic.file.url) %>
-                </div>
-              <% end %>
-          </div>
+          <% @pregnancy.pictures.each do |pic| %>
+            <div class="col-md-3">
+                <%= image_tag(pic.file.url, :class => "small-image") %>
+            </div>
+          <% end %>
         </div>
 
 
-            <div class="modal hide fade" id="my-modal" title="My modal">
+        <!-- Modal -->
+        <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
               <div class="modal-header">
-                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
-                <h3 id="myModalLabel">Modal header</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
               </div>
               <div class="modal-body">
+                ...
               </div>
               <div class="modal-footer">
-                <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
               </div>
-            </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
+
+           
 
 
 

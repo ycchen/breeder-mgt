@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,14 +25,18 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise', '3.0.0rc' # Authentication solution
 
+gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+	# Use SCSS for stylesheets
+	gem 'sass-rails', '~> 4.0.0'
+	gem 'bootstrap-sass'	  	# bootstrap framework
 
-gem 'bootstrap-sass'		  	# bootstrap framework
+
 gem 'carrierwave'				# upload file gem
 gem 'nested_form'				# Use neted_form gem
 gem 'bootstrap-datepicker-rails'

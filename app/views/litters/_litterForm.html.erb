@@ -1,4 +1,4 @@
-<%= simple_form_for([@pregnancy, @pregnancy.litters.build]) do |f| %>
+<%= simple_form_for([@pregnancy, @pregnancy.litters.build], :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this litter from being saved:</h4>
@@ -11,26 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-12">
     <%= f.label :pregnancy %><br>
-    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, include_blank: 'Select a pregnant bitch') %>
+    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, {include_blank: 'Select a pregnant bitch'}, {class: 'form-control'}) %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-12">
     <%= f.label :gender %><br>
-    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
+    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, {include_blank: 'Select a gender'}, {class: 'form-control'} ) %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-12">
     <%= f.label :color %><br>
-    <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, include_blank: 'Select a color') %>
+    <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, {include_blank: 'Select a color'}, {class: 'form-control'}) %>
+    </div>
   </div>
     <%= f.label :survival %>
-    <%#= f.collection_radio_buttons(:survival, [[true, 'Yes'], [false, 'No']],:first, :last, item_wrapper_class: "inline", default: true) %>
     <%= f.input :survival, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
     
     <%= f.label :cleft_palate %>  
-    <%#= f.collection_radio_buttons(:survival, [[true, 'Yes'], [false, 'No']],:first, :last, item_wrapper_class: "inline", default: true) %>
     <%= f.input :cleft_palate, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
-  <div class="actions">
+  <p>
     <%= f.submit class: 'btn btn-primary'  %>
-  </div>
+  </p>
 <% end %>

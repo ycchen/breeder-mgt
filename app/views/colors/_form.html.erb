@@ -1,4 +1,4 @@
-<%= form_for(@color) do |f| %>
+<%= form_for(@color, :html => {:class=>'form-horizontal', :role => 'form'}) do |f| %>
   <% if @color.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@color.errors.count, "error") %> prohibited this color from being saved:</h4>
@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>      
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+
+
+  <br/>
+  <p><%= f.submit class: 'btn btn-primary' %></p>
+  
 <% end %>

@@ -1,4 +1,4 @@
-<%= simple_form_for([@pregnancy,@litter]) do |f| %>
+<%= simple_form_for([@pregnancy,@litter], :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this litter from being saved:</h4>
@@ -11,26 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-8">
     <%= f.label :pregnancy %>
-    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, include_blank: 'Select a pregnant bitch') %>
+    <%= f.select(:pregnancy_id, Pregnancy.all.map{|p|["#{p.name} - #{p.dog.call_name}", p.id]}, {include_blank: 'Select a pregnant bitch'}, {class: 'form-control'}) %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-8">
     <%= f.label :gender %>
-    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
+    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, {include_blank: 'Select a gender'}, {class: 'form-control'} ) %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-8">
     <%= f.label :color %>
-    <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, include_blank: 'Select a color') %>
+    <%= f.select(:color_id, Color.all.map{|c|[c.name, c.id]}, {include_blank: 'Select a color'}, {class: 'form-control'}) %>
+    </div>
   </div>
+  <div class="form-group">
+    <div class="col-xs-8">
     <%= f.label :survival %>
-    <%= f.input :survival, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
-  
-    <%= f.label :cleft_palate %>
-    <%= f.input :cleft_palate, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline' %>
-    <%= f.label :dog_id %>
-    <%= f.select(:dog_id, Dog.all.map{|d|[d.call_name, d.id]}, include_blank: 'Select a dog') %>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary'  %>
+    <%= f.input :survival, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline', class: 'form-control' %>
+    </div>
   </div>
+   
+  <div class="form-group">
+    <div class="col-xs-8"> 
+    <%= f.label :cleft_palate %>
+    <%= f.input :cleft_palate, :label=> false, :as => :radio_buttons, :item_wrapper_class => 'inline', class: 'form-control' %>
+    </div>
+  </div>
+    
+  <div class="form-group">
+    <div class="col-xs-8">
+    <%= f.label :dog_id %>
+    <%= f.select(:dog_id, Dog.all.map{|d|[d.call_name, d.id]}, {include_blank: 'Select a dog'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+  <p>
+    <%= f.submit class: 'btn btn-primary'  %>
+  </p>
 <% end %>

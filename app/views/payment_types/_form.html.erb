@@ -1,4 +1,4 @@
-<%= form_for(@payment_type) do |f| %>
+<%= form_for(@payment_type,:html => {:class=>'form-horizontal', :role => 'form'}) do |f| %>
   <% if @payment_type.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@payment_type.errors.count, "error") %> prohibited this payment_type from being saved:</h4>
@@ -11,15 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>  
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, id: 'message_area' %>
+
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :description %>
+      <%= f.text_area :description, id: 'message_area', class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+    
+  <br/>
+  <p><%= f.submit class: 'btn btn-primary' %></p>
 <% end %>

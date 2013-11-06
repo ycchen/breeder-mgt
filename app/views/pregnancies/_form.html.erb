@@ -1,4 +1,4 @@
-<%= nested_form_for(@pregnancy, :html => {:multipart => true}) do |f| %>
+<%= nested_form_for(@pregnancy, :html => {:multipart => true, :class => 'form-horizontal', :role => 'form'}) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this pregnancy from being saved:</h4>
@@ -11,53 +11,68 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class=> "form-control" %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :dog %>
-    <%= f.select(:dog_id, Dog.bitches.all.map{|b|[b.name, b.id]}, include_blank: 'Select a Bitch')%>
+    <%= f.select(:dog_id, Dog.bitches.all.map{|b|[b.name, b.id]}, {include_blank: 'Select a Bitch'}, {class: 'form-control'})%>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :heat_start_date %>
-    <%= f.text_field :heat_start_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.heat_start_date), :readonly => true %>
+    <%= f.text_field :heat_start_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.heat_start_date), :readonly => true ,:class=> "form-control"%>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :Estimate_due_date %>
-    <%= f.text_field :due_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.due_date), :readonly => true %>
+    <%= f.text_field :due_date,'data-behaviour' => 'datepicker', value: date_value(@pregnancy.due_date), :readonly => true, :class=> "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :Estimate_surgery_date %>
-    <%= f.text_field :surgery_date, 'data-behaviour' => 'datepicker',value: date_value(@pregnancy.surgery_date), :readonly => true %>
-    
+    <%= f.text_field :surgery_date, 'data-behaviour' => 'datepicker',value: date_value(@pregnancy.surgery_date), :readonly => true, :class=> "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :note %>
-    <%= f.text_area :note, id: 'message_area'%>
+    <%= f.text_area :note, id: 'message_area',:class=> "form-control" %>
+    </div>
   </div>
   
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :total_puppy %>
-    <%= f.number_field :total_puppy %>
-  </div>
-
-  <%= f.fields_for :pictures do |pic| %>
-    <div class="small-image">
-      <%= image_tag(pic.object.file.url) %>
+    <%= f.number_field :total_puppy, class: 'form-control' %>
     </div>
-    <%= pic.label :file %>
-    <%= pic.file_field :file %>
-    <%= pic.link_to_remove t('.remove_image') %>
-  <% end %>
-
-  <%= f.link_to_add t('.add_image'), :pictures %>
-
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
   </div>
+
+  <div class="row">
+    <%= f.fields_for :pictures do |pic| %>
+      <div class="col-md-3">
+        <%= image_tag(pic.object.file.url, :class => "small-image") %><br/>
+        <%= pic.label :file %>
+        <%= pic.file_field :file %>
+        <%= pic.link_to_remove t('.remove_image') %>
+      </div>
+    <% end %>
+  </div>
+  
+  <p><%= f.link_to_add t('.add_image'), :pictures %></p>
+
+  <p><%= f.submit class: 'btn btn-primary' %></p>  
+  
+
 <% end %>

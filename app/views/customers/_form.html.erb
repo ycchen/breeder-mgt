@@ -1,4 +1,4 @@
-<%= nested_form_for(@customer, :html => {:multipart => true}) do |f| %>
+<%= nested_form_for(@customer, :html => {:multipart => true, :class => 'form-horizontal', :role=> 'form'}) do |f| %>
   
   <% if @customer.errors.any? %>
     <div id="error_explanation">
@@ -12,52 +12,81 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>  
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>  
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>      
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile %><br>
-    <%= f.text_field :mobile %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
-  </div>
-  <div class="field">
+    
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :mobile %>
+      <%= f.text_field :mobile, class: 'form-control' %>
+    </div>
+  </div>  
+    
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+  </div>   
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+    </div>
+  </div>     
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode, class: 'form-control' %>
+    </div>
+  </div>   
+    
+  <div class="row">
     <%= f.fields_for :pictures do |p| %>
-      <%= image_tag(p.object.file.url, height: 200, width: 200) %>
-      <%= p.label :file %>
-      <%= p.file_field :file %>
-      <%= p.link_to_remove t('.remove_image') %>
+      <div class="col-md-3">
+        <%= image_tag(p.object.file.url, class: 'small-image') if p.object.file? %><br/>
+        <%= p.label :file %>
+        <%= p.file_field :file %>
+        <%= p.link_to_remove t('.remove_image') %>
+      </div>
     <% end %>
-    <%= f.link_to_add t('.add_image'), :pictures %>
   </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+
+  <p><%= f.link_to_add t('.add_image'), :pictures %></p>
+  <p><%= f.submit class: 'btn btn-primary' %></p>
+  
 <% end %>

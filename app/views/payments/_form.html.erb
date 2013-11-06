@@ -10,33 +10,44 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :payment_type %><br>
-    <%= f.select(:payment_type_id, PaymentType.all.map{|a| [a.name, a.id]}, :include_blank => 'Select a Payment Type') %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_date %><br>
-    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
-      <%= f.text_field :payment_date, value: date_value(@payment.payment_date), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :payment_type %>
+    <%= f.select(:payment_type_id, PaymentType.all.map{|a| [a.name, a.id]}, {include_blank:'Select a Payment Type'},{class: 'form-control'}) %>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :payment_status %><br>
-    <%= f.select(:payment_status_id, PaymentStatus.all.map{|p| [p.name, p.id]}, :include_blank =>'Select a Payment Status') %>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :payment_date %>
+    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+      <%= f.text_field :payment_date, value: date_value(@payment.payment_date), :readonly => true,class: 'form-control' %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :currency %><br>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :payment_status %>
+    <%= f.select(:payment_status_id, PaymentStatus.all.map{|p| [p.name, p.id]}, {include_blank:'Select a Payment Status'},{class: 'form-control'}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :currency %>
     <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+    </div>
   </div>  
-  <div class="field">
-    <%= f.label :amount %><br>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :note %><br>
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :note %>
     <%= f.text_area :note, id: 'message_area' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+
+  <p><%= f.submit class: 'btn btn-primary' %></p>
 <% end %>

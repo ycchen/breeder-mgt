@@ -1,4 +1,4 @@
-<%= nested_form_for(@dog, :html => {:multipart => true}) do |f| %>
+<%= nested_form_for(@dog, :html => {:multipart => true, :class=>'form-horizontal', :role => 'form'}) do |f| %>
   <% if @dog.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h4>
@@ -10,52 +10,86 @@
       </ul>
     </div>
   <% end %>
-
   
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  
-    <%= f.label :call_name %>
-    <%= f.text_field :call_name %>
-  
-    <%= f.label :color_id %>
-    <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Color') %>
-  
-    <%= f.label :Sire %>
-    <%= f.select(:sire_id, Dog.dogs.map{|d|[d.name,d.id]}, include_blank: 'Select a Dog') %>
-
-    <%= f.label :Dams %>
-    <%= f.select(:dams_id, Dog.bitches.map{|b|[b.name,b.id]}, include_blank: 'Select a Bitch') %>
-    
-    <%= f.label :birthday %>
-    <%#= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
-    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
-      <%= f.text_field :birthday, value: date_value(@dog.birthday), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'form-control' %>
     </div>
+  </div>
   
-    <%= f.label :gender %>
-    <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, include_blank: 'Select a gender' ) %>
-  
-  
-    <%= f.label :registration_no %>
-    <%= f.text_field :registration_no %>
-  
-    <%= f.label :status_id %>
-    <%= f.select(:status_id, Status.all.map{|s|[s.name,s.id]}, include_blank: 'Select Status') %>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :call_name %>
+      <%= f.text_field :call_name, :class => 'form-control'%>
+    </div>
+  </div>  
 
-        
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :color_id %>
+      <%= f.select(:color_id, Color.all.map{|c| [c.name, c.id]}, {include_blank:'Select a Color'}, {class: 'form-control'}) %>      
+    </div>
+  </div>
 
-    <div>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :Sire %>
+      <%= f.select(:sire_id, Dog.dogs.map{|d|[d.name,d.id]}, {include_blank: 'Select a Dog'},{class: 'form-control'}) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :Dams %>
+      <%= f.select(:dams_id, Dog.bitches.map{|b|[b.name,b.id]}, {include_blank: 'Select a Bitch'},{class: 'form-control'}) %>
+    </div>
+  </div>
+
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :birthday %>
+    <%#= f.date_select :birthday, options= {start_year: Time.now.year - 10} %>
+      <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+        <%= f.text_field :birthday, value: date_value(@dog.birthday), :readonly => true, class: 'form-control' %><span class="add-on"><i class="icon-th"></i></span>
+      </div>
+    </div>
+  </div>    
+    
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :gender %>
+      <%= f.select(:gender, Dog::GENDER_TYPE.collect{|s|[s,s]}, {include_blank: 'Select a gender'},{class: 'form-control'} ) %>
+    </div>
+  </div>
+    
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :registration_no %>
+      <%= f.text_field :registration_no, class: 'form-control'%>
+    </div>
+  </div>    
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :status_id %>
+      <%= f.select(:status_id, Status.all.map{|s|[s.name,s.id]}, {include_blank: 'Select Status'},{class: 'form-control'}) %>
+    </div>
+  </div> 
+
+  <div class="row">
     <%= f.fields_for :pictures do |p| %>
-      <%= image_tag(p.object.file.url, height: 200, width: 200) if p.object.file? %>
+      <div class="col-md-3">
+      <%= image_tag(p.object.file.url, class: 'small-image') if p.object.file? %><br/>
       <%= p.label :file %>
       <%= p.file_field :file %>
       <%= p.link_to_remove t('.remove_image') %>
+      </div>
     <% end %>
-    <%= f.link_to_add t('.add_image'), :pictures %>
-    </div><br/>
-
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary'%>
   </div>
+
+  <p><%= f.link_to_add t('.add_image'), :pictures %></p>
+
+  <p><%= f.submit class: 'btn btn-primary'%></p>
 <% end %>

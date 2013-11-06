@@ -1,4 +1,4 @@
-<%= form_for(@dog_expense) do |f| %>
+<%= form_for(@dog_expense, :html => {:class => 'form-horizontal', :role => 'form'}) do |f| %>
   <% if @dog_expense.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@dog_expense.errors.count, "error") %> prohibited this dog_expense from being saved:</h4>
@@ -11,36 +11,58 @@
     </div>
   <% end %>
 
-  
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :dog %>
-    <%= f.select(:dog_id, Dog.all.map{|d| [d.name, d.id]}, :include_blank => 'Select a Dog') %>
-  
-  
+    <%= f.select(:dog_id, Dog.all.map{|b|[b.name, b.id]}, {include_blank: 'Select a Dog'}, {class: 'form-control'})%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :charge %>
-    <%= f.select(:charge_id, Charge.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Charge') %>
-  <%= date_value(@dog_expense.charge_date) %>
+    <%= f.select(:charge_id, Charge.all.map{|c| [c.name, c.id]}, {include_blank:'Select a Charge'},{class: 'form-control'}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-4">
     <%= f.label :charge_date %>
     <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
-      <%= f.text_field :charge_date, value: date_value(@dog_expense.charge_date), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+      <%= f.text_field :charge_date, value: date_value(@dog_expense.charge_date), :readonly => true, class: 'form-control' %><span class="add-on"><i class="icon-th"></i></span>
     </div>
-   
-    <%= f.label :currency %>
-    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
-  
-
-  
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-  
-    
-    <%= f.label :show_entry %>
-    <%= f.select(:show_entry_id, ShowEntry.all.map{|s| [("#{s.show_date} - #{s.show.name} - #{s.dog.call_name} "), s.id]}, :include_blank => 'Select a Show Entry') %>
-  
-  
-    <%= f.label :note %>
-    <%= f.text_area :note , id: 'message_area'%>
-  
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary'%>
+    </div>
   </div>
+
+  <div class="form-group">
+    <div class="col-xs-4">
+    <%= f.label :currency %>
+    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]}, {},{:class=> 'form-control'})%>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :amount %>
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :show_entry %>
+      <%= f.select(:show_entry_id, ShowEntry.all.map{|s| [("#{s.show_date} - #{s.show.name} - #{s.dog.call_name} "), s.id]}, {include_blank:'Select a Show Entry'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :note %>
+      <%= f.text_area :note , id: 'message_area', class: 'form-control' %>
+    </div>
+  </div>
+
+    <br/>
+    <p>
+      <%= f.submit class: 'btn btn-primary'%>
+    </p>
+  
 <% end %>

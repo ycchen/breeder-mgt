@@ -1,4 +1,4 @@
-<%= form_for(@sale) do |f| %>
+<%= form_for(@sale, :html=>{:class => 'form-horizontal', :role=> 'form'}) do |f| %>
   <% if @sale.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h4>
@@ -11,34 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :dog %><br>
-    <%= f.select(:dog_id, Dog.all.map{|d|[d.name, d.id]}, :include_blank => 'Select a Dog') %>
-  </div>
-  <div class="field">
-    <%= f.label :customer %><br>
-    <%= f.select(:customer_id, Customer.all.map{|c| [c.name, c.id]}, :include_blank => 'Select a Customer') %>
-  </div>
-  <div class="field">
-    <%= f.label :sale_date %><br>
-    <%#= f.date_select :sale_date %>
-    <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
-      <%= f.text_field :sale_date, value: date_value(@sale.sale_date), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :dog %>
+      <%= f.select(:dog_id, Dog.all.map{|d|[d.name, d.id]}, {include_blank:'Select a Dog'}, {class: 'form-control'}) %>  
     </div>
   </div>
-  <div class="field">
-    <%= f.label :currency %><br>
-    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+
+
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :customer %>
+      <%= f.select(:customer_id, Customer.all.map{|c| [c.name, c.id]}, {include_blank:'Select a Customer'}, {class: 'form-control'}) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :sale_price %><br>
-    <%= f.text_field :sale_price %>
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :sale_date %>
+      <%#= f.date_select :sale_date %>
+      <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
+        <%= f.text_field :sale_date, value: date_value(@sale.sale_date), :readonly => true, class: 'form-control' %><span class="add-on"><i class="icon-th"></i></span>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :note %><br>
-    <%= f.text_area :note , id: 'message_area'%>
+      
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :currency %>
+      <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]},{},{class: 'form-control'})%>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :sale_price %>
+      <%= f.text_field :sale_price, class: 'form-control' %>
+    </div>
+  </div>    
+  
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :note %>
+      <%= f.text_area :note , id: 'message_area', class: 'form-control' %>
+    </div>
+  </div>      
+  
+  <br/>
+  <p><%= f.submit class: 'btn btn-primary' %></p>
+  
 <% end %>

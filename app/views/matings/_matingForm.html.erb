@@ -1,4 +1,4 @@
-<%= form_for([@pregnancy, @pregnancy.matings.build]) do |f| %>
+<%= form_for([@pregnancy, @pregnancy.matings.build], :html => {:class=> 'form-horizontal', :role => 'form'}) do |f| %>
   <% if @pregnancy.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(@pregnancy.errors.count, "error") %> prohibited this pregnancy from being saved:</h4>
@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-10">
     <%= f.label :pregnancy %>
-    <%= f.select(:pregnancy_id, Pregnancy.where(nil).map{|p|["#{p.name} - #{p.dog.call_name}",p.id]},include_blank: 'Select a pregnant bitch')%>
+    <%= f.select(:pregnancy_id, Pregnancy.where(nil).map{|p|["#{p.name} - #{p.dog.call_name}",p.id]},{include_blank: 'Select a pregnant Bitch'}, {class: 'form-control'})%>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-10">
     <%= f.label :sire_id %>
-    <%= f.select(:sire_id, Dog.dogs.where(nil).map{|d|[d.call_name, d.id]}, include_blank: 'Select a mating dog') %>
+    <%= f.select(:sire_id, Dog.dogs.where(nil).map{|d|[d.call_name, d.id]}, {include_blank: 'Select a mating dog'}, {:class => 'form-control'}) %>
+    </div>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <div class="col-xs-10">
     <%= f.label :mating_date %>
     <div class="input-append date" id="dp3" data-date-format="yyyy-mm-dd">
-      <%= f.text_field :mating_date, value: date_value(Date.today), :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
+      <%= f.text_field :mating_date, value: date_value(Date.today), :readonly => true, :class => 'form-control' %><span class="add-on"><i class="icon-th"></i></span>
+    </div>
     </div>
   </div>
 
-  <div class="actions">
+  <p>
     <%= f.submit  class: 'btn btn-primary' %>
-  </div>
+  </p>
 <% end %>

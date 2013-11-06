@@ -17,13 +17,13 @@ class ApplicationController < ActionController::Base
   end
 
   def show_error(msg='Object does not exist!')
-    flash[:notice] = msg
+    flash[:warning] = msg
     redirect_to root_path
   end
   
   def is_admin?
     unless current_user && current_user.admin?
-      flash[:notice] = "You are not authorize to access this page!"
+      flash[:warning] = "You are not authorize to access this page!"
       redirect_to root_path
     end   
   end

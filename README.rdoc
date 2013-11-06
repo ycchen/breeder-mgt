@@ -710,6 +710,10 @@ $ cd to c:\sqlite2 with CMD
 sqlite3 c:\websites\breeder_mgt\db\development.sqlite3
 sqlite> delete from schema_migrations;
 sqlite> .read c:/dump.sql
+sqlite> .exit
+
+sqlite> .help # for help commands
+
 
 == Added better_errors gem
 group :development do

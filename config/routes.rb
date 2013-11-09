@@ -1,6 +1,8 @@
 Showtrac::Application.routes.draw do
   
   
+  resources :services
+
   resources :statuses
 
   resources :pregnancies do

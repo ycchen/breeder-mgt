@@ -1,0 +1,22 @@
+<div class="root">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="grey-box">	
+				<p id="notice"><%= notice %></p>
+
+				<p>
+				  <strong>Name:</strong>
+				  <%= @service.name %>
+				</p>
+
+				<p>
+				  <strong>Description:</strong>
+				  <%= @service.description %>
+				</p>
+
+				<%= link_to 'Edit', edit_service_path(@service), class: 'btn btn-primary' %> |
+				<%= link_to 'Back', services_path, class: 'btn btn-primary' %>
+			</div>
+		</div>
+	</div>
+</div>

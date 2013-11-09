@@ -18,7 +18,12 @@
     </div>
   </div>
 
-
+  <div class="form-group">
+    <div class="col-xs-4">
+      <%= f.label :service_id %>
+      <%= f.select(:service_id, Service.all.map{|d|[d.name, d.id]}, {include_blank:'Select a Service'}, {class: 'form-control'}) %>  
+    </div>
+  </div>
   <div class="form-group">
     <div class="col-xs-4">
       <%= f.label :customer %>

@@ -13,6 +13,7 @@
               <th>Customer</th>
               <th>Sale date</th>
               <th>Sale price</th>
+              <th>Service</th>
               <th>Note</th>
               <th>Photo</th>
               <th></th>
@@ -28,6 +29,7 @@
                 <td><%= link_to(sale.customer.name, customer_path(sale.customer.id) )%></td>
                 <td><%= sale.sale_date %></td>
                 <td><%= currency_to(sale.sale_price,sale.currency) %></td>
+                <td><%= sale.service.name %></td>
                 <td style="width: 250px;"><pre><%= sale.note %></pre></td>
                 <td><%= sale.dog.pictures.size %></td>
                 <td>

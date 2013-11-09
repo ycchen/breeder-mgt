@@ -815,5 +815,18 @@ install: --no-rdoc --no-ri
 
 update: --no-rdoc --no-ri
 
+== Generate service model
+
+$ rails g scaffold service name:string description:text
+
+== Generate migration script to add service_id to sales table
+
+$ rails g migration add_service_id_to_sale service_id:integer
+
+ add_column :sales, :service_id, :integer, :null=> true
+
+-- update service_id = 1 on all records in console
+
+$ Sale.update_all(service_id: 1)
 
 == Added whenever gem for cron job to send out email

@@ -1,0 +1,40 @@
+<div class="root">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="grey-box">  
+        <div class="page-header">
+          <h4 class="page-header-text">Services</h4>
+          <%= add_new_btn(new_service_path) %>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @services.each do |service| %>
+              <tr>
+                <td><%= service.name %></td>
+                <td><%= service.description %></td>
+                <td><%= link_to 'Show', service, class: 'btn btn-primary' %></td>
+                <td><%= link_to 'Edit', edit_service_path(service), class: 'btn btn-primary' %></td>
+                <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to 'New Service', new_service_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,7 +26,7 @@ module ApplicationHelper
 	end
 
 	def add_new_btn(path)
-		link_to '<i class="icon-plus"></i> Add New'.html_safe, path , class: 'btn btn-large' 
+		link_to '<i class="icon-plus"></i> Add New'.html_safe, path , class: 'btn btn-default btn-lg' 
 	end
 
 	def date_value(date)

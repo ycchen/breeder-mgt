@@ -1,5 +1,4 @@
-
-<%= form_for([@sale, @payment]) do |f| %>
+<%= form_for([@sale, @payment],:html=>{:class => 'form-horizontal', :role=> 'form'}) do |f| %>
   <% if @sale.errors.any? %>
     <div id="errorExplanation">
       <h4><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved.</h4>
@@ -33,19 +32,19 @@
   <div class="form-group">
     <div class="col-xs-4">
     <%= f.label :currency %>
-    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]})%>
+    <%= f.select(:currency, $CURRENCIES.map{|c| [c,c]}, class: 'form-control')%>
     </div>
   </div>  
   <div class="form-group">
     <div class="col-xs-4">
     <%= f.label :amount %>
-    <%= f.text_field :amount %>
+    <%= f.text_field :amount, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
     <div class="col-xs-4">
     <%= f.label :note %>
-    <%= f.text_area :note, id: 'message_area' %>
+    <%= f.text_area :note, id: 'message_area', class: 'form-control' %>
     </div>
   </div>
 

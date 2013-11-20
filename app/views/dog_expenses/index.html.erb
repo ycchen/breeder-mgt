@@ -55,7 +55,7 @@
                   </td>
                   <td><%= currency_to(dog_expense.amount, dog_expense.currency) if dog_expense.currency == 'TW'%></td>
                   
-                  <td><%= dog_expense.note %></td>
+                  <td><pre><%= dog_expense.note %></pre></td>
                   <td><% if !dog_expense.show_entry.nil? %><%= dog_expense.show_entry.show_date %><% end %></td>
                   <td>
                     <div class="btn-group">

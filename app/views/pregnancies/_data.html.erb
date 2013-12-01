@@ -10,7 +10,7 @@
   <td>
       <table class="table table-condensed">
         <% pregnancy.litters.order(:gender, :color_id).each do |p| %>
-        <tr><td><%= p.gender %></td><td><%= p.color.name %></td><td><%= p.survival %></td></tr>
+        <tr><td><%= p.gender %></td><td><%= p.color.name %></td><td><%= p.survival ? 'Yes': 'No' %></td><td><% if p.survival %><%= !p.dog_id.nil?  ? p.dog.status.name : 'Kennel' %><% else %> Deceased<% end %></td></tr>
         <% end %>
       </table>
   </td>
